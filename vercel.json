@@ -1,43 +1,33 @@
 {
   "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "api/index.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "api/index.py"
+      "source": "/api/(.*)",
+      "destination": "/api"
     },
     {
-      "src": "/record",
-      "dest": "/static/mobile.html"
+      "source": "/record",
+      "destination": "/static/mobile.html"
     },
     {
-      "src": "/dashboard",
-      "dest": "/static/dashboard.html"
+      "source": "/dashboard",
+      "destination": "/static/dashboard.html"
     },
     {
-      "src": "/inspect",
-      "dest": "/scg_inspection_dashboard.html"
+      "source": "/inspect",
+      "destination": "/scg_inspection_dashboard.html"
     },
     {
-      "src": "/architecture",
-      "dest": "/architecture.html"
+      "source": "/architecture",
+      "destination": "/architecture.html"
     },
     {
-      "src": "/report-approval",
-      "dest": "/advisor_approval_report.html"
+      "source": "/report-approval",
+      "destination": "/advisor_approval_report.html"
     },
     {
-      "src": "/report-handbook",
-      "dest": "/member_b_handbook_and_report.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/report-handbook",
+      "destination": "/member_b_handbook_and_report.html"
     }
   ]
 }

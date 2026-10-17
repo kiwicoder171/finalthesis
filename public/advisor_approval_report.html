@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advisor Approval Report — Senior Capstone Thesis Proposal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --paper: #f8fafc;
+      --ink: #0f172a;
+      --ink-muted: #475569;
+      --border: #e2e8f0;
+      --accent: #ea580c;
+      --accent-tint: #fff7ed;
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #f1f5f9;
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      line-height: 1.65;
+      padding: 32px 16px;
+    }
+    .document {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      padding: 56px 64px;
+    }
+    @media print {
+      body { background: transparent; padding: 0; }
+      .document { box-shadow: none; border: none; padding: 20px 24px; max-width: 100%; }
+      .no-print { display: none; }
+    }
+    .top-meta {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 10px;
+      margin-bottom: 24px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 2.1rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    h2 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: var(--ink);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      margin-top: 32px;
+      margin-bottom: 14px;
+    }
+    h3 {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-top: 18px;
+      margin-bottom: 6px;
+    }
+    p { margin-bottom: 12px; text-align: justify; }
+    ol, ul { margin-left: 24px; margin-bottom: 14px; }
+    li { margin-bottom: 6px; }
+    .action-verb {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .badge {
+      background: var(--accent);
+      color: #fff;
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 600;
+    }
+    .callout {
+      background: var(--paper);
+      border-left: 3px solid var(--accent);
+      padding: 12px 16px;
+      margin: 16px 0;
+      border-radius: 0 6px 6px 0;
+      font-size: 12.5px;
+    }
+    .signoff-box {
+      margin-top: 36px;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      font-size: 11px;
+    }
+    .btn-print {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--ink);
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 100;
+    }
+    .btn-print:hover { background: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <button class="btn-print no-print" onclick="window.print()">🖨️ Print / Save as PDF</button>
+
+  <div class="document">
+    <div class="top-meta">
+      <div>Senior Capstone Thesis Proposal • Computer Engineering</div>
+      <div><span class="badge">FACULTY ADVISOR APPROVAL DOSSIER</span></div>
+    </div>
+
+    <h1>A Multi-Modal Mobile Sensing System for Real-Time Cardiac Autonomic Risk Profiling and In-Silico Dynamical Rhythm Stress Simulation</h1>
+    <div class="subtitle">Department of Computer Engineering • Senior Design Project Group (4 Members) • Academic Year 2026–2027</div>
+
+    <h2>Section 1: Objective</h2>
+    <p><em>(Strictly formulated with measurable engineering action verbs)</em></p>
+    <ol>
+      <li><span class="action-verb">To develop</span> an end-to-end, multi-stage mobile health and cyber-physical digital-twin pipeline that captures non-invasive physiological cardiac signals directly via standard smartphone sensors, performs digital filtering, and extracts clinically validated Pulse Rate Variability (PRV) metrics in real time.</li>
+      <li><span class="action-verb">To identify</span> and validate mechanical cardiac micro-vibrations along the sternal dorso-ventral axis using smartphone 3-axis MEMS accelerometers (Seismocardiography - SCG), while establishing an automated contingency fallback to optical camera-based photoplethysmography (Contact PPG) and gold-standard clinical databases to guarantee system robustness.</li>
+      <li><span class="action-verb">To improve</span> the interpretability and utility of consumer-grade mobile cardiovascular metrics by training a dual-target supervised machine learning model (evaluating acute autonomic stress and arrhythmia screening) that outputs an explainable risk vector rather than a closed black-box pulse count.</li>
+      <li><span class="action-verb">To mitigate</span> the gap between static diagnostic health metrics and predictive physiological outcomes by implementing a parameterized, coupled nonlinear cardiac oscillator (Van der Pol / FitzHugh-Nagumo model) that dynamically simulates cardiac rhythm stability, period-doubling bifurcations, and arrhythmic breakdown under simulated autonomic stress challenges.</li>
+    </ol>
+
+    <h2>Section 2: Scope</h2>
+    <ol>
+      <li><strong>What you do or do not consider in this project:</strong>
+        <ul>
+          <li><strong>Inclusions:</strong> Acquisition of cardiac signals using built-in smartphone sensors: primary evaluation of Seismocardiography (SCG) via 3-axis MEMS accelerometer placed flat on the sternum during resting postures; secondary fallback to optical contact PPG via the rear camera and LED flashlight; tertiary fallback to public clinical benchmark data (PhysioNet MIT-BIH, WESAD, CapnoBase). Zero-phase Butterworth filtering, systolic peak detection, time/frequency PRV feature extraction, dual-target ML classification, and coupled Van der Pol ODE rhythm simulation.</li>
+          <li><strong>Exclusions:</strong> Invasive cardiovascular monitoring (arterial lines), high-motion ambulatory exercise testing (running motion artifacts overwhelm unanchored smartphone sensors), and multi-lead diagnostic ECG morphology analysis (e.g. ST-segment elevation for acute infarction).</li>
+        </ul>
+      </li>
+      <li><strong>What you cannot do or exclude from this project:</strong>
+        <ul>
+          <li><strong>Non-diagnostic Disclaimer:</strong> The software cannot provide medical diagnoses, clinical prescriptions, or formal therapeutic interventions. It is strictly an engineering research and decision-support prototype.</li>
+          <li><strong>Regulatory Certification:</strong> The project cannot achieve FDA/CE medical device hardware certification within the academic timeframe.</li>
+          <li><strong>Demographic Boundaries:</strong> Excludes pediatric and neonatal populations; validation is restricted to adult physiological ranges.</li>
+        </ul>
+      </li>
+      <li><strong>Limitations:</strong>
+        <ul>
+          <li><strong>Sensor Noise Floors:</strong> Consumer-grade smartphone MEMS accelerometers exhibit intrinsic thermal noise and variable quantization drift compared to clinical-grade seismometers.</li>
+          <li><strong>Posture Dependence:</strong> Sternal SCG acquisition strictly requires supine (lying flat) or semi-recumbent (45°) resting postures to isolate cardiac micro-g accelerations from gravitational reorientation.</li>
+          <li><strong>Optical Contact Sensitivity:</strong> The camera PPG fallback is sensitive to excessive fingertip pressure (which blanches capillary beds) and skin tone absorption variations.</li>
+          <li><strong>Mobile OS Timestamp Jitter:</strong> Mobile operating systems introduce non-deterministic thread scheduling and variable inter-frame timestamp jitter that must be compensated for via cubic-spline interpolation.</li>
+        </ul>
+      </li>
+      <li><strong>Ranges of data, date, and time:</strong>
+        <ul>
+          <li><strong>Heart Rate Operational Range:</strong> 40 bpm to 180 bpm (fundamental cardiac frequency: 0.67 Hz to 3.0 Hz).</li>
+          <li><strong>Peak-to-Peak Interval (PPI) Window:</strong> 333 ms to 1500 ms (physiological bounds for outlier rejection).</li>
+          <li><strong>Sensor Sampling Rates:</strong> 100 Hz to 200 Hz for IMU Accelerometer; 30 FPS or 60 FPS for camera PPG; resampled to 4.0 Hz uniform grid for spectral PRV analysis.</li>
+          <li><strong>Measurement Durations:</strong> 30 seconds for instantaneous pulse rate; 60 to 120 seconds for short-term statistical and spectral PRV (SDNN, RMSSD, LF/HF).</li>
+          <li><strong>Academic Schedule:</strong> 16 weeks across two semesters (Fall 2026 – Spring 2027).</li>
+        </ul>
+      </li>
+      <li><strong>Platform(s)/Device(s) used specifically in this project:</strong>
+        <ul>
+          <li><strong>Mobile Sensing Hardware:</strong> Commercially available iOS (iPhone with CoreMotion/AVFoundation) and Android (SensorManager/Camera2 API) devices containing 3-axis MEMS accelerometers and rear LED flash units.</li>
+          <li><strong>Mobile Application Layer:</strong> Cross-platform Flutter / React Native client providing native camera/IMU hardware bindings and local WebSockets.</li>
+          <li><strong>Computation Engine:</strong> Python 3.9+ backend (FastAPI, WebSockets, NumPy, SciPy, Scikit-Learn, XGBoost).</li>
+          <li><strong>Simulation Environment:</strong> Python Runge-Kutta ODE numerical solvers (scipy.integrate.solve_ivp RK45) with validation against MATLAB/Simulink biophysical models.</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h2>Section 3: Background</h2>
+    <h3>3.1 Problem Statement and Motivation</h3>
+    <p>Cardiovascular diseases (CVDs) remain the leading contributor to global mortality, causing an estimated 17.9 million deaths annually. Concurrently, chronic psychophysiological stress and autonomic nervous system (ANS) dysregulation—characterized by prolonged sympathetic hyperactivity and suppressed parasympathetic vagal tone—is a recognized precursor to hypertension, fatal arrhythmias, and ischemic heart failure. While conventional 12-lead Electrocardiography (ECG) and continuous Holter monitors represent the clinical gold standard, their reliance on specialized analog differential amplifiers, high-impedance instrumentation circuitry, skin-abrasive conductive gel, and adhesive electrodes creates severe logistical friction. Consequently, cardiac risk monitoring remains episodic and hospital-bound. There is an urgent engineering imperative for frictionless, zero-external-hardware cardiovascular monitoring systems that leverage ubiquitous mobile consumer devices.</p>
+
+    <h3>3.2 State of the Art and Literature Review</h3>
+    <ul>
+      <li><strong>Optical Contact Photoplethysmography (PPG):</strong> Measures localized blood volume pulse oscillations through transillumination of peripheral capillary beds, governed by the Beer-Lambert law of optical absorption. Hertzman (1938) initially demonstrated optical pulse detection, which was formalized for consumer digital CMOS camera sensors by Verkruysse et al. (2008) and Jonathan &amp; Leahy (2010). Modern studies confirm that green light (520–540 nm) provides the highest signal-to-noise ratio (SNR) due to the distinct absorption peak of oxyhemoglobin (HbO2).</li>
+      <li><strong>Mechanical Sternal Seismocardiography (SCG):</strong> Records mechanical micro-vibrations of the chest wall induced by left ventricular myocardial contraction, isovolumetric momentum transfer, and rapid blood ejection into the ascending aorta. First investigated by Baevskii et al. (1964), modern MEMS sensors have revitalized SCG. Inan et al. (2015) and Tadi et al. (2017) established that standard smartphone MEMS accelerometers resting flat on the sternum capture aortic valve opening (AO) and rapid ejection (RE) micro-vibrations within 1.0–20.0 Hz, providing an acoustic-mechanical sensing pathway without optical hardware.</li>
+      <li><strong>Pulse Rate Variability (PRV) as an Autonomic Surrogate:</strong> Clinical standards for Heart Rate Variability (HRV) defined by the Task Force of the European Society of Cardiology and NASPE (1996) identify SDNN, RMSSD, and spectral LF/HF ratios as primary indicators of sympathovagal balance. Extensive clinical validation by Lu et al. (2009) and Schäfer &amp; Vagedes (2013) demonstrated that in stationary resting conditions, peak-to-peak intervals (PPI) derived from optical PPG and mechanical SCG correlate with ECG-derived RR intervals with high statistical fidelity (R² ≥ 0.95).</li>
+      <li><strong>Nonlinear Cardiac Dynamical Modeling:</strong> The human cardiac conduction system operates as an assembly of nonlinear, self-oscillating pacemakers. Van der Pol &amp; Van der Mark (1928) originally formulated coupled relaxation oscillators to model Sinoatrial (SA) and Atrioventricular (AV) nodal dynamics. FitzHugh (1961) and Glass (2001) demonstrated that cardiac conduction anomalies, ventricular flutter, and chaotic fibrillation are nonlinear dynamical state bifurcations triggered when intrinsic oscillator damping and coupling strengths are perturbed by external autonomic/sympathetic stress drive.</li>
+    </ul>
+
+    <h3>3.3 Identified Research Gaps</h3>
+    <div class="callout">
+      <strong>Gap 1: Disconnect Between Static Measurement and Predictive Dynamic Simulation.</strong><br>
+      Commercial mobile health apps function purely as passive, closed-loop meters: they output a single static integer (e.g. '72 bpm') or a proprietary wellness score. None of these platforms bridge measured physiological parameters into an in-silico dynamical twin capable of simulating how that specific individual's cardiac rhythm stability will evolve or break down under simulated autonomic stress challenges.
+    </div>
+    <div class="callout">
+      <strong>Gap 2: Lack of Transparent, Open-Source Multi-Modal White-Box Architectures.</strong><br>
+      Existing mobile heart rate applications rely on proprietary, closed-source black-box heuristics that cannot be peer-reviewed, audited, or academically validated. Furthermore, they rely strictly on a single sensor modality (camera only), rendering them brittle under hardware constraints and vulnerable to optical artifacts.
+    </div>
+    <div class="callout">
+      <strong>Gap 3: Sensor Underutilization and High Hardware Barriers in Capstone Projects.</strong><br>
+      Previous student engineering capstones frequently rely on standalone external biomedical circuit breakout boards (e.g., AD8232 ECG boards), introducing physical connection failures and cumbersome hardware maintenance while leaving the advanced, high-precision MEMS inertial sensors built directly into modern smartphones completely underutilized.
+    </div>
+
+    <h3>3.4 Research Questions</h3>
+    <ol>
+      <li><em>Can a standard smartphone's embedded 3-axis MEMS accelerometer reliably capture sternal mechanical recoil micro-vibrations (SCG) with sufficient signal-to-noise ratio to yield mathematically valid beat-to-beat intervals under resting conditions?</em></li>
+      <li><em>How can an automated multi-tier sensing fallback architecture (Sternal SCG → Camera PPG → Benchmarked Clinical Datasets) be structured to ensure zero failure states during real-time deployment?</em></li>
+      <li><em>How can empirical Pulse Rate Variability features extracted from mobile sensors be mapped mathematically into the damping and coupling parameters of a coupled nonlinear cardiac oscillator to simulate visual rhythm destabilization and chaotic bifurcations under autonomic stress?</em></li>
+    </ol>
+
+    <h3>3.5 Core Academic and Technical Contributions</h3>
+    <ul>
+      <li>A fully unified, transparent Cyber-Physical Digital Twin software pipeline combining mobile signal acquisition, zero-phase DSP, machine learning risk classification, and nonlinear dynamical ODE simulation.</li>
+      <li>A novel comparative evaluation between mechanical sternal SCG and optical fingertip PPG on consumer smartphone hardware.</li>
+      <li>An open, reproducible benchmark validating mobile Pulse Rate Variability (PRV) against established clinical datasets (WESAD and CapnoBase/MIMIC-III).</li>
+    </ul>
+
+    <div class="signoff-box">
+      <div>
+        <strong>Student Sign-off (Computer Engineering):</strong><br><br>
+        Member A: _________________________ [Acquisition]<br><br>
+        Member B: _________________________ [Core DSP]<br><br>
+        Member C: _________________________ [ML Classifier]<br><br>
+        Member D: _________________________ [Dynamic Twin]
+      </div>
+      <div>
+        <strong>Faculty Advisor Review:</strong><br><br>
+        Signature: _________________________________<br><br>
+        Date: ____________________ Status: [ ] APPROVED<br><br>
+        Comments: [  ] Conditional Approval   [  ] Rejected
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>CardioTwin Mobile Sensor</title>
+  <link rel="manifest" href="/static/manifest.json">
+  <meta name="theme-color" content="#ea580c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #131b2e;
+      --accent: #ea580c;
+      --accent-glow: rgba(234, 88, 12, 0.25);
+      --green: #10b981;
+      --text-primary: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #1e293b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: 'Inter', -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: env(safe-area-inset-top, 24px) 20px env(safe-area-inset-bottom, 24px) 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--accent);
+      background: rgba(234, 88, 12, 0.12);
+      border: 1px solid rgba(234, 88, 12, 0.3);
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Main visualizer container */
+    .center-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: auto 0;
+    }
+
+    .pulse-ring {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 2px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
+      transition: all 0.3s ease;
+    }
+
+    .pulse-ring.recording {
+      border-color: var(--accent);
+      box-shadow: 0 0 40px var(--accent-glow);
+      animation: heartGlow 1.2s infinite ease-in-out;
+    }
+
+    @keyframes heartGlow {
+      0% { transform: scale(1); box-shadow: 0 0 20px var(--accent-glow); }
+      50% { transform: scale(1.04); box-shadow: 0 0 50px rgba(234, 88, 12, 0.45); }
+      100% { transform: scale(1); box-shadow: 0 0 20px var(--accent-glow); }
+    }
+
+    .heart-icon {
+      font-size: 44px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .timer-display {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .timer-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Posture Guide */
+    .guide-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      width: 100%;
+      max-width: 360px;
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    .posture-status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #64748b;
+    }
+
+    .dot.ready { background: var(--green); }
+    .dot.recording { background: var(--accent); }
+
+    .guide-hint {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Action Buttons */
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 4px 16px rgba(234, 88, 12, 0.35);
+    }
+
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 12px;
+      padding: 12px;
+    }
+
+    .sample-count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="badge">Member A Acquisition Node</div>
+    <h1>CardioTwin Mobile Sensor</h1>
+    <p class="subtitle">Sternal Seismocardiography (SCG) Streamer</p>
+  </header>
+
+  <main class="center-stage">
+    <div class="pulse-ring" id="ring">
+      <div class="heart-icon">❤️</div>
+      <div class="timer-display" id="timer">30.0s</div>
+      <div class="timer-sub" id="statusText">READY</div>
+    </div>
+
+    <div class="guide-card">
+      <div class="posture-status">
+        <span class="dot" id="postureDot"></span>
+        <span id="postureText">Sensor Inactive</span>
+      </div>
+      <div class="guide-hint">
+        Lie flat on your back, place phone flat on your sternum (screen up), and remain relaxed.
+      </div>
+    </div>
+  </main>
+
+  <footer class="actions">
+    <button class="btn btn-primary" id="btnAction" onclick="handleAction()">
+      📱 Enable Sensor &amp; Start
+    </button>
+    <div class="sample-count" id="sampleCount">Samples Streamed: 0</div>
+  </footer>
+
+  <script>
+    let isRecording = false;
+    let hasPermission = false;
+    let streamBuffer = [];
+    let startTime = 0;
+    let timerInterval = null;
+    let totalSamplesSent = 0;
+    const DURATION = 30.0;
+
+    const ring = document.getElementById('ring');
+    const timer = document.getElementById('timer');
+    const statusText = document.getElementById('statusText');
+    const postureDot = document.getElementById('postureDot');
+    const postureText = document.getElementById('postureText');
+    const btnAction = document.getElementById('btnAction');
+    const sampleCount = document.getElementById('sampleCount');
+
+    // Register PWA service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/static/sw.js').catch(() => {});
+    }
+
+    async function requestMotionPermission() {
+      if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
+        try {
+          const permission = await DeviceMotionEvent.requestPermission();
+          if (permission === 'granted') {
+            hasPermission = true;
+            return true;
+          } else {
+            alert('Motion sensor permission is required to measure cardiac recoil.');
+            return false;
+          }
+        } catch (e) {
+          console.error(e);
+          return false;
+        }
+      } else {
+        // Non-iOS or older iOS automatically grants permission
+        hasPermission = true;
+        return true;
+      }
+    }
+
+    async function handleAction() {
+      if (!hasPermission) {
+        const granted = await requestMotionPermission();
+        if (!granted) return;
+        btnAction.innerText = '▶️ Start 30s Chest Recording';
+        window.addEventListener('devicemotion', handleMotion);
+        postureDot.className = 'dot ready';
+        postureText.innerText = 'Sensor Online (Standby)';
+        return;
+      }
+
+      if (!isRecording) {
+        startRecording();
+      } else {
+        stopRecording();
+      }
+    }
+
+    function handleMotion(e) {
+      const acc = e.accelerationIncludingGravity || e.acceleration;
+      if (!acc) return;
+
+      const x = acc.x || 0.0;
+      const y = acc.y || 0.0;
+      const z = acc.z || 0.0;
+
+      // Update orientation guide if not recording
+      if (!isRecording) {
+        if (Math.abs(z) > 7.5) {
+          postureDot.className = 'dot ready';
+          postureText.innerText = 'Position: Flat on Chest (Optimal)';
+        } else {
+          postureDot.className = 'dot';
+          postureText.innerText = 'Position: Tilt Phone Flat (Screen Up)';
+        }
+      }
+
+      if (isRecording) {
+        const now = (performance.now() - startTime) / 1000.0;
+        streamBuffer.push({ t: now, x, y, z });
+
+        // Flush buffer every 20 samples (~200ms)
+        if (streamBuffer.length >= 20) {
+          flushStream();
+        }
+      }
+    }
+
+    function flushStream() {
+      if (streamBuffer.length === 0) return;
+      const payload = [...streamBuffer];
+      streamBuffer = [];
+      totalSamplesSent += payload.length;
+      sampleCount.innerText = `Samples Streamed: ${totalSamplesSent}`;
+
+      fetch('/api/sensor_stream', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ samples: payload })
+      }).catch(err => console.error(err));
+    }
+
+    function startRecording() {
+      isRecording = true;
+      startTime = performance.now();
+      streamBuffer = [];
+      totalSamplesSent = 0;
+
+      ring.className = 'pulse-ring recording';
+      statusText.innerText = 'RECORDING';
+      btnAction.innerText = '⏹️ Stop Measurement';
+      btnAction.style.background = '#dc2626';
+      postureDot.className = 'dot recording';
+      postureText.innerText = 'HOLD BREATH / STAY STILL';
+
+      // Tell backend recording started
+      fetch('/api/recording_control', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'START' })
+      }).catch(() => {});
+
+      timerInterval = setInterval(() => {
+        const elapsed = (performance.now() - startTime) / 1000.0;
+        const remaining = Math.max(0, DURATION - elapsed);
+        timer.innerText = remaining.toFixed(1) + 's';
+
+        if (remaining <= 0) {
+          stopRecording();
+        }
+      }, 100);
+    }
+
+    function stopRecording() {
+      isRecording = false;
+      clearInterval(timerInterval);
+      flushStream();
+
+      ring.className = 'pulse-ring';
+      statusText.innerText = 'PROCESSING';
+      btnAction.innerText = 'Processing on Dashboard...';
+      btnAction.disabled = true;
+
+      // Tell backend recording stopped
+      fetch('/api/recording_control', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'STOP' })
+      }).then(res => res.json()).then(data => {
+        statusText.innerText = 'COMPLETE';
+        timer.innerText = `${data.mean_hr || '--'} BPM`;
+        btnAction.disabled = false;
+        btnAction.innerText = '🔄 Record Another';
+        btnAction.style.background = 'var(--accent)';
+        postureText.innerText = 'Data Processed & Synchronized!';
+        if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+      }).catch(err => {
+        btnAction.disabled = false;
+        btnAction.innerText = '🔄 Try Again';
+      });
+    }
+  </script>
+</body>
+</html>

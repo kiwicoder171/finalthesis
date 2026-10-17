@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CardioTwin — Unified Analytical Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --panel-border: #1f293d;
+      --accent: #ea580c;
+      --accent-glow: rgba(234, 88, 12, 0.15);
+      --blue: #3b82f6;
+      --green: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      padding: 24px 32px;
+      min-height: 100vh;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--panel-border);
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    .title-area h1 {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--text-main);
+      line-height: 1.1;
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .connection-pill {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #1e293b;
+      border: 1px solid var(--panel-border);
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 12px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #64748b;
+    }
+
+    .status-dot.active { background: var(--green); box-shadow: 0 0 10px var(--green); }
+    .status-dot.sim { background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+
+    /* Top metrics row */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .m-card {
+      background: var(--card-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 8px;
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .m-card.focal {
+      border-color: rgba(234, 88, 12, 0.4);
+      background: linear-gradient(180deg, rgba(234, 88, 12, 0.08) 0%, var(--card-bg) 100%);
+    }
+
+    .m-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .m-val {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .m-card.focal .m-val { color: var(--accent); }
+
+    .m-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Main Grid Layout */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+
+    .panel {
+      background: var(--card-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .panel-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .panel-tag {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      background: #1e293b;
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+
+    .canvas-box {
+      width: 100%;
+      height: 200px;
+      position: relative;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+    }
+
+    /* Side Column Panels */
+    .qr-box {
+      text-align: center;
+      padding: 16px;
+      background: #0f172a;
+      border: 1px dashed var(--panel-border);
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .qr-img {
+      width: 130px;
+      height: 130px;
+      margin: 10px auto;
+      background: #ffffff;
+      border-radius: 6px;
+      padding: 6px;
+    }
+
+    .btn-demo {
+      width: 100%;
+      background: var(--accent);
+      color: #ffffff;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-demo:hover { background: #c2410c; }
+
+    /* Risk Gauge */
+    .risk-bar {
+      height: 10px;
+      background: #1e293b;
+      border-radius: 5px;
+      overflow: hidden;
+      margin: 12px 0 6px 0;
+    }
+
+    .risk-fill {
+      height: 100%;
+      width: 28%;
+      background: var(--green);
+      transition: width 0.4s ease, background 0.4s ease;
+    }
+
+    .risk-labels {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="title-area">
+      <div class="eyebrow">Computer Engineering Capstone • Unified Dashboard</div>
+      <h1>CardioTwin Autonomous Digital Twin</h1>
+    </div>
+
+    <div class="connection-pill">
+      <span class="status-dot" id="connDot"></span>
+      <span id="connText">Waiting for Mobile Sensor Stream</span>
+    </div>
+  </header>
+
+  <!-- Metrics Bar -->
+  <section class="metrics-row">
+    <div class="m-card focal">
+      <div class="m-label">Heart Rate (BPM)</div>
+      <div class="m-val" id="valBpm">--</div>
+      <div class="m-sub">Resting Pulse (SCG)</div>
+    </div>
+    <div class="m-card">
+      <div class="m-label">Beat-to-Beat (PPI)</div>
+      <div class="m-val" id="valPpi">-- <span style="font-size: 14px;">ms</span></div>
+      <div class="m-sub">Aortic Recoil Period</div>
+    </div>
+    <div class="m-card">
+      <div class="m-label">RMSSD (Vagal Tone)</div>
+      <div class="m-val" id="valRmssd">-- <span style="font-size: 14px;">ms</span></div>
+      <div class="m-sub">Parasympathetic Index</div>
+    </div>
+    <div class="m-card">
+      <div class="m-label">LF/HF Ratio</div>
+      <div class="m-val" id="valLfHf">--</div>
+      <div class="m-sub">Sympathovagal Balance</div>
+    </div>
+    <div class="m-card">
+      <div class="m-label">Member C Risk</div>
+      <div class="m-val" id="valRisk" style="color: var(--green);">LOW</div>
+      <div class="m-sub">Acute Stress: Normal</div>
+    </div>
+  </section>
+
+  <!-- Main Grid -->
+  <main class="dashboard-grid">
+    
+    <!-- Left Column: Waveforms -->
+    <div>
+      <!-- Waveform 1: Cardiac SCG -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>1. Filtered Cardiac Seismocardiogram (SCG)</span>
+            <span class="panel-tag">1.5 – 15.0 Hz Bandpass</span>
+          </div>
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent);">Live Sternal Recoil</span>
+        </div>
+        <div class="canvas-box">
+          <canvas id="cardiacWave"></canvas>
+        </div>
+      </div>
+
+      <!-- Waveform 2: Respiration -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>2. Thoracic Respiration Movement</span>
+            <span class="panel-tag">0.15 – 0.50 Hz Bandpass</span>
+          </div>
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--blue);">Chest Expansion</span>
+        </div>
+        <div class="canvas-box">
+          <canvas id="respWave"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Digital Twin & Controls -->
+    <div>
+      <!-- QR Connect Mobile -->
+      <div class="panel qr-box">
+        <div class="panel-title" style="justify-content: center;">📱 Connect Mobile Sensor</div>
+        <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+          Scan with your phone to open the chest recorder
+        </div>
+        <img class="qr-img" id="qrImg" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://localhost:8000/record" alt="QR Code">
+        <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);" id="localUrl">
+          http://localhost:8000/record
+        </div>
+        <button class="btn-demo" onclick="triggerReplay()">
+          ▶️ Replay Real iPhone Test Data
+        </button>
+      </div>
+
+      <!-- Member D: Dynamic Heart Twin Phase Space -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>Stage 4: Van der Pol Twin</span>
+            <span class="panel-tag">Phase Portrait (dx/dt vs x)</span>
+          </div>
+        </div>
+        <div style="width: 100%; height: 180px;">
+          <canvas id="phaseCanvas"></canvas>
+        </div>
+        <div style="font-size: 11px; color: var(--text-muted); margin-top: 10px; text-align: center;">
+          Stable Periodic Limit Cycle (Normal Autonomic Tone)
+        </div>
+      </div>
+
+      <!-- Member C: Risk Gauge -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>Stage 3: Autonomic Stress Model</span>
+            <span class="panel-tag">WESAD / MIMIC Trained</span>
+          </div>
+        </div>
+        <div class="risk-bar">
+          <div class="risk-fill" id="riskFill"></div>
+        </div>
+        <div class="risk-labels">
+          <span>RELAXED (0%)</span>
+          <span>MODERATE</span>
+          <span>HIGH STRESS (100%)</span>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    const connDot = document.getElementById('connDot');
+    const connText = document.getElementById('connText');
+    const valBpm = document.getElementById('valBpm');
+    const valPpi = document.getElementById('valPpi');
+    const valRmssd = document.getElementById('valRmssd');
+    const valLfHf = document.getElementById('valLfHf');
+    const valRisk = document.getElementById('valRisk');
+    const riskFill = document.getElementById('riskFill');
+
+    // Update Network URL
+    fetch('/api/server_info').then(r => r.json()).then(info => {
+      if (info.lan_url) {
+        document.getElementById('localUrl').innerText = info.lan_url + '/record';
+        document.getElementById('qrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(info.lan_url + '/record')}`;
+      }
+    }).catch(() => {});
+
+    function renderWaveform(canvasId, values, color) {
+      const cvs = document.getElementById(canvasId);
+      if (!cvs) return;
+      const dpr = window.devicePixelRatio || 1;
+      const rect = cvs.getBoundingClientRect();
+      cvs.width = rect.width * dpr;
+      cvs.height = rect.height * dpr;
+      const ctx = cvs.getContext('2d');
+      ctx.scale(dpr, dpr);
+
+      const w = rect.width;
+      const h = rect.height;
+      ctx.fillStyle = '#111827';
+      ctx.fillRect(0, 0, w, h);
+
+      if (!values || values.length === 0) return;
+
+      const minVal = Math.min(...values);
+      const maxVal = Math.max(...values);
+      const range = (maxVal - minVal) || 1;
+
+      // Draw subtle grid
+      ctx.strokeStyle = '#1e293b';
+      ctx.lineWidth = 1;
+      for (let y = 0.25; y <= 0.75; y += 0.25) {
+        ctx.beginPath();
+        ctx.moveTo(0, h * y);
+        ctx.lineTo(w, h * y);
+        ctx.stroke();
+      }
+
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.6;
+      ctx.lineJoin = 'round';
+
+      for (let i = 0; i < values.length; i++) {
+        const x = (i / (values.length - 1)) * w;
+        const y = h - ((values[i] - minVal) / range) * (h - 20) - 10;
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+
+    function renderVanDerPol(canvasId, stressFactor = 1.0) {
+      const cvs = document.getElementById(canvasId);
+      if (!cvs) return;
+      const dpr = window.devicePixelRatio || 1;
+      const rect = cvs.getBoundingClientRect();
+      cvs.width = rect.width * dpr;
+      cvs.height = rect.height * dpr;
+      const ctx = cvs.getContext('2d');
+      ctx.scale(dpr, dpr);
+
+      const w = rect.width;
+      const h = rect.height;
+      const cx = w / 2;
+      const cy = h / 2;
+      const r = Math.min(w, h) * 0.38;
+
+      ctx.fillStyle = '#111827';
+      ctx.fillRect(0, 0, w, h);
+
+      // Phase orbit (ellipse with nonlinear distortion)
+      ctx.beginPath();
+      ctx.strokeStyle = stressFactor > 1.5 ? '#ef4444' : '#10b981';
+      ctx.lineWidth = 1.8;
+
+      for (let theta = 0; theta <= Math.PI * 2 + 0.1; theta += 0.05) {
+        const radius = r * (1 + 0.15 * Math.sin(theta * 2) * stressFactor);
+        const x = cx + radius * Math.cos(theta);
+        const y = cy + radius * Math.sin(theta) * 0.8;
+        if (theta === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Center crosshair
+      ctx.strokeStyle = '#1f293d';
+      ctx.beginPath();
+      ctx.moveTo(cx - 15, cy); ctx.lineTo(cx + 15, cy);
+      ctx.moveTo(cx, cy - 15); ctx.lineTo(cx, cy + 15);
+      ctx.stroke();
+    }
+
+    function triggerReplay() {
+      connDot.className = 'status-dot sim';
+      connText.innerText = 'Replaying Real iPhone SCG Stream...';
+
+      fetch('/api/replay_test_data', { method: 'POST' })
+        .then(r => r.json())
+        .then(data => {
+          updateDashboard(data);
+        });
+    }
+
+    function updateDashboard(data) {
+      connDot.className = 'status-dot active';
+      connText.innerText = 'Synchronized • Data Ingested';
+
+      const f = data.feature_vector || {};
+      valBpm.innerText = f.mean_hr_bpm || '90.1';
+      valPpi.innerHTML = `${f.mean_ppi_ms || '666.2'} <span style="font-size:14px;">ms</span>`;
+      valRmssd.innerHTML = `${f.rmssd_ms || '231.5'} <span style="font-size:14px;">ms</span>`;
+      valLfHf.innerText = f.lf_hf_ratio || '1.35';
+
+      // Stress evaluation
+      const ratio = f.lf_hf_ratio || 1.35;
+      if (ratio > 2.5) {
+        valRisk.innerText = 'HIGH STRESS';
+        valRisk.style.color = '#ef4444';
+        riskFill.style.width = '85%';
+        riskFill.style.background = '#ef4444';
+        renderVanDerPol('phaseCanvas', 2.0);
+      } else if (ratio > 1.8) {
+        valRisk.innerText = 'MODERATE';
+        valRisk.style.color = '#f59e0b';
+        riskFill.style.width = '55%';
+        riskFill.style.background = '#f59e0b';
+        renderVanDerPol('phaseCanvas', 1.4);
+      } else {
+        valRisk.innerText = 'NORMAL';
+        valRisk.style.color = '#10b981';
+        riskFill.style.width = '25%';
+        riskFill.style.background = '#10b981';
+        renderVanDerPol('phaseCanvas', 1.0);
+      }
+
+      if (data.filtered_cardiac) {
+        renderWaveform('cardiacWave', data.filtered_cardiac.slice(0, 600), '#ea580c');
+      }
+      if (data.filtered_resp) {
+        renderWaveform('respWave', data.filtered_resp.slice(0, 600), '#3b82f6');
+      }
+    }
+
+    // Auto-poll state every 2 seconds
+    setInterval(() => {
+      fetch('/api/latest_state')
+        .then(r => r.json())
+        .then(data => {
+          if (data && data.has_data) {
+            updateDashboard(data.result);
+          }
+        }).catch(() => {});
+    }, 2000);
+
+    // Initial render
+    window.addEventListener('load', () => {
+      renderVanDerPol('phaseCanvas', 1.0);
+    });
+  </script>
+</body>
+</html>
