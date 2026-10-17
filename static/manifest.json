@@ -1,0 +1,21 @@
+{
+  "name": "CardioTwin Mobile Sensor",
+  "short_name": "CardioTwin",
+  "start_url": "/record",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#ea580c",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/static/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capstone Thesis Proposal — Dual-Modal Mobile Cardiac Risk & Stress Simulation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --paper: #f8fafc;
+      --ink-primary: #0f172a;
+      --ink-secondary: #334155;
+      --ink-muted: #64748b;
+      --border: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --accent: #ea580c;
+      --accent-tint: #fff7ed;
+      --accent-border: #fdba74;
+      --primary: #2563eb;
+      --primary-tint: #eff6ff;
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f1f5f9;
+      color: var(--ink-secondary);
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      line-height: 1.65;
+      padding: 32px 16px;
+    }
+
+    .document-page {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      padding: 56px 64px;
+    }
+
+    /* Print settings */
+    @media print {
+      body {
+        background: transparent;
+        padding: 0;
+      }
+      .document-page {
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        padding: 24px 32px;
+        max-width: 100%;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+      .no-print {
+        display: none;
+      }
+    }
+
+    /* Header styling */
+    .top-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--ink-primary);
+      padding-bottom: 12px;
+      margin-bottom: 28px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-muted);
+    }
+
+    .top-meta span.badge {
+      background: var(--accent);
+      color: #ffffff;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    h1.project-title {
+      font-family: var(--font-serif);
+      font-size: 2.25rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink-primary);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .authors-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 32px;
+    }
+
+    .author-card {
+      border-left: 2px solid var(--border-strong);
+      padding-left: 10px;
+    }
+
+    .author-card.focal {
+      border-left-color: var(--accent);
+      background: rgba(234, 88, 12, 0.04);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .author-role {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-muted);
+      margin-bottom: 2px;
+    }
+
+    .author-card.focal .author-role {
+      color: var(--accent);
+    }
+
+    .author-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+
+    .author-task {
+      font-size: 10px;
+      color: var(--ink-muted);
+      line-height: 1.35;
+      margin-top: 2px;
+    }
+
+    /* Section Headings */
+    h2.section-title {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      color: var(--ink-primary);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      margin-top: 36px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    h2.section-title span.sec-num {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    h3.sub-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink-primary);
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin-bottom: 12px;
+      text-align: justify;
+    }
+
+    /* Callout & Highlights */
+    .callout {
+      background: var(--paper);
+      border-left: 3px solid var(--primary);
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      margin: 16px 0;
+      font-size: 12.5px;
+    }
+
+    .callout.focal {
+      background: var(--accent-tint);
+      border-left-color: var(--accent);
+    }
+
+    .callout-title {
+      font-weight: 600;
+      color: var(--ink-primary);
+      margin-bottom: 4px;
+      font-size: 12.5px;
+    }
+
+    /* Tables */
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin: 20px 0;
+    }
+
+    table.data-table th, table.data-table td {
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    table.data-table th {
+      background: var(--paper);
+      color: var(--ink-primary);
+      font-weight: 600;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    table.data-table tr:nth-child(even) {
+      background: #fafaf9;
+    }
+
+    /* Architecture Box */
+    .arch-container {
+      background: #ffffff;
+      border: 1px solid var(--border-strong);
+      border-radius: 6px;
+      padding: 16px;
+      margin: 20px 0;
+    }
+
+    /* Mathematical Formula Blocks */
+    .math-block {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 10px 16px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--ink-primary);
+      margin: 12px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .math-num {
+      color: var(--ink-muted);
+      font-size: 10px;
+    }
+
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      background: var(--paper);
+      padding: 2px 5px;
+      border-radius: 3px;
+      border: 1px solid var(--border);
+      color: var(--ink-primary);
+    }
+
+    .btn-print {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--ink-primary);
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 20px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 100;
+    }
+
+    .btn-print:hover {
+      background: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <button class="btn-print no-print" onclick="window.print()">
+    🖨️ Save as PDF / Print
+  </button>
+
+  <div class="document-page">
+    
+    <!-- Header Meta -->
+    <div class="top-meta">
+      <div>Senior Capstone Thesis Proposal • Computer Engineering</div>
+      <div>Academic Year 2026–2027 • <span class="badge">PROPOSAL DOSSIER</span></div>
+    </div>
+
+    <!-- Title -->
+    <h1 class="project-title">
+      A Dual-Modal Mobile Sensing System for Real-Time Cardiac Autonomic Risk Profiling and Dynamical Rhythm Stress Simulation
+    </h1>
+
+    <!-- Authors / Division of Work -->
+    <div class="authors-grid">
+      <div class="author-card">
+        <div class="author-role">Member A • Front-End</div>
+        <div class="author-name">Mobile Acquisition</div>
+        <div class="author-task">Optical PPG camera (60 FPS) &amp; IMU SCG (100 Hz) frame pipeline.</div>
+      </div>
+      <div class="author-card focal">
+        <div class="author-role">Member B • Core DSP</div>
+        <div class="author-name">Signal &amp; PRV Engine</div>
+        <div class="author-task">Bandpass conditioning, systolic peak detection, and clinical PRV (FFT/LF/HF).</div>
+      </div>
+      <div class="author-card">
+        <div class="author-role">Member C • ML Model</div>
+        <div class="author-name">Risk Classifier</div>
+        <div class="author-task">Dual-target ML: acute stress &amp; arrhythmia screening (WESAD / MIMIC).</div>
+      </div>
+      <div class="author-card">
+        <div class="author-role">Member D • Dynamics</div>
+        <div class="author-name">Heart Stress Twin</div>
+        <div class="author-task">Coupled Van der Pol oscillator rhythm simulation under stress challenge.</div>
+      </div>
+    </div>
+
+    <!-- Section 1: Executive Summary -->
+    <h2 class="section-title"><span class="sec-num">01.</span> Executive Summary &amp; Project Abstract</h2>
+    <p>
+      Cardiovascular diseases and autonomic dysregulation remain the leading causes of preventable health crises globally. While clinical 12-lead Electrocardiography (ECG) represents the diagnostic gold standard, its reliance on specialized adhesive electrodes, high-impedance amplifiers, and cumbersome clinical hardware precludes continuous, ambulatory, and low-barrier consumer monitoring.
+    </p>
+    <p>
+      This capstone project proposes an end-to-end, four-stage <strong>Cardiac Cyber-Physical Digital Twin</strong> implemented entirely on ubiquitous smartphone hardware. The system eliminates external sensor peripherals by introducing a <strong>dual-modal mobile acquisition framework</strong>:
+    </p>
+    <ul>
+      <li><strong>Primary Modality (Optical Contact PPG):</strong> Capturing high-SNR blood volume pulse waveforms at 60 FPS using the smartphone camera sensor illuminated by the camera LED flash.</li>
+      <li><strong>Novelty Modality (Mechanical Chest SCG):</strong> Recording micro-mechanical cardiac recoil vibrations (Seismocardiography) at 100 Hz along the dorso-ventral axis using the phone's integrated 3-axis MEMS accelerometer placed flat on the sternum.</li>
+    </ul>
+    <p>
+      The raw optical and inertial signals are conditioned via zero-phase digital filtering, processed through an adaptive systolic peak-detection algorithm, and converted into clinically rigorous <strong>Pulse Rate Variability (PRV)</strong> metrics across time, frequency, and non-linear domains. A trained supervised machine learning classifier evaluates autonomic stress state and cardiac irregularity, which directly parameterizes a coupled nonlinear oscillator model to visually simulate how the patient's individual heart rhythm responds and destabilizes under synthetic physiological stress.
+    </p>
+
+    <!-- Section 2: System Architecture -->
+    <h2 class="section-title"><span class="sec-num">02.</span> System Topology &amp; Unified Software Architecture</h2>
+    <p>
+      The complete system is engineered as a unified, client-server mobile computing architecture. The mobile client (Flutter / React Native) manages low-level hardware sensor APIs, while a high-throughput Python backend (FastAPI / WebSockets) handles heavy digital signal processing, machine learning inference, and numerical ODE simulations in real time.
+    </p>
+
+    <div class="arch-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Pipeline Stage</th>
+            <th>Responsible Member</th>
+            <th>Primary Input</th>
+            <th>Core Processing Technology</th>
+            <th>Strict Output Contract</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Stage 1: Acquisition</strong></td>
+            <td>Member A</td>
+            <td>Camera Sensor &amp; IMU</td>
+            <td>Flashlock, ROI Green Extraction, IMU Polling</td>
+            <td><code>RawSignal[t] @ 60/100Hz</code></td>
+          </tr>
+          <tr>
+            <td><strong>Stage 2: DSP Engine</strong></td>
+            <td>Member B (You)</td>
+            <td>Raw Signal Series</td>
+            <td>Butterworth Filter, Peak Detection, FFT PRV</td>
+            <td><code>PRV_Vector {SDNN, RMSSD, LF/HF, ...}</code></td>
+          </tr>
+          <tr>
+            <td><strong>Stage 3: Risk Classifier</strong></td>
+            <td>Member C</td>
+            <td>PRV Feature Vector</td>
+            <td>Random Forest / XGBoost (WESAD Benchmark)</td>
+            <td><code>RiskProfile {Stress_P, Arrhythmia_P}</code></td>
+          </tr>
+          <tr>
+            <td><strong>Stage 4: Dynamic Twin</strong></td>
+            <td>Member D</td>
+            <td>Risk Profile Score</td>
+            <td>Coupled Van der Pol Oscillators (Runge-Kutta)</td>
+            <td><code>RhythmTrajectory [x(t), y(t)]</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 3: Technical Specifications for Each Member -->
+    <h2 class="section-title"><span class="sec-num">03.</span> Subsystem Breakdown &amp; Theoretical Formulations</h2>
+
+    <h3 class="sub-title">Stage 1 (Member A): Mobile Vision &amp; Inertial Sensor Ingestion</h3>
+    <p>
+      Member A establishes the mobile sensing interface. Key technical contributions include:
+    </p>
+    <ul>
+      <li><strong>Camera Parameter Locking:</strong> Disabling automatic white balance (AWB) and auto-exposure (AE) to prevent optical gain hunting, while forcing continuous torch illumination.</li>
+      <li><strong>Green-Channel Spatial Integration:</strong> Computing the mean green intensity across the Region of Interest (ROI) for each video frame:</li>
+    </ul>
+    <div class="math-block">
+      <span>I_G(t) = \frac{1}{M \times N} \sum_{x=1}^{M} \sum_{y=1}^{N} \text{Pixel}_{G}(x, y, t)</span>
+      <span class="math-num">(Eq. 1)</span>
+    </div>
+    <ul>
+      <li><strong>Contact Verification Heuristic:</strong> Enforcing red-channel dominance thresholding ($I_R / I_G \ge 1.8$) to guarantee that a human finger is fully occluding the lens before streaming commences.</li>
+      <li><strong>Inertial SCG Polling:</strong> Polling the 3-axis accelerometer at 100 Hz via mobile sensor APIs, extracting the sternal dorso-ventral axis ($a_z$).</li>
+    </ul>
+
+    <h3 class="sub-title" style="color: var(--accent);">Stage 2 (Member B — Your Role): Optical/Mechanical DSP &amp; PRV Extraction</h3>
+    <div class="callout focal">
+      <div class="callout-title">Member B Technical Ownership &amp; Academic Scope</div>
+      Member B acts as the mathematical and signal processing foundation of the thesis. You are responsible for transforming raw, noisy optical/inertial time-series into clinically validated cardiac biomarkers.
+    </div>
+    <p>
+      Your implementation consists of four rigorous mathematical modules:
+    </p>
+    <ol>
+      <li><strong>Digital Conditioning:</strong> 4th-order zero-phase Butterworth bandpass filter ($0.5\text{--}5.0\text{ Hz}$ for PPG, suppressing respiration wander and high-frequency sensor noise):
+        <div class="math-block">
+          <span>|H(f)|^2 = \frac{1}{1 + \left(\frac{f^2 - f_L f_H}{f (f_H - f_L)}\right)^{2n}} \quad (n=4, f_L=0.5, f_H=5.0\text{ Hz})</span>
+          <span class="math-num">(Eq. 2)</span>
+        </div>
+      </li>
+      <li><strong>Adaptive Systolic Peak Detection:</strong> Combining first-order numerical differentiation, a 250 ms physiological blanking refractory period to prevent false dicrotic notch triggers, and dynamic moving-average thresholding.</li>
+      <li><strong>Peak-to-Peak Interval (PPI) Cleaning:</strong> Generating the tachogram series $PPI_i = t_{i} - t_{i-1}$ and applying physiological outlier rejection ($300\text{ ms} \le PPI \le 1800\text{ ms}$).</li>
+      <li><strong>Clinical PRV Feature Extraction:</strong>
+        <ul>
+          <li><strong>Time-Domain:</strong> Mean Heart Rate (bpm), SDNN (overall autonomic variability), RMSSD (parasympathetic vagal tone), and pNN50.
+            <div class="math-block">
+              <span>\text{RMSSD} = \sqrt{\frac{1}{N-1} \sum_{i=1}^{N-1} (PPI_{i+1} - PPI_{i})^2}</span>
+              <span class="math-num">(Eq. 3)</span>
+            </div>
+          </li>
+          <li><strong>Frequency-Domain (FFT):</strong> Cubic-spline resampling of the uneven tachogram to $4.0\text{ Hz}$, computing the Power Spectral Density (PSD) via Welch's periodogram to isolate:
+            <ul>
+              <li><strong>Low-Frequency (LF: 0.04–0.15 Hz):</strong> Baroreflex &amp; sympathetic activity.</li>
+              <li><strong>High-Frequency (HF: 0.15–0.40 Hz):</strong> Vagal tone &amp; respiratory sinus arrhythmia.</li>
+              <li><strong>LF/HF Ratio:</strong> Sympathovagal autonomic stress index.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3 class="sub-title">Stage 3 (Member C): Dual-Target Machine Learning Risk Profiling</h3>
+    <p>
+      Member C ingests Member B's PRV feature table and executes dual-target supervised classification:
+    </p>
+    <ul>
+      <li><strong>Target 1 (Autonomic Stress):</strong> Classifying acute sympathetic stress vs. parasympathetic rest, trained on the publicly benchmarked <strong>WESAD (Wearable Stress and Affect Detection)</strong> dataset.</li>
+      <li><strong>Target 2 (Cardiac Arrhythmia Screening):</strong> Detecting pulse rhythm irregularity (Normal Sinus Rhythm vs. Atrial Fibrillation / ectopic beats) using the <strong>CapnoBase / MIMIC-III PPG benchmark</strong>.</li>
+      <li><strong>Evaluation Methodology:</strong> Applying strict <em>Leave-One-Subject-Out (LOSO)</em> cross-validation to guarantee zero inter-patient data leakage, reporting precision, recall, and SHAP feature importance.</li>
+    </ul>
+
+    <h3 class="sub-title">Stage 4 (Member D): Coupled Nonlinear Oscillator Heart Stress Twin</h3>
+    <p>
+      Member D translates Member C's static risk score into a dynamic, visual trajectory using a biophysical <strong>coupled Van der Pol nonlinear oscillator</strong> representing the Sinoatrial (SA) node pacemaker coupled to ventricular conduction:
+    </p>
+    <div class="math-block">
+      <span>\ddot{x} - \mu (1 - x^2)\dot{x} + \omega_0^2 x = c_{12}(y - x) + F_{\text{stress}}(t)</span>
+      <span class="math-num">(Eq. 4)</span>
+    </div>
+    <p>
+      Member D maps Member C's risk probability directly into the damping parameter $\mu$, the coupling coefficient $c_{12}$, and simulated sympathetic drive $F_{\text{stress}}(t)$. When a healthy baseline is simulated, the phase-space trajectory ($\dot{x}$ vs. $x$) forms a stable, closed limit cycle. When an at-risk profile is subjected to synthetic stress, the oscillator exhibits a period-doubling bifurcation, visually demonstrating chaotic rhythm breakdown and tachycardia on the live screen.
+    </p>
+
+    <!-- Section 4: Anticipated Viva / Defense Inquiries -->
+    <h2 class="section-title"><span class="sec-num">04.</span> Defense Strategy &amp; Academic Justification</h2>
+    
+    <div class="callout">
+      <div class="callout-title">Defense Question 1: "Commercial apps already measure heart rate. What is your thesis contribution?"</div>
+      <strong>Committee Answer:</strong> Commercial mobile apps are closed-source commercial utilities that output a single coarse number (pulse count) using black-box filters. Our thesis provides a fully transparent, open-source pipeline that extracts clinical-grade <em>Pulse Rate Variability (PRV)</em> spectral densities, couples it with an explainable ML autonomic risk model, and feeds that profile into an in-silico nonlinear cardiac dynamical twin that simulates stress degradation. No consumer application provides this digital-twin pipeline.
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">Defense Question 2: "Is optical PRV clinically interchangeable with ECG HRV?"</div>
+      <strong>Committee Answer:</strong> Extensive clinical literature (e.g., Lu et al., 2009; Schäfer et al., 2013) demonstrates that under resting and quasi-stationary conditions, optical pulse-to-pulse intervals (PPI) correlate with ECG RR intervals with $R^2 \ge 0.95$, with RMSSD and HF power showing near-perfect clinical equivalence. We document and cite pulse transit time (PTT) delay variance directly in our report.
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">Defense Question 3: "Why include the Seismocardiography (SCG) chest accelerometer mode?"</div>
+      <strong>Committee Answer:</strong> SCG measures cardiac <em>mechanics</em> (aortic valve opening and ejection recoil) rather than peripheral blood volume. Implementing SCG alongside PPG demonstrates multi-modal sensor fusion, proving deep computer engineering competence in handling high-rate IMU interrupts, multi-axis orientation decoupling, and low-frequency motion filtering.
+    </div>
+
+    <!-- Section 5: Timeline & Milestones -->
+    <h2 class="section-title"><span class="sec-num">05.</span> Work Breakdown Schedule &amp; Milestones</h2>
+    
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Phase</th>
+          <th>Weeks</th>
+          <th>Milestone Deliverable</th>
+          <th>Lead Members</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Phase 1: Ingestion</strong></td>
+          <td>Weeks 1–4</td>
+          <td>60 FPS Camera frame capture, contact verification heuristic &amp; 100 Hz IMU client</td>
+          <td>Member A</td>
+        </tr>
+        <tr>
+          <td><strong>Phase 2: DSP Core</strong></td>
+          <td>Weeks 5–8</td>
+          <td>Butterworth filters, adaptive peak detector, PPI cleaner &amp; FFT PRV feature table</td>
+          <td>Member B (You)</td>
+        </tr>
+        <tr>
+          <td><strong>Phase 3: Intelligence</strong></td>
+          <td>Weeks 9–12</td>
+          <td>Trained ML classifier (WESAD benchmark) &amp; Van der Pol oscillator ODE simulator</td>
+          <td>Members C &amp; D</td>
+        </tr>
+        <tr>
+          <td><strong>Phase 4: Integration</strong></td>
+          <td>Weeks 13–16</td>
+          <td>Unified client-server app, live dashboard, benchmark validation &amp; thesis defense</td>
+          <td>All Members</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Footer -->
+    <div style="margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 10px; color: var(--ink-muted); display: flex; justify-content: space-between;">
+      <div>Department of Computer Engineering • Senior Capstone Project</div>
+      <div>Confidential • For Academic Review Only</div>
+    </div>
+
+  </div>
+
+</body>
+</html>

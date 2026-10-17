@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member B Engineering Handbook &amp; Team Integration Dossier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --ink: #0f172a;
+      --ink-muted: #475569;
+      --border: #e2e8f0;
+      --accent: #ea580c;
+      --accent-tint: #fff7ed;
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #f1f5f9;
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      line-height: 1.65;
+      padding: 32px 16px;
+    }
+    .document {
+      max-width: 880px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      padding: 56px 64px;
+    }
+    @media print {
+      body { background: transparent; padding: 0; }
+      .document { box-shadow: none; border: none; padding: 20px 24px; max-width: 100%; }
+      .no-print { display: none; }
+    }
+    .top-meta {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 10px;
+      margin-bottom: 24px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .badge {
+      background: var(--accent);
+      color: #fff;
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 2.1rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+    h2 {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      color: var(--ink);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      margin-top: 36px;
+      margin-bottom: 14px;
+    }
+    h3 {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-top: 18px;
+      margin-bottom: 6px;
+    }
+    p { margin-bottom: 12px; text-align: justify; }
+    ol, ul { margin-left: 24px; margin-bottom: 14px; }
+    li { margin-bottom: 6px; }
+    code {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 3px;
+      border: 1px solid var(--border);
+    }
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 14px 18px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 12px 0 18px 0;
+      line-height: 1.5;
+    }
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin: 16px 0;
+    }
+    table.data-table th, table.data-table td {
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      text-align: left;
+    }
+    table.data-table th {
+      background: #f8fafc;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .callout {
+      background: var(--accent-tint);
+      border-left: 3px solid var(--accent);
+      padding: 12px 16px;
+      margin: 16px 0;
+      border-radius: 0 6px 6px 0;
+      font-size: 12.5px;
+    }
+    .btn-print {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--ink);
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 100;
+    }
+    .btn-print:hover { background: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <button class="btn-print no-print" onclick="window.print()">🖨️ Print / Save as PDF</button>
+
+  <div class="document">
+    <div class="top-meta">
+      <div>Department of Computer Engineering • Final Thesis Dossier</div>
+      <div><span class="badge">STAGE 2 COMPLETE SPECIFICATION</span></div>
+    </div>
+
+    <h1>Member B Engineering Handbook &amp; Subsystem Integration Dossier</h1>
+    <div class="subtitle">Complete Technical Deliverables, Empirical Validation &amp; Developer Contracts for Members A, C, and D</div>
+
+    <h2>1. Executive Summary &amp; Member B Scope</h2>
+    <p>
+      Member B owns Stage 2 of the Capstone Thesis: the <strong>Digital Signal Processing (DSP), Systolic Peak Localization, and Clinical Pulse Rate Variability (PRV) Feature Extraction Engine</strong>. As of this milestone, Member B's engineering scope is <strong>100% complete</strong>, mathematically verified, packaged into a modular Python architecture (<code>src/dsp/</code>), and empirically validated on raw sensor recordings captured directly from an Apple iPhone 16 Pro Max.
+    </p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Module File</th>
+          <th>Engineering Contribution</th>
+          <th>Technical Benefit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>src/dsp/filters.py</code></td>
+          <td>Zero-phase digital Butterworth IIR bandpass filters (Bilinear transform, <code>filtfilt</code> equivalent).</td>
+          <td>Supports SCG (1.5–15 Hz) &amp; PPG (0.5–5 Hz) with zero phase distortion.</td>
+        </tr>
+        <tr>
+          <td><code>src/dsp/peak_detector.py</code></td>
+          <td>Adaptive energy-envelope peak detector with 250 ms physiological blanking.</td>
+          <td>Prevents false triggers on dicrotic notches &amp; rejects ectopic outliers.</td>
+        </tr>
+        <tr>
+          <td><code>src/dsp/prv_features.py</code></td>
+          <td>Clinical time-domain (SDNN, RMSSD, pNN50) &amp; Cooley-Tukey spectral FFT (LF/HF ratio).</td>
+          <td>Produces the gold-standard autonomic stress and vagal tone metrics.</td>
+        </tr>
+        <tr>
+          <td><code>src/dsp/quality.py</code></td>
+          <td>Signal Quality Index (SQI) evaluating kurtosis, skewness, and motion artifact.</td>
+          <td>Automated "NOISY_REJECT" filter preventing corrupted AI training data.</td>
+        </tr>
+        <tr>
+          <td><code>src/dsp/synthetic_data.py</code></td>
+          <td>Physiological signal generator modeling normal, stressed, and arrhythmic states.</td>
+          <td>Enables Members C &amp; D to test their code immediately without live subjects.</td>
+        </tr>
+        <tr>
+          <td><code>src/dsp/batch_processor.py</code></td>
+          <td>Automated batch feature extractor scanning datasets into clean training CSVs.</td>
+          <td>Pre-generated <code>data/training_features_corpus.csv</code> (60 subjects) for Member C.</td>
+        </tr>
+        <tr>
+          <td><code>src/dsp/pipeline.py</code></td>
+          <td>Unified one-call wrapper interface: <code>process_cardiac_recording()</code>.</td>
+          <td>Strict JSON handoff contract connecting frontend, DSP, ML, and Simulation.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>2. Empirical Validation on Real iPhone 16 Pro Max</h2>
+    <div class="callout">
+      <strong>Real-World Test Verification:</strong> Member B tested the complete pipeline on 37.54 seconds of raw IMU data recorded with the phone resting on the sternum. The pipeline extracted:
+      <ul style="margin-top: 6px; margin-bottom: 0;">
+        <li><strong>Sampling Frequency ($F_s$):</strong> 99.52 Hz ($dt = 10.05\text{ ms}$).</li>
+        <li><strong>Extracted Heart Rate:</strong> 89.2 to 90.1 BPM (physiological resting rate).</li>
+        <li><strong>Beat-to-Beat Interval:</strong> 51 confirmed aortic valve recoil peaks with an average interval of 666.2 ms.</li>
+        <li><strong>Sympathovagal Index (LF/HF Ratio):</strong> 1.356 (consistent with relaxed, healthy autonomic homeostatic balance).</li>
+        <li><strong>Signal Quality Index (SQI):</strong> 1.0 (OPTIMAL grade, kurtosis = 2.96, proving clean systolic morphology without clipping).</li>
+      </ul>
+    </div>
+
+    <h2>3. Instructions for Member A (Mobile Sensing Node)</h2>
+    <p>Member A owns the mobile front-end (phone camera or accelerometer). Member A does <strong>not</strong> need to write any filtering or peak-detection code! Member A simply streams raw numbers.</p>
+    
+    <h3>API Endpoint &amp; JSON Payload:</h3>
+    <pre>POST http://&lt;SERVER_IP&gt;:8000/api/sensor_stream
+Content-Type: application/json
+
+{
+    "samples": [
+        {"t": 0.00, "x": 0.28, "y": -3.15, "z": 9.34},
+        {"t": 0.01, "x": 0.27, "y": -3.18, "z": 9.36},
+        ...
+    ]
+}</pre>
+    <ul>
+      <li><strong>Transmission Rate:</strong> Send batches of 20 samples every 200 ms (reduces network overhead).</li>
+      <li><strong>Core Axis:</strong> Member B requires the <code>z</code> axis (dorso-ventral sternal acceleration in $\text{m/s}^2$).</li>
+      <li><strong>Ready-Made Mobile PWA:</strong> Member A can immediately use <code>static/mobile.html</code> running at <code>http://&lt;SERVER_IP&gt;:8000/record</code> which already implements this!</li>
+    </ul>
+
+    <h2>4. Instructions for Member C (Machine Learning &amp; Risk)</h2>
+    <p>Member C takes Member B's extracted feature tables and trains an ML model to classify Autonomic Stress &amp; Arrhythmia.</p>
+    
+    <h3>Pre-Extracted Training Dataset:</h3>
+    <p>Member B has already generated a clean, 60-subject labeled training corpus ready for scikit-learn training at: <code>data/training_features_corpus.csv</code>.</p>
+
+    <h3>How Member C Calls Member B in Python:</h3>
+    <pre>from src.dsp import process_cardiac_recording
+
+# Ingest any raw signal array
+result = process_cardiac_recording(timestamps, az_signal, mode="scg")
+features = result["feature_vector"]
+
+# features is a clean dict with:
+# - mean_hr_bpm, mean_ppi_ms, sdnn_ms, rmssd_ms, pnn50_pct
+# - vlf_power, lf_power, hf_power, lf_hf_ratio, lf_nu, hf_nu
+# - sd1, sd2, sd_ratio, sqi_score</pre>
+
+    <h3>Expected Output from Member C to Member D:</h3>
+    <pre>risk_profile = {
+    "stress_probability": 0.82,     # Float 0.0 to 1.0
+    "arrhythmia_risk": "NORMAL",    # 'NORMAL', 'BORDERLINE', 'AT_RISK'
+    "risk_score": 0.82              # Scalar fed into Member D's simulation
+}</pre>
+
+    <h2>5. Instructions for Member D (Dynamical Twin Simulation)</h2>
+    <p>Member D models the heart as a coupled Van der Pol nonlinear relaxation oscillator:</p>
+    <pre>dx/dt = y
+dy/dt = mu * (1 - x^2) * y - omega_0^2 * x + F_stress(t)</pre>
+    <ul>
+      <li><strong>Pacemaker Frequency ($\omega_0$):</strong> Set directly from Member B's measured heart rate: <code>omega_0 = 2 * pi * (mean_hr_bpm / 60.0)</code>.</li>
+      <li><strong>Nonlinear Damping ($\mu$):</strong> Modulated by Member C's risk score: <code>mu = 1.0 + 2.0 * risk_score</code>.
+        <ul>
+          <li>When <code>risk_score = 0.0</code> (Normal): $\mu = 1.0$ (smooth, stable limit-cycle orbit).</li>
+          <li>When <code>risk_score &gt; 0.7</code> (High Stress): $\mu &gt; 2.4$ (sharp relaxation oscillations and period-doubling chaos).</li>
+        </ul>
+      </li>
+      <li><strong>Dashboard Display:</strong> The pre-built dashboard (<code>static/dashboard.html</code>) already includes a canvas (<code>#phaseCanvas</code>) rendering this live orbit!</li>
+    </ul>
+
+    <h2>6. How the Team Runs the System</h2>
+    <ul>
+      <li><strong>Start the Live Server &amp; Dashboard:</strong> <code>python3 app.py</code></li>
+      <li><strong>Run Full Unit Test Suite:</strong> <code>python3 tests/test_full_suite.py</code></li>
+      <li><strong>Generate New Training Benchmark CSV:</strong> <code>python3 -m src.dsp.batch_processor</code></li>
+      <li><strong>Analyze Any New Sensor CSV:</strong> <code>python3 analyze_scg_recording.py</code></li>
+    </ul>
+  </div>
+
+</body>
+</html>

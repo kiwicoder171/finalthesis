@@ -1,0 +1,139 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{top=1in,bottom=1in,left=1in,right=1in}
+\usepackage{enumitem}
+\usepackage{cite}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\title{\textbf{Senior Capstone Thesis Proposal:}\\
+A Multi-Modal Mobile Sensing System for Real-Time Cardiac Autonomic Risk Profiling and In-Silico Dynamical Rhythm Stress Simulation}
+\author{\textbf{Department of Computer Engineering} \\ 
+Senior Design Project Group (4 Members)}
+\date{Academic Year 2026--2027}
+
+\begin{document}
+\maketitle
+
+\section{Objective}
+\noindent\hspace{1.5em}(Must use action verbs)
+\begin{enumerate}[leftmargin=2.5em]
+    \item \textbf{To develop} an end-to-end, multi-stage mobile health and cyber-physical digital-twin pipeline that captures non-invasive physiological cardiac signals directly via standard smartphone sensors, performs digital filtering, and extracts clinically validated Pulse Rate Variability (PRV) metrics in real time.
+    \item \textbf{To identify} and validate mechanical cardiac micro-vibrations along the sternal dorso-ventral axis using smartphone 3-axis MEMS accelerometers (Seismocardiography - SCG), while establishing an automated contingency fallback to optical camera-based photoplethysmography (Contact PPG) and gold-standard clinical databases to guarantee system robustness.
+    \item \textbf{To improve} the interpretability and utility of consumer-grade mobile cardiovascular metrics by training a dual-target supervised machine learning model (evaluating acute autonomic stress and arrhythmia screening) that outputs an explainable risk vector rather than a closed black-box pulse count.
+    \item \textbf{To mitigate} the gap between static diagnostic health metrics and predictive physiological outcomes by implementing a parameterized, coupled nonlinear cardiac oscillator (Van der Pol / FitzHugh-Nagumo model) that dynamically simulates cardiac rhythm stability, period-doubling bifurcations, and arrhythmic breakdown under simulated autonomic stress challenges.
+\end{enumerate}
+
+\section{Scope}
+\begin{enumerate}[leftmargin=2.5em]
+    \item \textbf{What you do or do not consider in this project:}
+    \begin{itemize}
+        \item \textit{Inclusions:} 
+        \begin{itemize}
+            \item Acquisition of cardiac signals using built-in smartphone sensors: primary evaluation of Seismocardiography (SCG) via the 3-axis MEMS accelerometer placed flat on the sternum during resting/quasi-stationary postures; secondary fallback to optical contact Photoplethysmography (PPG) via the rear camera and LED flashlight; tertiary fallback to public clinical benchmark data (PhysioNet MIT-BIH, WESAD, CapnoBase).
+            \item Digital signal conditioning: 4th-order zero-phase Butterworth bandpass filtering, baseline wander rejection, and adaptive systolic peak detection.
+            \item Extraction of time-domain PRV metrics (Mean HR, SDNN, RMSSD, pNN50) and frequency-domain spectral metrics via Welch FFT (VLF, LF, HF, and the LF/HF sympathovagal ratio).
+            \item Supervised classification for binary/ternary autonomic stress states and cardiac rhythm regularity.
+            \item A software-based dynamical system simulation demonstrating limit-cycle rhythm degradation under synthetic stress drive.
+        \end{itemize}
+        \item \textit{Exclusions:}
+        \begin{itemize}
+            \item Invasive cardiovascular monitoring (e.g., arterial catheters, central venous lines).
+            \item High-motion exercise testing (e.g., running, intense locomotion), as ambulatory motion artifacts overwhelm unanchored smartphone sensors.
+            \item Multi-lead diagnostic ECG morphology analysis (e.g., ST-segment elevation for acute myocardial infarction), as single-point mechanical/optical sensing measures hemodynamic pulses, not 12-lead electrical vectors.
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{What you cannot do or exclude from this project:}
+    \begin{itemize}
+        \item The project \textbf{cannot} provide medical diagnoses, clinical prescriptions, or therapeutic interventions; it is strictly an engineering investigative tool and decision-support prototype.
+        \item The project \textbf{cannot} achieve FDA/CE medical device hardware certification within the academic timeframe.
+        \item We exclude pediatric and neonatal demographics due to distinct physiological rate constants; validation is restricted to adult physiological ranges.
+    \end{itemize}
+
+    \item \textbf{Limitations:}
+    \begin{itemize}
+        \item \textit{Sensor Noise Floors:} Consumer-grade smartphone MEMS accelerometers exhibit intrinsic thermal noise and variable quantization drift compared to clinical-grade seismometers.
+        \item \textit{Posture Dependence:} Sternal SCG acquisition strictly requires supine (lying flat) or semi-recumbent (45$^\circ$) resting postures to isolate cardiac micro-g accelerations from gravitational reorientation.
+        \item \textit{Contact Variability:} Optical PPG fallback is sensitive to excessive or inconsistent fingertip contact pressure, which can blanch local capillary beds.
+        \item \textit{Operating System Latency:} Mobile operating systems (Android/iOS) introduce non-deterministic thread scheduling and variable inter-frame timestamp jitter that must be compensated for via cubic-spline interpolation.
+    \end{itemize}
+
+    \item \textbf{Ranges of data, date, and time:}
+    \begin{itemize}
+        \item \textit{Physiological Heart Rate Range:} $40 \text{ bpm}$ to $180 \text{ bpm}$ (corresponding to fundamental cardiac frequencies of $0.67\text{ Hz}$ to $3.0\text{ Hz}$).
+        \item \textit{Peak-to-Peak (PPI) / RR Interval Duration:} $333\text{ ms}$ to $1500\text{ ms}$.
+        \item \textit{Sampling Frequencies:}
+        \begin{itemize}
+            \item Sternal SCG IMU Accelerometer: $100\text{ Hz}$ to $200\text{ Hz}$.
+            \item Optical Camera PPG: $30\text{ FPS}$ or $60\text{ FPS}$ (locked exposure).
+            \item Resampled Uniform PRV Tachogram: Exactly $4.0\text{ Hz}$ (for standard spectral FFT).
+        \end{itemize}
+        \item \textit{Recording Window Durations:} $30\text{ seconds}$ for instantaneous pulse rate; $60\text{ to }120\text{ seconds}$ for short-term statistical and spectral PRV computation.
+        \item \textit{Project Execution Timeline:} 16 academic weeks across two consecutive project semesters (Fall 2026 -- Spring 2027).
+    \end{itemize}
+
+    \item \textbf{Platform(s)/Device(s) used specifically in this project:}
+    \begin{itemize}
+        \item \textit{Mobile Sensor Hardware:} Standard commercially available iOS (iPhone with \texttt{CoreMotion} and \texttt{AVFoundation}) and Android (with \texttt{SensorManager} and \texttt{Camera2} API) smartphones containing 3-axis MEMS accelerometers and rear LED flash units.
+        \item \textit{Mobile Application Layer:} Flutter or React Native framework providing native 60 FPS camera frame processing and real-time IMU hardware event subscriptions.
+        \item \textit{Computational DSP \& ML Backend:} High-performance Python 3.9+ server environment utilizing \texttt{FastAPI}, \texttt{WebSockets}, \texttt{NumPy}, \texttt{SciPy} (signal processing toolbox), and \texttt{Scikit-Learn} / \texttt{XGBoost}.
+        \item \textit{Simulation Environment:} Python-based numerical differential equation solvers (\texttt{scipy.integrate.solve\_ivp} Runge-Kutta RK45) with validation against MATLAB/Simulink biophysical models.
+    \end{itemize}
+\end{enumerate}
+
+\section{Background}
+
+\subsection{Problem Statement and Motivation}
+Cardiovascular diseases (CVDs) remain the leading contributor to global mortality, causing an estimated 17.9 million deaths annually according to the World Health Organization. Concurrently, chronic psychophysiological and autonomic nervous system (ANS) dysregulation---characterized by prolonged sympathetic hyperactivity and suppressed parasympathetic vagal tone---is a recognized precursor to hypertension, fatal arrhythmias, and heart failure. 
+
+While conventional 12-lead Electrocardiography (ECG) and continuous Holter monitors represent the clinical gold standard for cardiac electrophysiology, their reliance on specialized analog differential amplifiers, high-impedance instrumentation circuitry, skin-abrasive conductive gel, and adhesive electrodes creates severe logistical friction. Consequently, cardiac risk monitoring remains episodic, hospital-bound, and reactive rather than continuous, ubiquitous, and proactive. There is an urgent engineering imperative for frictionless, zero-external-hardware cardiovascular monitoring systems that leverage ubiquitous mobile consumer devices.
+
+\subsection{State of the Art and Literature Review}
+The literature surrounding non-invasive mobile cardiovascular monitoring and dynamic simulation spans four distinct engineering domains:
+
+\begin{enumerate}[leftmargin=2.5em]
+    \item \textbf{Optical Contact Photoplethysmography (PPG):}
+    Photoplethysmography measures localized blood volume pulse oscillations through transillumination of peripheral capillary beds, governed by the Beer-Lambert law of optical absorption. Hertzman (1938) initially demonstrated optical pulse detection, which was subsequently formalized for consumer digital CMOS camera sensors by Verkruysse et al. (2008) and Jonathan and Leahy (2010). Modern studies confirm that green light ($\lambda \approx 520\text{--}540\text{ nm}$) provides the highest signal-to-noise ratio (SNR) due to the distinct absorption peak of oxyhemoglobin ($HbO_2$) and deoxyhemoglobin ($Hb$).
+
+    \item \textbf{Mechanical Sternal Seismocardiography (SCG):}
+    Seismocardiography records the mechanical micro-vibrations of the chest wall induced by left ventricular myocardial contraction, isovolumetric momentum transfer, and rapid blood ejection into the ascending aorta. First investigated by Baevskii et al. (1964), modern micro-electro-mechanical systems (MEMS) have revitalized SCG. Inan et al. (2015) and Tadi et al. (2017) established that standard smartphone MEMS accelerometers resting flat on the sternum can capture aortic valve opening (AO) and rapid ejection (RE) micro-vibrations within the $1.0\text{--}20.0\text{ Hz}$ frequency band, opening a novel acoustic-mechanical sensing pathway without optical hardware.
+
+    \item \textbf{Pulse Rate Variability (PRV) as an Autonomic Surrogate:}
+    The clinical standards for Heart Rate Variability (HRV) defined by the Task Force of the European Society of Cardiology and the North American Society of Pacing and Electrophysiology (1996) identify SDNN, RMSSD, and spectral LF/HF ratios as primary indicators of sympathovagal balance. Extensive clinical validation by Lu et al. (2009) and Schäfer and Vagedes (2013) demonstrated that in stationary resting conditions, peak-to-peak intervals (PPI) derived from optical PPG and mechanical SCG correlate with ECG-derived RR intervals with high statistical fidelity ($R^2 \ge 0.95$).
+
+    \item \textbf{Nonlinear Cardiac Dynamical Modeling:}
+    The human cardiac conduction system operates as an assembly of nonlinear, self-oscillating pacemakers. Van der Pol and Van der Mark (1928) originally formulated coupled relaxation oscillators to model the Sinoatrial (SA) and Atrioventricular (AV) nodal dynamics. FitzHugh (1961) and Glass (2001) demonstrated that cardiac conduction anomalies, ventricular flutter, and chaotic fibrillation are nonlinear dynamical state bifurcations triggered when intrinsic oscillator damping and coupling strengths are perturbed by external autonomic/sympathetic stress drive.
+\end{enumerate}
+
+\subsection{Identified Research Gaps}
+Despite extensive prior work in mobile health and cardiovascular modeling, three critical engineering gaps persist:
+\begin{itemize}[leftmargin=2.5em]
+    \item \textbf{Gap 1: The Disconnect Between Static Measurement and Predictive Dynamic Simulation.}
+    Commercial mobile wellness applications (e.g., Apple Health, Google Fit, commercial heart rate monitors) function purely as passive, closed-loop meters: they output a single static integer (e.g., "72 bpm") or a coarse proprietary wellness score. \textit{None} of these platforms bridge measured physiological parameters into an in-silico dynamical twin capable of simulating how that specific individual's cardiac rhythm stability will evolve or break down under simulated physical or autonomic stress challenges.
+    
+    \item \textbf{Gap 2: Lack of Transparent, Open-Source Multi-Modal White-Box Architectures.}
+    Existing mobile heart rate applications rely on proprietary, closed-source black-box heuristics that cannot be peer-reviewed, audited, or academically validated. Furthermore, they rely strictly on a single sensor modality (camera only), rendering them brittle under hardware constraints and vulnerable to optical artifacts.
+    
+    \item \textbf{Gap 3: Sensor Underutilization and High Hardware Barriers in Educational Capstone Projects.}
+    Previous university engineering capstones frequently rely on standalone external biomedical circuit breakout boards (e.g., AD8232 ECG boards), introducing physical connection failures and cumbersome hardware maintenance while leaving the advanced, high-precision MEMS inertial sensors built directly into modern smartphones completely underutilized.
+\end{itemize}
+
+\subsection{Research Questions and Project Contributions}
+To resolve these gaps, this project addresses the following primary research questions:
+\begin{enumerate}[leftmargin=2.5em]
+    \item \textit{Research Question 1:} Can a standard smartphone's embedded 3-axis MEMS accelerometer reliably capture sternal mechanical recoil micro-vibrations (SCG) with sufficient signal-to-noise ratio to yield mathematically valid beat-to-beat intervals under resting conditions?
+    \item \textit{Research Question 2:} How can an automated multi-tier sensing fallback architecture (Sternal SCG $\rightarrow$ Camera PPG $\rightarrow$ Benchmarked Clinical Datasets) be structured to ensure zero failure states during real-time deployment?
+    \item \textit{Research Question 3:} How can empirical Pulse Rate Variability features extracted from mobile sensors be mapped mathematically into the damping and coupling parameters of a coupled nonlinear cardiac oscillator to simulate visual rhythm destabilization and chaotic bifurcations under autonomic stress?
+\end{enumerate}
+
+\noindent\textbf{Core Academic and Technical Contributions:}
+\begin{itemize}[leftmargin=2.5em]
+    \item A fully unified, transparent Cyber-Physical Digital Twin software pipeline combining mobile signal acquisition, zero-phase DSP, machine learning risk classification, and nonlinear dynamical ODE simulation.
+    \item A novel comparative evaluation between mechanical sternal SCG and optical fingertip PPG on consumer smartphone hardware.
+    \item An open, reproducible benchmark validating mobile Pulse Rate Variability (PRV) against established clinical datasets (WESAD and CapnoBase/MIMIC-III).
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,340 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 3 0 R >>
+endobj
+2 0 obj
+<< /Type /Outlines /Count 0 >>
+endobj
+3 0 obj
+<< /Type /Pages /Kids [ 12 0 R 14 0 R 16 0 R ] /Count 3 >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+8 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier-Bold >>
+endobj
+9 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Times-Roman >>
+endobj
+10 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Times-Bold >>
+endobj
+11 0 obj
+<< /Length 7383 >>
+stream
+0.800 0.850 0.900 RG
+0.80 w
+45.00 796.89 m 550.28 796.89 l S
+BT /Courier 7.50 Tf 0.400 0.450 0.500 rg 1 0 0 1 45.00 803.89 Tm (COMPUTER ENGINEERING CAPSTONE THESIS PROPOSAL) Tj ET
+BT /Courier 7.50 Tf 0.400 0.450 0.500 rg 1 0 0 1 395.28 803.89 Tm (AUTONOMIC CARDIAC DIGITAL TWIN) Tj ET
+45.00 45.00 m 550.28 45.00 l S
+BT /Courier 7.50 Tf 0.400 0.450 0.500 rg 1 0 0 1 45.00 34.00 Tm (CONFIDENTIAL - ACADEMIC USE ONLY) Tj ET
+BT /Courier 7.50 Tf 0.400 0.450 0.500 rg 1 0 0 1 515.28 34.00 Tm (Page 1) Tj ET
+0.920 0.350 0.100 rg
+45.00 766.89 75.00 14.00 re f
+BT /Courier-Bold 7.00 Tf 1.000 1.000 1.000 rg 1 0 0 1 49.00 770.39 Tm (CAPSTONE PROPOSAL) Tj ET
+BT /Helvetica-Bold 16.00 Tf 0.060 0.090 0.160 rg 1 0 0 1 45.00 740.89 Tm (A Dual-Modal Mobile Sensing System for Real-Time Cardiac) Tj ET
+BT /Helvetica-Bold 16.00 Tf 0.060 0.090 0.160 rg 1 0 0 1 45.00 721.89 Tm (Autonomic Risk Profiling and Dynamical Stress Simulation) Tj ET
+0.970 0.980 0.990 rg
+0.850 0.880 0.920 RG
+0.80 w
+45.00 631.89 505.28 78.00 re B
+BT /Helvetica-Bold 8.00 Tf 0.100 0.150 0.250 rg 1 0 0 1 52.00 691.89 Tm (Member A \(Acquisition\)) Tj ET
+BT /Helvetica 7.00 Tf 0.350 0.400 0.450 rg 1 0 0 1 52.00 677.89 Tm (Optical PPG \(60 FPS\) & IMU) Tj ET
+BT /Helvetica 7.00 Tf 0.350 0.400 0.450 rg 1 0 0 1 52.00 667.89 Tm ( SCG \(100 Hz\)) Tj ET
+BT /Helvetica-Bold 8.00 Tf 0.920 0.350 0.100 rg 1 0 0 1 180.00 691.89 Tm (Member B \(YOU - Core DSP\)) Tj ET
+BT /Helvetica 7.00 Tf 0.350 0.400 0.450 rg 1 0 0 1 180.00 677.89 Tm (Conditioning, Systolic Pea) Tj ET
+BT /Helvetica 7.00 Tf 0.350 0.400 0.450 rg 1 0 0 1 180.00 667.89 Tm (ks & PRV FFT) Tj ET
+BT /Helvetica-Bold 8.00 Tf 0.100 0.150 0.250 rg 1 0 0 1 310.00 691.89 Tm (Member C \(ML Classifier\)) Tj ET
+BT /Helvetica 7.00 Tf 0.350 0.400 0.450 rg 1 0 0 1 310.00 677.89 Tm (Dual-Target: Stress & Arrh) Tj ET
+BT /Helvetica 7.00 Tf 0.350 0.400 0.450 rg 1 0 0 1 310.00 667.89 Tm (ythmia Risk) Tj ET
+BT /Helvetica-Bold 8.00 Tf 0.100 0.150 0.250 rg 1 0 0 1 440.00 691.89 Tm (Member D \(Dynamics\)) Tj ET
+BT /Helvetica 7.00 Tf 0.350 0.400 0.450 rg 1 0 0 1 440.00 677.89 Tm (Coupled Van der Pol Stress) Tj ET
+BT /Helvetica 7.00 Tf 0.350 0.400 0.450 rg 1 0 0 1 440.00 667.89 Tm ( Twin Sim) Tj ET
+BT /Helvetica-Bold 11.00 Tf 0.060 0.090 0.160 rg 1 0 0 1 45.00 604.89 Tm (1. EXECUTIVE SUMMARY & RESEARCH OBJECTIVES) Tj ET
+0.920 0.350 0.100 RG
+1.50 w
+45.00 600.89 m 180.00 600.89 l S
+BT /Helvetica 8.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 586.89 Tm (Cardiovascular autonomic dysfunction and cardiac arrhythmias represent leading global healthcare burdens.) Tj ET
+BT /Helvetica 8.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 574.89 Tm (While traditional 12-lead Electrocardiography \(ECG\) remains the clinical gold standard, its reliance on adhesive electrodes) Tj ET
+BT /Helvetica 8.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 562.89 Tm (and specialized analog instrumentation prevents continuous, frictionless everyday monitoring. This capstone engineering) Tj ET
+BT /Helvetica 8.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 550.89 Tm (thesis proposes a complete Cyber-Physical Digital Twin software system implemented on standard consumer smartphones.) Tj ET
+BT /Helvetica 8.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 532.89 Tm (The project introduces a dual-modal mobile acquisition framework eliminating all external hardware requirements:) Tj ET
+BT /Helvetica 8.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 520.89 Tm (  - Primary Optical Contact PPG: 60 FPS camera video tracking capillary blood volume pulse illuminated by the LED flash.) Tj ET
+BT /Helvetica 8.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 508.89 Tm (  - Secondary Mechanical Chest SCG: 100 Hz 3-axis MEMS accelerometer recording sternal cardiac recoil micro-vibrations.) Tj ET
+BT /Helvetica 8.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 496.89 Tm (The extracted signals are conditioned using digital Butterworth filtering, processed via adaptive systolic peak detection,) Tj ET
+BT /Helvetica 8.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 484.89 Tm (and converted to Pulse Rate Variability \(PRV\) biomarkers. A trained machine learning classifier predicts sympathovagal) Tj ET
+BT /Helvetica 8.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 472.89 Tm (stress and arrhythmia risk, which parameterizes a coupled nonlinear oscillator simulating rhythm breakdown under stress.) Tj ET
+BT /Helvetica-Bold 11.00 Tf 0.060 0.090 0.160 rg 1 0 0 1 45.00 448.89 Tm (2. SYSTEM ARCHITECTURE & 4-STAGE PIPELINE CONTRACTS) Tj ET
+0.920 0.350 0.100 RG
+1.50 w
+45.00 444.89 m 180.00 444.89 l S
+0.100 0.150 0.250 rg
+45.00 416.89 505.28 16.00 re f
+BT /Courier-Bold 7.50 Tf 1.000 1.000 1.000 rg 1 0 0 1 52.00 420.89 Tm (STAGE) Tj ET
+BT /Courier-Bold 7.50 Tf 1.000 1.000 1.000 rg 1 0 0 1 110.00 420.89 Tm (OWNER) Tj ET
+BT /Courier-Bold 7.50 Tf 1.000 1.000 1.000 rg 1 0 0 1 175.00 420.89 Tm (INPUT DATA) Tj ET
+BT /Courier-Bold 7.50 Tf 1.000 1.000 1.000 rg 1 0 0 1 295.00 420.89 Tm (CORE TECHNOLOGY) Tj ET
+BT /Courier-Bold 7.50 Tf 1.000 1.000 1.000 rg 1 0 0 1 445.00 420.89 Tm (OUTPUT CONTRACT) Tj ET
+0.980 0.980 0.990 rg
+45.00 400.89 505.28 16.00 re f
+0.850 0.880 0.920 RG
+0.50 w
+45.00 400.89 m 505.28 400.89 l S
+BT /Helvetica-Bold 8.00 Tf 0.100 0.150 0.250 rg 1 0 0 1 52.00 404.89 Tm (Stage 1) Tj ET
+BT /Helvetica 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 110.00 404.89 Tm (Member A) Tj ET
+BT /Helvetica 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 175.00 404.89 Tm (Camera/IMU Sensor) Tj ET
+BT /Helvetica 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 295.00 404.89 Tm (Flashlock, ROI Avg, IMU Polling) Tj ET
+BT /Courier 7.50 Tf 0.100 0.150 0.250 rg 1 0 0 1 445.00 404.89 Tm (RawSignal[t] @ 60/100Hz) Tj ET
+1.000 0.960 0.930 rg
+45.00 384.89 505.28 16.00 re f
+0.850 0.880 0.920 RG
+0.50 w
+45.00 384.89 m 505.28 384.89 l S
+BT /Helvetica-Bold 8.00 Tf 0.920 0.350 0.100 rg 1 0 0 1 52.00 388.89 Tm (Stage 2) Tj ET
+BT /Helvetica 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 110.00 388.89 Tm (Member B \(YOU\)) Tj ET
+BT /Helvetica 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 175.00 388.89 Tm (Raw Optical Series) Tj ET
+BT /Helvetica 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 295.00 388.89 Tm (Butterworth, Peak Det, PRV FFT) Tj ET
+BT /Courier-Bold 7.50 Tf 0.920 0.350 0.100 rg 1 0 0 1 445.00 388.89 Tm (PRV Vector {SDNN, LF/HF}) Tj ET
+0.980 0.980 0.990 rg
+45.00 368.89 505.28 16.00 re f
+0.850 0.880 0.920 RG
+0.50 w
+45.00 368.89 m 505.28 368.89 l S
+BT /Helvetica-Bold 8.00 Tf 0.100 0.150 0.250 rg 1 0 0 1 52.00 372.89 Tm (Stage 3) Tj ET
+BT /Helvetica 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 110.00 372.89 Tm (Member C) Tj ET
+BT /Helvetica 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 175.00 372.89 Tm (PRV Feature Table) Tj ET
+BT /Helvetica 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 295.00 372.89 Tm (XGBoost / Random Forest \(WESAD\)) Tj ET
+BT /Courier 7.50 Tf 0.100 0.150 0.250 rg 1 0 0 1 445.00 372.89 Tm (Risk Profile {Stress, AFib}) Tj ET
+1.000 1.000 1.000 rg
+45.00 352.89 505.28 16.00 re f
+0.850 0.880 0.920 RG
+0.50 w
+45.00 352.89 m 505.28 352.89 l S
+BT /Helvetica-Bold 8.00 Tf 0.100 0.150 0.250 rg 1 0 0 1 52.00 356.89 Tm (Stage 4) Tj ET
+BT /Helvetica 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 110.00 356.89 Tm (Member D) Tj ET
+BT /Helvetica 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 175.00 356.89 Tm (Risk Probabilities) Tj ET
+BT /Helvetica 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 295.00 356.89 Tm (Coupled Van der Pol ODE Runge-Kutta) Tj ET
+BT /Courier 7.50 Tf 0.100 0.150 0.250 rg 1 0 0 1 445.00 356.89 Tm (Dynamic Phase Trajectory) Tj ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page
+/Parent 3 0 R
+/MediaBox [0 0 595.28 841.89]
+/Contents 11 0 R
+/Resources << /Font <<
+  /Helvetica 4 0 R
+  /Helvetica-Bold 5 0 R
+  /Helvetica-Oblique 6 0 R
+  /Courier 7 0 R
+  /Courier-Bold 8 0 R
+  /Times-Roman 9 0 R
+  /Times-Bold 10 0 R
+>> >> >>
+endobj
+13 0 obj
+<< /Length 7495 >>
+stream
+0.800 0.850 0.900 RG
+0.80 w
+45.00 796.89 m 550.28 796.89 l S
+BT /Courier 7.50 Tf 0.400 0.450 0.500 rg 1 0 0 1 45.00 803.89 Tm (COMPUTER ENGINEERING CAPSTONE THESIS PROPOSAL) Tj ET
+BT /Courier 7.50 Tf 0.400 0.450 0.500 rg 1 0 0 1 395.28 803.89 Tm (AUTONOMIC CARDIAC DIGITAL TWIN) Tj ET
+45.00 45.00 m 550.28 45.00 l S
+BT /Courier 7.50 Tf 0.400 0.450 0.500 rg 1 0 0 1 45.00 34.00 Tm (CONFIDENTIAL - ACADEMIC USE ONLY) Tj ET
+BT /Courier 7.50 Tf 0.400 0.450 0.500 rg 1 0 0 1 515.28 34.00 Tm (Page 2) Tj ET
+BT /Helvetica-Bold 11.00 Tf 0.060 0.090 0.160 rg 1 0 0 1 45.00 771.89 Tm (3. METHODOLOGY & SUBSYSTEM SPECIFICATIONS) Tj ET
+0.920 0.350 0.100 RG
+1.50 w
+45.00 767.89 m 180.00 767.89 l S
+BT /Helvetica-Bold 9.50 Tf 0.100 0.150 0.250 rg 1 0 0 1 45.00 753.89 Tm (STAGE 1 \(MEMBER A\): MOBILE SENSOR INGESTION & QUALITY CONTROL) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 739.89 Tm (1. Optical Camera Pipeline: Flutter/React Native native bridge capturing uncompressed video frames at 60 FPS.) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 728.89 Tm (   Locking exposure duration and ISO sensitivity while activating the rear torch LED to ensure constant skin illumination.) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 717.89 Tm (2. Spatial Region of Interest \(ROI\): Extracting a centered 120x120 pixel bounding box from each frame and calculating the) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 706.89 Tm (   mean green channel intensity:  I_G\(t\) = \(1 / |ROI|\) * sum\(Pixel_G\(x, y, t\)\).) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 695.89 Tm (3. Contact Verification Heuristic: Analyzing the Red/Green channel ratio. Human fingertip transillumination exhibits) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 684.89 Tm (   I_R / I_G >= 1.8. If the ratio drops, the system triggers a visual prompt notifying the user of poor optical contact.) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 673.89 Tm (4. Sternal SCG Acceleration: Concurrently polling the device 3-axis accelerometer at 100 Hz via SENSOR_DELAY_FASTEST.) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 662.89 Tm (   Extracting the dorso-ventral axis \(a_z\) representing perpendicular sternal recoil micro-displacements.) Tj ET
+1.000 0.960 0.930 rg
+0.920 0.350 0.100 RG
+1.00 w
+45.00 421.89 505.28 225.00 re B
+BT /Helvetica-Bold 9.50 Tf 0.920 0.350 0.100 rg 1 0 0 1 52.00 631.89 Tm (STAGE 2 \(MEMBER B -- YOUR ROLE\): DIGITAL SIGNAL PROCESSING & PRV ENGINE) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 617.89 Tm (As Member B, your responsibilities form the mathematical and signal processing foundation of the capstone thesis:) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 607.39 Tm () Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 596.89 Tm (A. Zero-Phase Digital Bandpass Filtering:) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 586.39 Tm (   - PPG Channel: 4th-order zero-phase Butterworth bandpass filter \(0.5 Hz - 5.0 Hz, corresponding to 30 - 300 bpm\).) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 575.89 Tm (     Removes low-frequency baseline drift \(respiration, finger pressure\) and high-frequency CMOS sensor noise.) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 565.39 Tm (   - SCG Channel: 4th-order Butterworth bandpass filter \(1.0 Hz - 20.0 Hz\). Eliminates large thoracic respiratory) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 554.89 Tm (     excursions \(0.1 - 0.4 Hz\) to isolate aortic valve opening \(AO\) and rapid ventricular ejection \(RE\) micro-vibrations.) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 544.39 Tm () Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 533.89 Tm (B. Adaptive Systolic Peak Detection & Outlier Rejection:) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 523.39 Tm (   - Computes numerical gradient / derivative to amplify the rapid systolic upslope.) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 512.89 Tm (   - Implements adaptive dual-thresholding with a 250 ms physiological blanking refractory period to prevent false) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 502.39 Tm (     detection of dicrotic notches or reflected peripheral waves.) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 491.89 Tm (   - Produces the discrete Peak-to-Peak Interval series: PPI[i] = t_peak[i] - t_peak[i-1] in milliseconds.) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 481.39 Tm (   - Applies ectopic beat filtering: rejecting non-physiological intervals outside the 300 ms - 1800 ms window.) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 470.89 Tm () Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 460.39 Tm (C. Clinical Pulse Rate Variability \(PRV\) Feature Extraction:) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 449.89 Tm (   - Time-Domain Metrics: Mean Heart Rate \(bpm\), SDNN \(overall autonomic variability\), RMSSD \(parasympathetic) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 439.39 Tm (     vagal tone: sqrt\(mean\(diff\(PPI\)^2\)\)\), and pNN50 \(% of successive intervals differing by > 50 ms\).) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 428.89 Tm (   - Frequency-Domain Spectral Analysis \(FFT\): Uneven PPI series are resampled to 4.0 Hz via cubic spline interpolation.) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 418.39 Tm (     Power Spectral Density \(PSD\) is estimated via Welch's periodogram, integrating specific clinical bands:) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 407.89 Tm (       - Low-Frequency \(LF: 0.04 - 0.15 Hz\): Sympathetic & baroreflex modulation.) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 397.39 Tm (       - High-Frequency \(HF: 0.15 - 0.40 Hz\): Parasympathetic vagal tone \(respiratory sinus arrhythmia\).) Tj ET
+BT /Helvetica 7.80 Tf 0.150 0.200 0.250 rg 1 0 0 1 52.00 386.89 Tm (       - LF/HF Ratio: The gold-standard clinical index of sympathovagal autonomic balance and acute stress.) Tj ET
+BT /Helvetica-Bold 9.50 Tf 0.100 0.150 0.250 rg 1 0 0 1 45.00 151.39 Tm (STAGE 3 \(MEMBER C\): DUAL-TARGET MACHINE LEARNING RISK PROFILING) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 137.39 Tm (1. Training Benchmarks: Utilizing WESAD \(Wearable Stress and Affect Detection\) and CapnoBase/MIMIC-III PPG benchmarks.) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 126.39 Tm (2. Dual-Target Formulation:) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 115.39 Tm (   - Target 1 \(Autonomic Stress\): Binary/3-class classifier \(Baseline Rest vs. Cognitive/Physical Stress\).) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 104.39 Tm (   - Target 2 \(Arrhythmia Screening\): Regular Sinus Rhythm vs. Pulse Irregularity / Atrial Fibrillation.) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 93.39 Tm (3. Algorithms & Rigor: Random Forest, Gradient Boosted Trees \(XGBoost\), and Logistic Regression evaluated via) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 82.39 Tm (   Leave-One-Subject-Out \(LOSO\) cross-validation to strictly prevent patient data leakage. SHAP values explain features.) Tj ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page
+/Parent 3 0 R
+/MediaBox [0 0 595.28 841.89]
+/Contents 13 0 R
+/Resources << /Font <<
+  /Helvetica 4 0 R
+  /Helvetica-Bold 5 0 R
+  /Helvetica-Oblique 6 0 R
+  /Courier 7 0 R
+  /Courier-Bold 8 0 R
+  /Times-Roman 9 0 R
+  /Times-Bold 10 0 R
+>> >> >>
+endobj
+15 0 obj
+<< /Length 6856 >>
+stream
+0.800 0.850 0.900 RG
+0.80 w
+45.00 796.89 m 550.28 796.89 l S
+BT /Courier 7.50 Tf 0.400 0.450 0.500 rg 1 0 0 1 45.00 803.89 Tm (COMPUTER ENGINEERING CAPSTONE THESIS PROPOSAL) Tj ET
+BT /Courier 7.50 Tf 0.400 0.450 0.500 rg 1 0 0 1 395.28 803.89 Tm (AUTONOMIC CARDIAC DIGITAL TWIN) Tj ET
+45.00 45.00 m 550.28 45.00 l S
+BT /Courier 7.50 Tf 0.400 0.450 0.500 rg 1 0 0 1 45.00 34.00 Tm (CONFIDENTIAL - ACADEMIC USE ONLY) Tj ET
+BT /Courier 7.50 Tf 0.400 0.450 0.500 rg 1 0 0 1 515.28 34.00 Tm (Page 3) Tj ET
+BT /Helvetica-Bold 9.50 Tf 0.100 0.150 0.250 rg 1 0 0 1 45.00 771.89 Tm (STAGE 4 \(MEMBER D\): COUPLED NONLINEAR OSCILLATOR HEART DIGITAL TWIN) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 757.89 Tm (1. Biophysical Foundation: Implements a coupled Van der Pol / FitzHugh-Nagumo dynamical pacemaker system representing) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 746.89 Tm (   the Sinoatrial \(SA\) node pacemaker coupled to ventricular myocardium:) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 735.89 Tm (       x''\(t\) - mu * \(1 - x\(t\)^2\) * x'\(t\) + omega^2 * x\(t\) = c12 * \(y\(t\) - x\(t\)\) + F_stress\(t\)) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 724.89 Tm (2. Parameter Personalization: Member B's measured heart rate sets baseline frequency omega, while Member C's risk score) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 713.89 Tm (   modulates the nonlinear damping factor mu and coupling coefficient c12.) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 702.89 Tm (3. Stress Challenge Simulation: Under healthy profiles, the phase-space trajectory \(x' vs x\) forms a stable, periodic limit) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 691.89 Tm (   cycle. Under high-risk profiles subjected to synthetic sympathetic drive F_stress\(t\), the model exhibits period-doubling) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.300 rg 1 0 0 1 45.00 680.89 Tm (   bifurcations, simulating paroxysmal tachycardia and chaotic arrhythmia breakdown in real-time visuals.) Tj ET
+BT /Helvetica-Bold 11.00 Tf 0.060 0.090 0.160 rg 1 0 0 1 45.00 655.89 Tm (4. VIVA DEFENSE STRATEGY \(ANTICIPATING COMMITTEE INQUIRIES\)) Tj ET
+0.920 0.350 0.100 RG
+1.50 w
+45.00 651.89 m 180.00 651.89 l S
+BT /Helvetica-Bold 8.00 Tf 0.060 0.090 0.160 rg 1 0 0 1 45.00 637.89 Tm (Q1: 'Commercial smartphone apps already measure heart rate. What is your novel engineering contribution?') Tj ET
+BT /Helvetica 7.80 Tf 0.300 0.350 0.400 rg 1 0 0 1 55.00 627.89 Tm (A1: Commercial mobile apps are closed-source commercial utilities that output a single coarse number \(heart rate bpm\)) Tj ET
+BT /Helvetica 7.80 Tf 0.300 0.350 0.400 rg 1 0 0 1 55.00 618.39 Tm (using black-box filters. Our thesis develops a fully transparent, white-box pipeline extracting clinical Pulse Rate) Tj ET
+BT /Helvetica 7.80 Tf 0.300 0.350 0.400 rg 1 0 0 1 55.00 608.89 Tm (Variability \(PRV\) spectral densities, pairs it with an explainable ML autonomic risk classifier, and drives a real-time) Tj ET
+BT /Helvetica 7.80 Tf 0.300 0.350 0.400 rg 1 0 0 1 55.00 599.39 Tm (nonlinear cardiac dynamical digital twin to simulate physiological stress collapse. No commercial app does this.) Tj ET
+BT /Helvetica-Bold 8.00 Tf 0.060 0.090 0.160 rg 1 0 0 1 45.00 585.39 Tm (Q2: 'Is optical Pulse Rate Variability \(PRV\) clinically accepted as an equivalent to ECG HRV?') Tj ET
+BT /Helvetica 7.80 Tf 0.300 0.350 0.400 rg 1 0 0 1 55.00 575.39 Tm (A2: Extensive clinical literature \(e.g. Lu et al., Sch?fer et al.\) proves that under quasi-stationary conditions, optical) Tj ET
+BT /Helvetica 7.80 Tf 0.300 0.350 0.400 rg 1 0 0 1 55.00 565.89 Tm (pulse-to-pulse intervals correlate with ECG RR intervals with R^2 >= 0.95. Time-domain RMSSD and spectral HF power) Tj ET
+BT /Helvetica 7.80 Tf 0.300 0.350 0.400 rg 1 0 0 1 55.00 556.39 Tm (exhibit near-perfect clinical equivalence. We explicitly model and account for Pulse Transit Time \(PTT\) variance.) Tj ET
+BT /Helvetica-Bold 8.00 Tf 0.060 0.090 0.160 rg 1 0 0 1 45.00 542.39 Tm (Q3: 'Why did the team include the Seismocardiography \(SCG\) phone-on-chest mode?') Tj ET
+BT /Helvetica 7.80 Tf 0.300 0.350 0.400 rg 1 0 0 1 55.00 532.39 Tm (A3: SCG captures cardiac mechanical recoil rather than peripheral blood volume. Supporting both modalities demonstrates) Tj ET
+BT /Helvetica 7.80 Tf 0.300 0.350 0.400 rg 1 0 0 1 55.00 522.89 Tm (sensor fusion, handling high-rate IMU interrupts, multi-axis orientation decoupling, and motion artifact filtering.) Tj ET
+BT /Helvetica-Bold 11.00 Tf 0.060 0.090 0.160 rg 1 0 0 1 45.00 504.89 Tm (5. PROJECT TIMELINE & 16-WEEK CAPSTONE SCHEDULE) Tj ET
+0.920 0.350 0.100 RG
+1.50 w
+45.00 500.89 m 180.00 500.89 l S
+0.100 0.150 0.250 rg
+45.00 472.89 505.28 16.00 re f
+BT /Courier-Bold 7.50 Tf 1.000 1.000 1.000 rg 1 0 0 1 52.00 476.89 Tm (PHASE & WEEKS) Tj ET
+BT /Courier-Bold 7.50 Tf 1.000 1.000 1.000 rg 1 0 0 1 160.00 476.89 Tm (KEY MILESTONE DELIVERABLES) Tj ET
+BT /Courier-Bold 7.50 Tf 1.000 1.000 1.000 rg 1 0 0 1 450.00 476.89 Tm (PRIMARY LEAD) Tj ET
+0.980 0.980 0.990 rg
+45.00 456.89 505.28 16.00 re f
+0.850 0.880 0.920 RG
+0.50 w
+45.00 456.89 m 505.28 456.89 l S
+BT /Helvetica-Bold 8.00 Tf 0.100 0.150 0.250 rg 1 0 0 1 52.00 460.89 Tm (Phase 1 \(W1-W4\)) Tj ET
+BT /Helvetica 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 160.00 460.89 Tm (Camera 60 FPS ROI extraction, Flashlock & 100 Hz IMU client) Tj ET
+BT /Courier 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 450.00 460.89 Tm (Member A) Tj ET
+0.980 0.980 0.990 rg
+45.00 440.89 505.28 16.00 re f
+0.850 0.880 0.920 RG
+0.50 w
+45.00 440.89 m 505.28 440.89 l S
+BT /Helvetica-Bold 8.00 Tf 0.100 0.150 0.250 rg 1 0 0 1 52.00 444.89 Tm (Phase 2 \(W5-W8\)) Tj ET
+BT /Helvetica 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 160.00 444.89 Tm (Butterworth DSP, adaptive peak detector & PRV feature table) Tj ET
+BT /Courier-Bold 7.50 Tf 0.920 0.350 0.100 rg 1 0 0 1 450.00 444.89 Tm (Member B \(YOU\)) Tj ET
+0.980 0.980 0.990 rg
+45.00 424.89 505.28 16.00 re f
+0.850 0.880 0.920 RG
+0.50 w
+45.00 424.89 m 505.28 424.89 l S
+BT /Helvetica-Bold 8.00 Tf 0.100 0.150 0.250 rg 1 0 0 1 52.00 428.89 Tm (Phase 3 \(W9-W12\)) Tj ET
+BT /Helvetica 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 160.00 428.89 Tm (WESAD benchmark ML model & Van der Pol ODE twin simulation) Tj ET
+BT /Courier 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 450.00 428.89 Tm (Members C & D) Tj ET
+0.980 0.980 0.990 rg
+45.00 408.89 505.28 16.00 re f
+0.850 0.880 0.920 RG
+0.50 w
+45.00 408.89 m 505.28 408.89 l S
+BT /Helvetica-Bold 8.00 Tf 0.100 0.150 0.250 rg 1 0 0 1 52.00 412.89 Tm (Phase 4 \(W13-W16\)) Tj ET
+BT /Helvetica 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 160.00 412.89 Tm (End-to-end integration, live unified UI, thesis report & defense) Tj ET
+BT /Courier 7.50 Tf 0.200 0.250 0.300 rg 1 0 0 1 450.00 412.89 Tm (All Members) Tj ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page
+/Parent 3 0 R
+/MediaBox [0 0 595.28 841.89]
+/Contents 15 0 R
+/Resources << /Font <<
+  /Helvetica 4 0 R
+  /Helvetica-Bold 5 0 R
+  /Helvetica-Oblique 6 0 R
+  /Courier 7 0 R
+  /Courier-Bold 8 0 R
+  /Times-Roman 9 0 R
+  /Times-Bold 10 0 R
+>> >> >>
+endobj
+xref
+0 17
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000104 00000 n 
+0000000178 00000 n 
+0000000248 00000 n 
+0000000323 00000 n 
+0000000401 00000 n 
+0000000469 00000 n 
+0000000542 00000 n 
+0000000614 00000 n 
+0000000686 00000 n 
+0000008122 00000 n 
+0000008397 00000 n 
+0000015945 00000 n 
+0000016220 00000 n 
+0000023129 00000 n 
+trailer
+<< /Size 17
+/Root 1 0 R >>
+startxref
+23404
+%%EOF
