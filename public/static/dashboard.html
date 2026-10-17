@@ -382,11 +382,17 @@
     const valRisk = document.getElementById('valRisk');
     const riskFill = document.getElementById('riskFill');
 
-    // Update Network URL
+    // Dynamically generate QR code based on current host (Vercel, LAN, or local)
+    const recordUrl = window.location.origin + '/record';
+    document.getElementById('localUrl').innerText = recordUrl;
+    document.getElementById('qrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(recordUrl)}`;
+
     fetch('/api/server_info').then(r => r.json()).then(info => {
-      if (info.lan_url) {
-        document.getElementById('localUrl').innerText = info.lan_url + '/record';
-        document.getElementById('qrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(info.lan_url + '/record')}`;
+      // If running on local server with LAN IP available and accessed via localhost, offer LAN IP
+      if (info.lan_url && window.location.hostname === 'localhost') {
+        const lanRecord = info.lan_url + '/record';
+        document.getElementById('localUrl').innerText = lanRecord;
+        document.getElementById('qrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(lanRecord)}`;
       }
     }).catch(() => {});
 
