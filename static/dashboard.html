@@ -498,10 +498,10 @@
       connText.innerText = 'Synchronized • Data Ingested';
 
       const f = data.feature_vector || {};
-      valBpm.innerText = f.mean_hr_bpm || '90.1';
-      valPpi.innerHTML = `${f.mean_ppi_ms || '666.2'} <span style="font-size:14px;">ms</span>`;
-      valRmssd.innerHTML = `${f.rmssd_ms || '231.5'} <span style="font-size:14px;">ms</span>`;
-      valLfHf.innerText = f.lf_hf_ratio || '1.35';
+      valBpm.innerText = f.mean_hr_bpm !== undefined ? f.mean_hr_bpm : '--';
+      valPpi.innerHTML = `${f.mean_ppi_ms !== undefined ? f.mean_ppi_ms : '--'} <span style="font-size:14px;">ms</span>`;
+      valRmssd.innerHTML = `${f.rmssd_ms !== undefined ? f.rmssd_ms : '--'} <span style="font-size:14px;">ms</span>`;
+      valLfHf.innerText = f.lf_hf_ratio !== undefined ? f.lf_hf_ratio : '--';
 
       // Stress evaluation
       const ratio = f.lf_hf_ratio || 1.35;
