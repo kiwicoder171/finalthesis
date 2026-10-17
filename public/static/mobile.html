@@ -308,6 +308,8 @@
       }
     }
 
+    let completeRecordingBuffer = [];
+
     function handleMotion(e) {
       const acc = e.accelerationIncludingGravity || e.acceleration;
       if (!acc) return;
@@ -329,10 +331,15 @@
 
       if (isRecording) {
         const now = (performance.now() - startTime) / 1000.0;
-        streamBuffer.push({ t: now, x, y, z });
+        const pt = { t: now, x, y, z };
+        streamBuffer.push(pt);
+        completeRecordingBuffer.push(pt);
 
-        // Flush buffer every 20 samples (~200ms)
-        if (streamBuffer.length >= 20) {
+        // Update sample count live on phone
+        sampleCount.innerText = `Samples Recorded: ${completeRecordingBuffer.length}`;
+
+        // Stream batches to server as well
+        if (streamBuffer.length >= 25) {
           flushStream();
         }
       }
@@ -343,7 +350,6 @@
       const payload = [...streamBuffer];
       streamBuffer = [];
       totalSamplesSent += payload.length;
-      sampleCount.innerText = `Samples Streamed: ${totalSamplesSent}`;
 
       fetch('/api/sensor_stream', {
         method: 'POST',
@@ -356,6 +362,7 @@
       isRecording = true;
       startTime = performance.now();
       streamBuffer = [];
+      completeRecordingBuffer = [];
       totalSamplesSent = 0;
 
       ring.className = 'pulse-ring recording';
@@ -386,25 +393,34 @@
     function stopRecording() {
       isRecording = false;
       clearInterval(timerInterval);
-      flushStream();
 
       ring.className = 'pulse-ring';
       statusText.innerText = 'PROCESSING';
-      btnAction.innerText = 'Processing on Dashboard...';
+      btnAction.innerText = 'Processing Signal...';
       btnAction.disabled = true;
 
-      // Tell backend recording stopped
+      // Extract full t and z series collected on phone
+      const t_series = completeRecordingBuffer.map(pt => pt.t);
+      const z_series = completeRecordingBuffer.map(pt => pt.z);
+
+      // Send complete payload directly with STOP to guarantee DSP runs even across stateless lambda instances
       fetch('/api/recording_control', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'STOP' })
+        body: JSON.stringify({
+          action: 'STOP',
+          samples: completeRecordingBuffer,
+          t: t_series,
+          z: z_series
+        })
       }).then(res => res.json()).then(data => {
         statusText.innerText = 'COMPLETE';
-        timer.innerText = `${data.mean_hr || '--'} BPM`;
+        const bpm = data.mean_hr || (data.result && data.result.feature_vector ? data.result.feature_vector.mean_hr_bpm : '--');
+        timer.innerText = `${bpm} BPM`;
         btnAction.disabled = false;
         btnAction.innerText = '🔄 Record Another';
         btnAction.style.background = 'var(--accent)';
-        postureText.innerText = 'Data Processed & Synchronized!';
+        postureText.innerText = `Synchronized! (${completeRecordingBuffer.length} samples processed)`;
         if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
       }).catch(err => {
         btnAction.disabled = false;

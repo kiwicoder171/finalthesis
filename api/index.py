@@ -87,16 +87,29 @@ class handler(BaseHTTPRequestHandler):
                 self.send_json({"status": "RECORDING_STARTED"})
             elif action == "STOP":
                 GLOBAL_STATE["is_recording"] = False
-                if len(GLOBAL_STATE["raw_buffer"]) > 50:
-                    t_list = [item["t"] for item in GLOBAL_STATE["raw_buffer"]]
-                    z_list = [item["z"] for item in GLOBAL_STATE["raw_buffer"]]
-                    dsp_result = process_cardiac_recording(t_list, z_list, mode="scg")
+                
+                # Check if client passed the full sample buffer directly with STOP
+                client_samples = body.get("samples", [])
+                t_series = body.get("t", [])
+                z_series = body.get("z", [])
+
+                if len(client_samples) > 0 and len(t_series) == 0:
+                    t_series = [item["t"] for item in client_samples if "t" in item and "z" in item]
+                    z_series = [item["z"] for item in client_samples if "t" in item and "z" in item]
+                
+                # Fallback to server raw_buffer
+                if len(t_series) == 0 and len(GLOBAL_STATE["raw_buffer"]) > 50:
+                    t_series = [item["t"] for item in GLOBAL_STATE["raw_buffer"] if "t" in item and "z" in item]
+                    z_series = [item["z"] for item in GLOBAL_STATE["raw_buffer"] if "t" in item and "z" in item]
+
+                if len(t_series) > 50:
+                    dsp_result = process_cardiac_recording(t_series, z_series, mode="scg")
                     GLOBAL_STATE["last_result"] = dsp_result
                     GLOBAL_STATE["has_data"] = True
                     mean_hr = dsp_result.get("feature_vector", {}).get("mean_hr_bpm", "--")
                     self.send_json({"status": "PROCESSED", "mean_hr": mean_hr, "result": dsp_result})
                 else:
-                    self.send_json({"status": "TOO_FEW_SAMPLES", "mean_hr": "--"})
+                    self.send_json({"status": "TOO_FEW_SAMPLES", "mean_hr": "--", "samples_count": len(t_series)})
             return
 
         if path.endswith("/sensor_stream") or path == "/api/sensor_stream":
