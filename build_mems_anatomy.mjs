@@ -348,9 +348,9 @@ stage.addEventListener("pointermove", (e) => {
 
 const body = k.plateHtml({
   fig: "Fig 2",
-  title: "Sternal Seismocardiogram (SCG) MEMS Accelerometer Mechanics",
-  hint: "Hover across figure to modulate heart rate & examine AO recoil clicks",
-  readout: "Diastolic Ventricular Filling · Z-Acc: +14.2 mG",
+  title: "SCG MEMS Mechanics",
+  hint: "Hover: modulate BPM",
+  readout: "Diastolic Filling · Z: +14 mG",
   keys: [
     { mark: "lit", label: "Polysilicon Proof Mass: deflects vertically along Z-axis under aortic blood ejection recoil" },
     { mark: "raised", label: "Differential Capacitive Combs: transduces sub-milligravitational micro-displacements into pico-Farad shifts" },
@@ -361,12 +361,24 @@ const body = k.plateHtml({
   body: `<div class="iso-stage" tabindex="0" role="img" aria-label="Isometric technical anatomy of smartphone MEMS accelerometer recording cardiac sternal recoil">${svg}</div>`
 });
 
+const customCss = `
+<style>
+.iso-page { width: min(840px, 94vw) !important; margin: 40px auto 60px !important; }
+.iso-plate { padding: 44px 20px 48px !important; }
+.iso-plate-corners { inset: 14px 18px !important; }
+.iso-plate-corner { font-size: 10px !important; max-width: 48%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.iso-plate-corner[data-corner="title"] { text-align: right; }
+.iso-plate-corner[data-corner="readout"] { text-align: right; }
+</style>
+`;
+
 const htmlContent = k.pageHtml({
   title: "Anatomy: Sternal Accelerometer Cardiac Sensing",
   theme,
   body,
-  script: kitScript() + live
-});
+  script: kitScript() + live,
+  width: 840
+}).replace("</head>", customCss + "</head>");
 
 const outPath = join(HERE, theme === "light" ? "mems_scg_anatomy-light.html" : "mems_scg_anatomy.html");
 writeFileSync(outPath, htmlContent);
