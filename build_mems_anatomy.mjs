@@ -239,7 +239,7 @@ const dialSvg = drawDialStand();
 const svg = k.figureSvg({
   width: WIDTH,
   height: HEIGHT,
-  content: [
+  body: [
     staticSvg,
     dialSvg,
     `<g data-part="needle" class="iso-lit">${L(needlePath(0), { tone: "lit" })}</g>`,
