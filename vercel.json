@@ -26,6 +26,10 @@
       "destination": "/advisor_approval_report.html"
     },
     {
+      "source": "/anatomy",
+      "destination": "/mems_scg_anatomy.html"
+    },
+    {
       "source": "/report-handbook",
       "destination": "/member_b_handbook_and_report.html"
     }
