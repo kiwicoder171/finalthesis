@@ -414,14 +414,24 @@
           z: z_series
         })
       }).then(res => res.json()).then(data => {
-        statusText.innerText = 'COMPLETE';
-        const bpm = data.mean_hr || (data.result && data.result.feature_vector ? data.result.feature_vector.mean_hr_bpm : '--');
-        timer.innerText = `${bpm} BPM`;
+        const f = (data.result && data.result.feature_vector) ? data.result.feature_vector : {};
+        const grade = f.quality_grade || '';
+        const bpm = f.mean_hr_bpm;
+
+        if (grade === 'NO_PULSE' || bpm === 0 || bpm === 0.0) {
+          statusText.innerText = 'NO PULSE';
+          timer.innerText = '-- BPM';
+          postureText.innerText = 'Stationary surface detected. Place phone flat on sternum!';
+          ring.className = 'pulse-ring';
+        } else {
+          statusText.innerText = 'COMPLETE';
+          timer.innerText = `${bpm || '--'} BPM`;
+          postureText.innerText = `Synchronized! (${completeRecordingBuffer.length} samples processed)`;
+          if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+        }
         btnAction.disabled = false;
         btnAction.innerText = '🔄 Record Another';
         btnAction.style.background = 'var(--accent)';
-        postureText.innerText = `Synchronized! (${completeRecordingBuffer.length} samples processed)`;
-        if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
       }).catch(err => {
         btnAction.disabled = false;
         btnAction.innerText = '🔄 Try Again';

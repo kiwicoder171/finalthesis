@@ -40,7 +40,16 @@ def detect_systolic_peaks(filtered_signal, fs, min_bpm=40, max_bpm=180):
         
     # 2. Adaptive threshold based on overall signal energy
     mean_energy = sum(envelope) / len(envelope) if envelope else 0.0
-    threshold = mean_energy * 1.2
+    
+    # Absolute physiological threshold:
+    # A still table has RMS noise < 0.015 m/s^2 (energy < 0.0002).
+    # Genuine chest recoil produces energy > 0.0008 - 0.025 m^2/s^4.
+    # If overall energy is below MIN_CARDIAC_ENERGY, the device is on a table/still surface.
+    MIN_CARDIAC_ENERGY = 0.00045
+    if mean_energy < MIN_CARDIAC_ENERGY:
+        return []
+        
+    threshold = max(MIN_CARDIAC_ENERGY * 1.5, mean_energy * 1.2)
     
     # 3. Peak localization
     peaks = []

@@ -42,6 +42,20 @@ def compute_signal_quality(signal, fs):
             "reason": "Flatline / sensor disconnected"
         }
         
+    # Check for stationary surface / table (MEMS thermal noise floor)
+    # Human chest recoil produces std_dev > 0.035 m/s^2.
+    # An idle table has std_dev < 0.022 m/s^2.
+    if std_dev < 0.025:
+        return {
+            "sqi_score": 0.0,
+            "quality_grade": "NO_PULSE",
+            "is_usable": False,
+            "reason": "No pulse detected (Device stationary on table/surface)",
+            "kurtosis": 0.0,
+            "skewness": 0.0,
+            "std_dev": round(std_dev, 4)
+        }
+        
     # 2. Kurtosis (measures impulsiveness / peak sharpness)
     # Cardiac pulses typically exhibit kurtosis > 3.0 (leptokurtic)
     m4 = sum((x ** 4) for x in centered) / n
