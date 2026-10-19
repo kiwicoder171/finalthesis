@@ -494,10 +494,26 @@
     }
 
     function updateDashboard(data) {
+      const f = data.feature_vector || {};
+      const isUsable = f.is_usable !== false && f.quality_grade !== 'NO_PULSE' && f.quality_grade !== 'NOISY_REJECT';
+
+      if (!isUsable) {
+        connDot.className = 'status-dot sim';
+        connText.innerText = f.reason || 'Artifact / Stationary Surface Detected';
+        valBpm.innerText = '--';
+        valPpi.innerHTML = `-- <span style="font-size:14px;">ms</span>`;
+        valRmssd.innerHTML = `-- <span style="font-size:14px;">ms</span>`;
+        valLfHf.innerText = '--';
+        valRisk.innerText = f.quality_grade === 'NO_PULSE' ? 'NO PULSE' : 'REJECTED';
+        valRisk.style.color = '#ef4444';
+        riskFill.style.width = '0%';
+        renderVanDerPol('phaseCanvas', 0.0);
+        return;
+      }
+
       connDot.className = 'status-dot active';
       connText.innerText = 'Synchronized • Data Ingested';
 
-      const f = data.feature_vector || {};
       valBpm.innerText = f.mean_hr_bpm !== undefined ? f.mean_hr_bpm : '--';
       valPpi.innerHTML = `${f.mean_ppi_ms !== undefined ? f.mean_ppi_ms : '--'} <span style="font-size:14px;">ms</span>`;
       valRmssd.innerHTML = `${f.rmssd_ms !== undefined ? f.rmssd_ms : '--'} <span style="font-size:14px;">ms</span>`;

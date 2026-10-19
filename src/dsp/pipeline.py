@@ -49,15 +49,51 @@ def process_cardiac_recording(timestamps, signal, fs=None, mode="scg"):
         filtered_cardiac = filter_scg_cardiac(ac_signal, fs)
         filtered_resp = filter_scg_respiration(ac_signal, fs)
         
-    # 4. Adaptive Systolic Peak Detection
+    # 4. Signal Quality Assessment (SQI)
+    quality_metrics = compute_signal_quality(signal, fs)
+    
+    # If signal is rejected as NO_PULSE, ambient noise, or excessive motion corruption:
+    if not quality_metrics.get("is_usable", True):
+        return {
+            "success": True,
+            "fs": fs,
+            "duration": timestamps[-1] - timestamps[0],
+            "filtered_cardiac": filtered_cardiac,
+            "filtered_resp": filtered_resp,
+            "peak_indices": [],
+            "clean_ppi_ms": [],
+            "feature_vector": {
+                "mean_hr_bpm": 0.0,
+                "mean_ppi_ms": 0.0,
+                "sdnn_ms": 0.0,
+                "rmssd_ms": 0.0,
+                "pnn50_pct": 0.0,
+                "vlf_power": 0.0,
+                "lf_power": 0.0,
+                "hf_power": 0.0,
+                "lf_hf_ratio": 0.0,
+                "lf_nu": 0.0,
+                "hf_nu": 0.0,
+                "sd1": 0.0,
+                "sd2": 0.0,
+                "sd_ratio": 0.0,
+                **quality_metrics,
+                "sample_count": n_samples,
+                "duration_sec": round(timestamps[-1] - timestamps[0], 2),
+                "sampling_rate_hz": round(fs, 2),
+                "detected_beat_count": 0,
+                "modality": mode.upper()
+            }
+        }
+        
+    # 5. Adaptive Systolic Peak Detection (Only for verified physiological signals)
     peak_indices = detect_systolic_peaks(filtered_cardiac, fs)
     raw_ppi, clean_ppi, clean_times = compute_peak_intervals(peak_indices, timestamps)
     
-    # 5. Clinical Feature Extraction
+    # 6. Clinical Feature Extraction
     time_metrics = extract_time_domain_features(clean_ppi)
     freq_metrics = extract_frequency_domain_features(clean_ppi)
     poincare_metrics = extract_poincare_descriptors(clean_ppi)
-    quality_metrics = compute_signal_quality(signal, fs)
     
     # 6. Combined Feature Vector (Strict Handoff to Member C)
     feature_vector = {
