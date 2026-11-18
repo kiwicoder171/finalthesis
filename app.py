@@ -113,6 +113,28 @@ class CardioServerHandler(BaseHTTPRequestHandler):
                 self.send_file("static/dashboard.html", "text/html")
             return
 
+        # Public Pages & Visualizers
+        route_map = {
+            "/inspect": "public/scg_inspection_dashboard.html",
+            "/architecture": "public/architecture.html",
+            "/anatomy": "public/mems_scg_anatomy.html",
+            "/report-approval": "public/advisor_approval_report.html",
+            "/report-handbook": "public/member_b_handbook_and_report.html",
+            "/portal": "public/index.html"
+        }
+        if path in route_map:
+            self.send_file(route_map[path], "text/html")
+            return
+
+        # Direct PDF downloads
+        if path.endswith(".pdf"):
+            pdf_path = os.path.join("public", path.lstrip("/"))
+            if not os.path.exists(pdf_path):
+                pdf_path = os.path.join("docs", path.lstrip("/"))
+            if os.path.exists(pdf_path):
+                self.send_file(pdf_path, "application/pdf")
+                return
+
         # API: Server Info
         if path == "/api/server_info":
             lan_ip = get_lan_ip()

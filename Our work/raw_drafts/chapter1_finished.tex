@@ -1,0 +1,181 @@
+\chapter{INTRODUCTION}
+
+\section{Background}
+
+Cardiovascular diseases and cardiac rhythm disorders are important healthcare concerns because changes in heart rhythm and autonomic regulation can be associated with adverse cardiovascular outcomes. Electrocardiography (ECG) is widely used to examine the heart's electrical activity, while Holter monitors allow cardiac activity to be recorded over longer periods. However, conventional ECG monitoring generally requires dedicated electrodes and recording equipment. These requirements can make continuous monitoring less convenient outside clinical settings. This motivates the development of accessible monitoring approaches that can obtain useful cardiac information using devices that people already own, such as smartphones.
+
+Smartphone-based cardiac monitoring can use physiological signals that are related to the cardiac cycle without directly recording a conventional ECG waveform. Photoplethysmography (PPG) estimates changes in peripheral blood volume from variations in light detected by a camera, while seismocardiography (SCG) records small mechanical vibrations of the chest associated with cardiac activity. In the proposed system, PPG is acquired using a smartphone's rear camera and LED flash, while SCG is acquired using the built-in three-axis micro-electromechanical system (MEMS) accelerometer placed against the sternum. These modalities offer complementary ways to observe cardiac activity using consumer hardware, although their measurements can be affected by signal noise, sensor limitations, posture, fingertip pressure, and acquisition timing.
+
+Raw signals from mobile sensors require processing before reliable beat timing can be estimated. Digital filtering can reduce baseline drift and unwanted frequency components, and systolic-peak detection can identify pulse events from which peak-to-peak intervals (PPIs) are calculated. These intervals can be used to derive pulse rate variability (PRV) features, including the standard deviation of intervals (SDNN), the root mean square of successive differences (RMSSD), and frequency-domain measures. Such features can provide information about beat-to-beat variability and autonomic regulation. However, PRV is derived from peripheral pulse timing or mechanical cardiac signals rather than the electrical R--R intervals measured by ECG. Its relationship with ECG-derived heart rate variability can depend on the measurement modality and recording conditions, so the proposed system should be evaluated as a mobile cardiac-monitoring prototype rather than treated as a replacement for diagnostic ECG.
+
+Previous work provides relevant foundations for the proposed processing and simulation stages. Lee, Lee, and Yoo's single-channel ECG enhancement approach uses time-delay embedding and independent component analysis (ICA) to improve signal quality and support QRS-complex detection, illustrating the challenges of extracting cardiac events from noisy, limited-channel signals \cite{paper_1}. Quiroz-Juárez et al. (2019) developed a cardiac conduction model based on coupled nonlinear oscillators to generate ECG signals with realistic heart-rate dynamics and pathological patterns. Their work provides a relevant foundation for the proposed project's dynamical simulation component \cite{paper_2}. In combination, these studies illustrate that cardiac monitoring involves both reliable signal processing and models that can represent changing cardiac dynamics.
+
+Despite these developments, the proposal identifies three gaps that this project will address. First, mobile monitoring applications commonly emphasize heart-rate values or summary scores, leaving a gap between a static measurement and a simulation of how cardiac rhythm may respond to a hypothetical autonomic stress challenge. Second, a system that combines two smartphone sensing modalities with transparent signal processing and interpretable machine-learning outputs could improve the robustness and reproducibility of mobile cardiac analysis compared with relying on a single sensing modality. Third, built-in smartphone accelerometers are not always fully utilized for cardiac sensing, despite their potential to capture mechanical chest vibrations without additional external sensors. These are the specific engineering gaps targeted by the proposed work; the project does not aim to perform multi-lead ECG morphology analysis or provide a clinical diagnosis.
+
+To address these gaps, this project proposes an integrated mobile sensing and cardiac digital-twin pipeline. The system will acquire PPG and SCG signals, apply digital filtering and adaptive peak detection, calculate PRV features, and use supervised machine-learning models to estimate autonomic stress and identify potential pulse-irregularity patterns. The resulting measurements and risk estimates will then inform a coupled nonlinear cardiac oscillator model, such as a Van der Pol/FitzHugh--Nagumo-based model, to visualize simulated rhythm responses under controlled stress conditions. Public datasets will be used for benchmarking and evaluation where appropriate. The principal research questions are whether smartphone sensors can provide usable beat-to-beat timing under resting conditions, whether a multi-tier sensing approach can improve robustness when a signal is unreliable, and how measured PRV features and estimated risk can be connected to a dynamical simulation. The intended contribution is an open, reproducible engineering prototype that connects mobile signal acquisition, signal processing, interpretable risk estimation, and in-silico rhythm simulation. It is not intended to replace clinical ECG monitoring or provide medical diagnoses.
+
+\section{Objective}
+\begin{enumerate}
+	\item To develop a real-time ECG acquisition system using the AD8232 sensor and an ESP32/STM32 microcontroller, with PhysioNet MIT-BIH recordings as a replay fallback.
+	\item To develop a digital signal processing engine that filters the ECG, detects R-peaks with the Pan-Tompkins algorithm, and removes outliers and ectopic beats.
+	\item To extract heart rate variability (HRV) features (SDNN, RMSSD, pNN50 and LF/HF ratio) from the detected R-peaks.
+	\item To identify arrhythmia risk by classifying ECG segments as normal or arrhythmic using Decision Tree and Logistic Regression models trained on the MIT-BIH dataset.
+	\item To simulate how heart rhythm changes under increasing stress using a Vander Pol oscillator model.
+	\item To integrate all four stages into one application that shows live signals, HRV features, risk results and the stress simulation together.
+\end{enumerate}
+
+\section{Scope}
+\noindent\hspace{1.5em}The boundaries of this project are defined along five
+dimensions: the elements explicitly considered and excluded, the hard
+constraints that cannot be undertaken within the project, the technical
+limitations inherent to the chosen approach, the operating ranges of the data
+and time parameters, and the specific platforms and devices employed.
+
+\begin{enumerate}
+	\item \textbf{What is considered and what is not considered in this project.}
+	\begin{itemize}
+		\item \textit{Inclusions:} Acquisition of cardiac signals using built-in
+		smartphone sensors; primary evaluation of Seismocardiography (SCG)
+		via the 3-axis MEMS accelerometer placed flat on the sternum during
+		resting postures; secondary fallback to optical contact
+		photoplethysmography (PPG) via the rear camera and LED flashlight;
+		tertiary fallback to public clinical benchmark data (PhysioNet
+		MIT-BIH, WESAD, CapnoBase). Zero-phase Butterworth filtering,
+		systolic peak detection, time- and frequency-domain PRV feature
+		extraction, dual-target machine learning classification, and
+		coupled Van der Pol ordinary differential equation (ODE) rhythm
+		simulation.
+		\item \textit{Exclusions:} Invasive cardiovascular monitoring (arterial
+		lines); high-motion ambulatory exercise testing, where running
+		motion artifacts overwhelm unanchored smartphone sensors; and
+		multi-lead diagnostic ECG morphology analysis (for example,
+		ST-segment elevation for acute infarction).
+	\end{itemize}
+	
+	\item \textbf{What cannot be done or is excluded from this project.}
+	\begin{itemize}
+		\item \textit{Non-diagnostic disclaimer:} The software cannot provide
+		medical diagnoses, clinical prescriptions, or formal therapeutic
+		interventions. It is strictly an engineering research and
+		decision-support prototype.
+		\item \textit{Regulatory certification:} The project cannot achieve
+		FDA/CE medical device hardware certification within the academic
+		timeframe.
+		\item \textit{Demographic boundaries:} Pediatric and neonatal
+		populations are excluded; validation is restricted to adult
+		physiological ranges.
+	\end{itemize}
+	
+	\item \textbf{Limitations of the approach.}
+	\begin{itemize}
+		\item \textit{Sensor noise floors:} Consumer-grade smartphone MEMS
+		accelerometers exhibit intrinsic thermal noise and variable
+		quantization drift compared with clinical-grade seismometers.
+		\item \textit{Posture dependence:} Sternal SCG acquisition strictly
+		requires supine (lying flat) or semi-recumbent ($45^{\circ}$)
+		resting postures to isolate cardiac micro-$g$ accelerations from
+		gravitational reorientation.
+		\item \textit{Optical contact sensitivity:} The camera PPG fallback is
+		sensitive to excessive fingertip pressure, which blanches
+		capillary beds, and to skin-tone absorption variations.
+		\item \textit{Mobile OS timestamp jitter:} Mobile operating systems
+		(Android/iOS) introduce non-deterministic thread scheduling and
+		variable inter-frame timestamp jitter, which must be compensated
+		for via cubic-spline interpolation.
+	\end{itemize}
+	
+	\item \textbf{Ranges of data, date, and time parameters.}
+	\begin{table}[!ht]
+		\footnotesize
+		\centering
+		\caption{Operational ranges, timing parameters, and schedule}
+		\label{tab:ranges}
+		\begin{tabular}{|p{4.0cm}|p{9.0cm}|}
+			\hline
+			\textbf{Parameter} & \textbf{Specified Range} \\ \hline
+			Heart rate range & 40 bpm to 180 bpm (fundamental cardiac frequency
+			0.67 Hz to 3.0 Hz) \\ \hline
+			Peak-to-peak interval (PPI) window & 333 ms to 1500 ms
+			(physiological bounds for outlier rejection) \\ \hline
+			Accelerometer sampling rate & 100 Hz to 200 Hz (IMU, 3-axis MEMS) \\ \hline
+			Camera sampling rate & 30 FPS or 60 FPS; resampled to a 4.0 Hz uniform
+			grid for spectral PRV analysis \\ \hline
+			Measurement durations & 30 s for instantaneous pulse rate; 60 s to
+			120 s for short-term statistical and spectral PRV (SDNN, RMSSD,
+			LF/HF) \\ \hline
+			Academic schedule & Two semesters, 2026--2027
+			(see Table~\ref{tab: your-table}) \\ \hline
+		\end{tabular}
+	\end{table}
+	
+	\item \textbf{Platforms and devices used specifically in this project.}
+	\begin{itemize}
+		\item \textit{Mobile sensing hardware:} Commercially available iOS
+		(iPhone with CoreMotion/AVFoundation) and Android
+		(SensorManager/Camera2 API) devices containing 3-axis MEMS
+		accelerometers and rear LED flash units.
+		\item \textit{Mobile application layer:} Cross-platform Flutter /
+		React Native client providing native camera and IMU hardware
+		bindings and local WebSocket transport.
+		\item \textit{Computation engine:} Python 3.9+ backend (FastAPI,
+		WebSockets, NumPy, SciPy, Scikit-Learn, XGBoost).
+		\item \textit{Simulation environment:} Python Runge--Kutta ODE numerical
+		solvers (\texttt{scipy.integrate.solve\_ivp} RK45), validated
+		against MATLAB/Simulink biophysical models.
+	\end{itemize}
+\end{enumerate}
+
+\section{Expected Results}
+\noindent\hspace{1.5em}(Indicate expected outcomes of the project)
+\begin{enumerate}
+	\item \textbf{The proposed multi-modal mobile health pipeline} integrating SCG and PPG sensing with digital twin simulation, achieving real-time PRV extraction with computational latency below 500 ms.
+	
+	\item \textbf{The proposed system can identify} acute autonomic stress states and potential arrhythmia indicators with classification accuracy ≥≥ 85 percent, providing an explainable risk vector for clinical decision support.
+	
+	\item \textbf{The sensing accuracy increases} through multi-tier fallback architecture, reducing signal acquisition failure rates to near-zero under resting conditions.
+	
+	\item \textbf{The dynamical simulation model reduces} the gap between static heart rate measurement and predictive cardiac rhythm analysis by providing visualizable bifurcation diagrams and stability assessments under simulated stress conditions.
+	
+	\item \textbf{An open-source, reproducible benchmark} validating mobile PRV metrics against WESAD and CapnoBase clinical datasets, with published correlation statistics and validation protocols.
+\end{enumerate}
+
+\section{Timeline}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}	
+\begin{table}[!ht]
+	\footnotesize
+	\sloppy
+	\centering
+	\caption{Project Timeline}
+	\label{tab: your-table} %for cross-reference
+	\begin{tabular}{|p{2.15cm}|c|c|c|c|c|c|c|c|c|c|c|c|}
+		\hline
+		\multicolumn{1}{|c|}{}& \multicolumn{12}{c|}{\textbf{Timeline}} \\ \cline{2-13} 
+		\multicolumn{1}{|c|}{}& \multicolumn{3}{c|}{\textbf{2026}} & \multicolumn{9}{c|}{\textbf{2027}} \\ \cline{2-13} 
+		\multicolumn{1}{|c|}{\multirow{-3}{2cm}{\textbf{Plan}}} & \textbf{Oct} & \textbf{Nov} & \textbf{Dec} & \textbf{Jan} & \textbf{Feb} & \textbf{Mar} & \textbf{Apr} & \textbf{May} & \textbf{Jun} & \textbf{Jul} & \textbf{Aug} & \textbf{Sep} \\ \hline
+		1: Literature review \& scope & 
+		\cellcolor[HTML]{000000} & 
+		\cellcolor[HTML]{000000} & & & & & & & & & & \\ \hline
+		2: ECG \& dataset study & & 
+		\cellcolor[HTML]{000000} & 
+		\cellcolor[HTML]{000000} & & & & & & & & & \\ \hline
+		3: System design \& preprocessing &  & & 
+		\cellcolor[HTML]{000000} &
+		\cellcolor[HTML]{000000} & & & & & & & & \\ \hline
+		4: HR detection algorithm & & & & & 
+		\cellcolor[HTML]{000000} & 
+		\cellcolor[HTML]{000000} & & & & & & \\ \hline
+		5: Disease detection model & & & & & & 
+		\cellcolor[HTML]{000000} &
+		\cellcolor[HTML]{000000} & & & & & \\ \hline
+		6: Simulation \& integration & & & & & & & & 
+		\cellcolor[HTML]{000000} &
+		\cellcolor[HTML]{000000} & & & \\ \hline
+		7: Validation \& performance & & & & & & & & & & 
+		\cellcolor[HTML]{000000} &
+		\cellcolor[HTML]{000000} & \\ \hline
+		8: Documentation \& presentation & & & & & & & & & & & & 
+		\cellcolor[HTML]{000000} \\ \hline
+	\end{tabular}
+\end{table}

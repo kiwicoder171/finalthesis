@@ -1,0 +1,151 @@
+\chapter{LITERATURE REVIEW}
+
+This chapter provides a comprehensive review of prior research and existing engineering works in non-invasive mobile cardiovascular monitoring, digital signal processing, arrhythmia classification, and dynamical cardiac rhythm modeling. To address the fundamental objectives of our thesis, five directly related studies from the literature are critically analyzed. For each work, this review details: (1) the proposed methodology, (2) the datasets used, (3) the performance metrics evaluated, (4) the primary experimental findings, (5) the specific techniques that can be adopted (stolen) for our project, and (6) the fundamental differences and engineering advantages that distinguish our proposed mobile cardiac platform. Finally, a comparative synthesis table summarizes the state of the art relative to our work.
+
+\section{Development of a New Signal Processing Algorithm Based on Independent Component Analysis for Single-Channel Cardiac Data \cite{lee2004single}}
+
+\textbf{Proposed Method:} Lee, Lee, and Yoo \cite{lee2004single} addressed the fundamental limitation that Independent Component Analysis (ICA) conventionally requires multi-channel signal inputs to separate independent source signals from noise. To overcome this constraint in single-channel cardiac recordings, the authors developed a virtual multi-channel reconstruction technique using \textit{time-delay embedding}. A single-channel recording was transformed into an artificial 20-channel matrix by generating successive delayed versions (1 to 20 samples delay). The FastICA fixed-point algorithm was then applied across this constructed matrix to isolate the underlying cardiac waveform from severe in-band noise. To detect QRS peaks from the reconstructed output, the Hilbert transform was computed to obtain the analytic signal, from which the instantaneous phase and instantaneous frequency were derived. A level-3 discrete wavelet transform approximation was subsequently applied to the instantaneous frequency signal for final systolic event localization.
+
+\textbf{Data Used:} The algorithm was evaluated using standard ambulatory recordings from the clinical PhysioNet MIT-BIH Arrhythmia Database, with specific focus on challenging records (e.g., Record 108 and Record 117) that exhibit severe baseline wander, respiratory drift, and intense muscular motion artifacts that defeat conventional analog and digital bandpass filters.
+
+\textbf{Performance Metrics Used:} The study evaluated:
+\begin{itemize}
+    \item QRS detection rate ($\%$) and error count across heavily corrupted records.
+    \item Signal-to-Noise Ratio improvement ($\Delta\text{SNR}$ in dB).
+    \item Processing latency and sensitivity to the delay parameter $D$ ($1\le D \le 20$ samples).
+\end{itemize}
+
+\textbf{Key Findings:} The authors discovered that the time-delay embedding parameter critically governs performance: an excessive number of delayed sample points causes oversmoothing and loss of sharp peak morphology, whereas too few delay channels fail to provide sufficient statistical independence for FastICA separation. For signals sampled at $360\text{ Hz}$, an optimal delay of 10 to 15 samples yielded superior QRS detection compared to standard digital filtering, fully resolving peaks in Record 108 without false positive triggers.
+
+\textbf{What We Can Steal (Adopt):} 
+\begin{enumerate}
+    \item \textit{Hilbert Transform Energy Envelope:} We adopt the Hilbert transform approach to convert oscillatory raw chest vibrations into an instantaneous analytic signal envelope, creating prominent positive unipolar peaks that simplify adaptive thresholding.
+    \item \textit{Instantaneous Frequency Representation:} The concept of using instantaneous phase transitions to confirm true systolic aortic opening (AO) events informs our Stage 2 peak verification logic, helping reject motion-induced spikes.
+\end{enumerate}
+
+\textbf{How We Are Different:} Lee et al. focused strictly on electrical single-channel ECG acquired via chest electrodes using an offline, computationally intensive iterative FastICA algorithm. In contrast, our project targets mechanical sternal seismocardiography (SCG) captured directly via smartphone MEMS accelerometers, utilizing a zero-phase 4th-order Butterworth bandpass filter ($0.5\text{--}40\text{ Hz}$) that executes in under $50\text{ ms}$ on mobile devices, reinforced by physiological energy gating and real-time user stillness guidance.
+
+\newpage
+\section{Cardiac Conduction Model for Generating 12-Lead Signals With Realistic Heart Rate Dynamics \cite{quiroz2018cardiac}}
+
+\textbf{Proposed Method:} Quiroz-Ju{\'a}rez et al. \cite{quiroz2018cardiac} developed a biophysically grounded, heterogeneous nonlinear oscillator framework designed to simulate realistic 12-lead electrocardiograms incorporating natural heart rate variability (HRV), Mayer waves, and respiratory sinus arrhythmia (RSA). The authors modeled the natural cardiac pacemakers---the sinoatrial (SA) node, atrioventricular (AV) node, and His-Purkinje (HP) system---using modified Van der Pol oscillators coupled with time-delayed velocity terms. The depolarization and repolarization of atrial and ventricular myocardial tissues were simulated using coupled FitzHugh--Nagumo equations, building upon the foundational relaxation oscillation principles of van der Pol and van der Mark \cite{vanderpol1928}. Realistic autonomic variability was injected by modulating the SA node's intrinsic frequency parameter $f_1$ with an artificial bimodal RR-tachogram containing spectral peaks at $0.1\text{ Hz}$ (sympathetic Mayer waves) and $0.25\text{ Hz}$ (vagal respiratory RSA). A supervised perceptron-like learning algorithm fitted the model output to real subject recordings.
+
+\textbf{Data Used:} The framework was fitted and validated against real 12-lead clinical ECG recordings from 13 human subjects (9 male, 4 female, aged 26--69) in the PhysioNet database, alongside documented pathological tracings (e.g., Wellens syndrome Type 1 ischemia and anterior myocardial infarctions).
+
+\textbf{Performance Metrics Used:} The model was quantitatively evaluated using:
+\begin{itemize}
+    \item Mean Absolute Error ($\text{MAE}$) between simulated and empirical lead waveforms across 12 leads.
+    \item Convergence rate of the perceptron fitting algorithm across optimization epochs.
+    \item Spectral fidelity: power spectral density match across VLF, LF ($0.04\text{--}0.15\text{ Hz}$), and HF ($0.15\text{--}0.40\text{ Hz}$) autonomic frequency bands.
+\end{itemize}
+
+\textbf{Key Findings:} The model demonstrated that coupling nonlinear Van der Pol limit-cycle pacemakers with FitzHugh--Nagumo excitable media can accurately reproduce Einthoven's triangle lead geometries, realistic QT intervals, and complex pathological morphologies (such as T-wave inversions and ST-segment elevations). The perceptron algorithm achieved low MAE convergence within a finite number of iterations ($<50$ epochs).
+
+\textbf{What We Can Steal (Adopt):}
+\begin{enumerate}
+    \item \textit{PRV-to-Oscillator Parameter Mapping:} We directly borrow their mechanism of dynamically mapping extracted HRV/PRV frequency features (LF/HF sympathovagal ratio and RMSSD) into the intrinsic oscillator frequency $f_1$ and non-linear damping coefficient $\mu$.
+    \item \textit{Autonomic Stress Injection:} We utilize their dual-frequency modulation approach (Mayer wave + RSA) to represent simulated sympathetic stress challenges in our Stage 4 in-silico digital twin.
+\end{enumerate}
+
+\textbf{How We Are Different:} Quiroz-Ju{\'a}rez et al. created a static generative simulation tool requiring 12-lead clinical input parameters. Our system functions as an interactive, real-time cyber-physical digital twin that takes live, single-device mobile PRV telemetry (measured directly from the smartphone's internal MEMS accelerometer placed flat on the sternum) and dynamically demonstrates limit-cycle stability breakdown, period-doubling bifurcations, and arrhythmia vulnerability under simulated autonomic stress.
+
+\newpage
+\section{Soft Real-Time Smartphone Cardiac Signal Processing \cite{tsamis2017soft}}
+
+\textbf{Proposed Method:} Tsamis et al. \cite{tsamis2017soft} investigated the computational feasibility, latency constraints, and power efficiency of executing real-time cardiac signal filtering and QRS detection entirely on mobile smartphone hardware. The authors implemented a mobile processing pipeline comprising a bandpass integer filter, derivative operator, squaring function, and a moving-window integrator (the Pan--Tompkins algorithm \cite{pan1985real}). They analyzed performance trade-offs across native C/C++ implementations versus higher-level Java/Android frameworks, assessing thread contention between sensor I/O interrupts and DSP numerical computation.
+
+\textbf{Data Used:} Benchmarks were performed using 30-minute standard clinical ECG records from the PhysioNet MIT-BIH Arrhythmia Database, streamed over Bluetooth Low Energy (BLE) to simulate real-time sensor ingestion, alongside synthetic test signals with controlled noise levels.
+
+\textbf{Performance Metrics Used:} The study rigorously evaluated:
+\begin{itemize}
+    \item Execution latency per sample buffer ($\text{ms}$).
+    \item CPU utilization percentage ($\%$) across single-core and multi-core configurations.
+    \item Memory footprint ($\text{MB}$) and garbage collection interrupt frequencies.
+    \item Processing throughput ($\text{samples/second}$).
+    \item Battery consumption rate ($\%\text{ per hour}$).
+\end{itemize}
+
+\textbf{Key Findings:} The authors showed that smartphone processors easily support real-time cardiac filtering with latency under $10\text{ ms}$ per 1-second buffer when circular ring buffers are utilized. However, naive buffer re-allocation caused frequent garbage collection pauses, which introduced timing jitter into RR-interval measurements. The study demonstrated that fixed-size pre-allocated circular buffers are mandatory to maintain soft real-time execution guarantees.
+
+\textbf{What We Can Steal (Adopt):}
+\begin{enumerate}
+    \item \textit{Pre-allocated Ring Buffers:} We adopt their recommendation of using fixed-length circular window buffers ($30\text{--}60\text{ s}$) in our mobile data acquisition layer, eliminating dynamic heap allocations that introduce timestamp jitter.
+    \item \textit{Latency Benchmarking Protocol:} We adopt their execution latency metric, setting a strict $<500\text{ ms}$ total processing budget from raw buffer completion to full PRV feature extraction.
+\end{enumerate}
+
+\textbf{How We Are Different:} Tsamis et al. required an external peripheral ECG hardware sensor communicating over Bluetooth, creating physical hardware dependencies. In our project, all signal acquisition is entirely self-contained within the smartphone, capturing sternal SCG vibrations via internal MEMS accelerometers, eliminating external sensor hardware completely.
+
+\newpage
+\section{The Design of Mobile Cardiac Monitoring Systems \cite{chai2013mobile}}
+
+\textbf{Proposed Method:} Chai \cite{chai2013mobile} presented an architectural design for a portable wireless cardiac telemetry and event-detection system. The design coupled a miniature wearable analog front-end (instrumentation amplifier, 50 Hz notch filter, and bandpass filter) with a mobile smartphone client. The smartphone served as an intelligent edge processor that executed real-time peak detection, calculated instantaneous heart rate, and compared extracted metrics against predefined clinical thresholds. When abnormal rate deviations (tachycardia $>100\text{ bpm}$ or bradycardia $<60\text{ bpm}$) were detected, the system triggered automated cellular alerts and uploaded recorded waveform packets to a central server.
+
+\textbf{Data Used:} The system was validated using synthesized ECG signals generated by a certified patient simulator (Fluke MPS450) alongside short recordings from healthy human volunteers during resting and walking conditions.
+
+\textbf{Performance Metrics Used:} The evaluation focused on:
+\begin{itemize}
+    \item Sensitivity ($\text{Sens} = \frac{\text{TP}}{\text{TP} + \text{FN}}$) and Positive Predictivity ($+\text{P} = \frac{\text{TP}}{\text{TP} + \text{FP}}$) of R-peak detection.
+    \item Heart rate measurement error ($\text{BPM}$ deviation from simulator ground truth).
+    \item Wireless transmission packet loss rate ($\%$) and retransmission latency.
+\end{itemize}
+
+\textbf{Key Findings:} Chai demonstrated that distributed edge processing on mobile phones significantly reduces cellular transmission bandwidth compared to raw continuous streaming. The system achieved a peak detection sensitivity exceeding $96\%$ under resting conditions, but performance degraded sharply during walking activities due to electrode-skin interface motion artifacts.
+
+\textbf{What We Can Steal (Adopt):}
+\begin{enumerate}
+    \item \textit{Decoupled Edge-Server Architecture:} We borrow Chai's concept of decoupled modular stages, processing sensor acquisition, filtering, and feature extraction locally on the edge, while offloading complex simulation and model visualization.
+    \item \textit{Physiological Outlier Clamping:} We adopt explicit physiological bounds ($333\text{ ms} \le \text{PPI} \le 1500\text{ ms}$, corresponding to $40\text{--}180\text{ bpm}$) to prevent erroneous artifact spikes from corrupting downstream statistics.
+\end{enumerate}
+
+\textbf{How We Are Different:} Chai's system relies on conventional chest electrodes and custom analog acquisition hardware. Our project eliminates dedicated external hardware by utilizing the phone's native MEMS accelerometer. Furthermore, while Chai implemented only simple rule-based rate thresholds, our system incorporates supervised machine learning classifiers to distinguish complex heart rhythm abnormalities from normal sinus rhythm, complemented by a dynamical digital-twin simulation.
+
+\newpage
+\section{Monitoring of Cardiovascular Condition via Mobile Phones Using Noise Variance \cite{aliev2012monitoring}}
+
+\textbf{Proposed Method:} Aliev et al. \cite{aliev2012monitoring} proposed a robust mathematical framework for mobile cardiovascular monitoring based on statistical noise variance estimation. Recognizing that mobile cardiac recordings are frequently contaminated by uncontrollable environmental and physiological noise, the authors argued that attempting to clean corrupted signals with static filters often introduces deceptive waveform distortions. Instead, they developed an algorithm that continuously computes the cross-correlation variance of high-frequency background noise components. When the estimated noise variance $\sigma_{\varepsilon}^2$ exceeds an acceptable threshold, the signal segment is flagged as unviable, preventing false diagnostic outputs.
+
+\textbf{Data Used:} The methodology was tested using digitized electrocardiograms from coronary care patients exhibiting varying degrees of myocardial ischemia and cardiac arrhythmias, superimposed with calibrated white Gaussian noise and muscular tremor artifacts.
+
+\textbf{Performance Metrics Used:} Evaluated metrics included:
+\begin{itemize}
+    \item Signal-to-Noise Ratio ($\text{SNR}$ in dB) estimation accuracy.
+    \item Diagnostic reliability index ($R_D$) comparing filtered noisy signals against true baseline records.
+    \item False positive rate ($\text{FPR}$) of arrhythmia alarms under varying noise levels.
+\end{itemize}
+
+\textbf{Key Findings:} The authors proved that calculating noise variance prior to feature extraction drastically reduces false clinical alarms. Systems that attempted to detect peaks without variance gating exhibited false positive alarm rates exceeding $30\%$ in high-noise environments, whereas variance-gated processing reduced false alarms to below $4\%$.
+
+\textbf{What We Can Steal (Adopt):}
+\begin{enumerate}
+    \item \textit{Absolute Physiological Energy Gating:} We directly adopt their noise variance principle in our Stage 2 DSP pipeline by implementing an absolute energy gate ($0.005\text{ m/s}^2 \le \sigma_{raw} \le 0.50\text{ m/s}^2$) that immediately rejects stationary surface vibrations or excessive subject movement.
+    \item \textit{Deterministic Signal Quality Index (SQI):} We use quantitative SNR estimation ($\ge 12\text{ dB}$) and variance boundaries as the deterministic gating trigger that confirms clinical validity before passing SCG intervals to machine learning classification.
+\end{enumerate}
+
+\textbf{How We Are Different:} Aliev et al. used noise variance purely as a passive offline metric on external multi-lead ECG recordings. In contrast, our platform uses signal quality gating as an active edge controller directly on consumer smartphone hardware: when raw sternal SCG fails physiological variance bounds or exhibits low SNR, the system immediately rejects corrupted segments and provides real-time posture and stillness prompts to guarantee artifact-free feature extraction.
+
+\newpage
+\section{Comparative Synthesis of Related Works}
+
+Table~\ref{tab:literature_comparison} provides a comprehensive comparative matrix synthesizing the five reviewed works alongside our proposed senior thesis platform.
+
+\begin{table}[!ht]
+\footnotesize
+\sloppy
+\centering
+\caption{Comprehensive Comparison Between Related Works and Proposed Platform}
+\label{tab:literature_comparison}
+\begin{tabular}{|p{2.3cm}|p{2.1cm}|p{2.1cm}|p{2.2cm}|p{2.1cm}|p{2.2cm}|}
+\hline
+\textbf{Study / Work} & \textbf{Sensors \& Modality} & \textbf{Noise Gating \& Filtering} & \textbf{Classification / Target} & \textbf{Dynamical Simulation} & \textbf{Key Metrics Evaluated} \\ \hline
+\textbf{Lee et al. (2004) \cite{lee2004single}} & Single-lead ECG & Time-delay FastICA, Hilbert transform & QRS peak detection only & None & QRS accuracy (\%), $\Delta$SNR (dB) \\ \hline
+\textbf{Quiroz-Ju{\'a}rez et al. (2018) \cite{quiroz2018cardiac}} & 12-lead ECG & Additive Gaussian, baseline wander & Waveform morphological fitting & Coupled Van der Pol + FHN ODEs & Waveform MAE across 12 leads \\ \hline
+\textbf{Tsamis et al. (2017) \cite{tsamis2017soft}} & Wearable ECG (BLE stream) & Integer bandpass, Pan--Tompkins & Peak detection \& HR extraction & None & Latency (ms), CPU (\%), Memory (MB) \\ \hline
+\textbf{Chai (2013) \cite{chai2013mobile}} & Custom ECG front-end & Analog notch, bandpass filter & Rule-based rate thresholds (tachy/brady) & None & Sensitivity (\%), Positive predictivity (\%) \\ \hline
+\textbf{Aliev et al. (2012) \cite{aliev2012monitoring}} & Mobile phone ECG & Noise variance ($\sigma^2$) gating & Cardiac status reliability index & None & False positive alarm rate (\%), SNR (dB) \\ \hline
+\textbf{Our Proposed Platform} & \textbf{Sternal MEMS SCG (Zero external hardware, internal accelerometer)} & \textbf{Zero-phase Butterworth (0.5--40 Hz), Physiological Energy Gate, Stillness Guidance} & \textbf{Supervised ML: Normal Sinus vs. Heart Problem / Arrhythmia \& Stress} & \textbf{Coupled Van der Pol ODE rhythm bifurcation model} & \textbf{Accuracy, Sensitivity, Specificity, F1, MAE ($<3$ bpm), Latency ($<500$ ms)} \\ \hline
+\end{tabular}
+\end{table}
+
+As summarized in Table~\ref{tab:literature_comparison}, prior works have addressed individual aspects of cardiac monitoring---such as single-channel artifact reduction \cite{lee2004single}, offline dynamical conduction modeling \cite{quiroz2018cardiac}, mobile computational efficiency \cite{tsamis2017soft}, wireless transmission architectures \cite{chai2013mobile}, statistical noise gating \cite{aliev2012monitoring}, or connected IoT telemetry classification frameworks \cite{pandian2026internet}. However, all prior approaches either require specialized external bio-potential hardware or treat the phone purely as a passive receiver. 
+
+Our proposed project establishes a novel, closed-loop paradigm: it eliminates external hardware by directly harnessing the phone's internal MEMS accelerometer \cite{inan2015ballistocardiography, tadi2016realtime}, enforces signal reliability through physiological energy gating and real-time stillness guidance, extracts verified clinical PRV metrics \cite{taskforce1996heart}, evaluates health status via formal machine learning classification (Normal vs. Heart Problem) \cite{pandian2026internet}, and bridges the gap to predictive physiological modeling through real-time in-silico rhythm simulation \cite{vanderpol1928}.

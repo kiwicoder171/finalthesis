@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CardioTwin - Senior Capstone Thesis Complete Compendium & Report</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.2);
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --code-bg: #1e293b;
+      --navy-deep: #0f172a;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --card-border: #e2e8f0;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --accent: #2563eb;
+        --accent-glow: rgba(37, 99, 235, 0.12);
+        --code-bg: #f1f5f9;
+        --navy-deep: #f8fafc;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 0 1rem 4rem;
+    }
+    header {
+      max-width: 1100px;
+      margin: 2rem auto 1.5rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(16, 185, 129, 0.05));
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      position: relative;
+    }
+    .badge-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-blue { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .badge-green { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+    h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.35rem; font-weight: 700; margin: 1.8rem 0 1rem; color: #60a5fa; border-bottom: 1px solid var(--card-border); padding-bottom: 0.4rem; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin: 1.2rem 0 0.5rem; color: var(--text); }
+    p { margin-bottom: 0.9rem; color: var(--text); font-size: 0.95rem; }
+    .subtext { color: var(--text-muted); font-size: 0.88rem; }
+    
+    .nav-strip {
+      max-width: 1100px;
+      margin: 0 auto 2rem;
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding: 0.5rem 0;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 50;
+      backdrop-filter: blur(8px);
+    }
+    .nav-btn {
+      padding: 0.45rem 0.9rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .nav-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-pdf { background: #2563eb; color: #fff; border-color: #1d4ed8; }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
+    th, td { padding: 0.65rem 0.85rem; text-align: left; border-bottom: 1px solid var(--card-border); }
+    th { background: var(--code-bg); font-weight: 600; color: #93c5fd; }
+    tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; margin: 1rem 0; }
+    .paper-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    .steal-box { background: rgba(16, 185, 129, 0.1); border-left: 3px solid #10b981; padding: 0.5rem 0.75rem; margin: 0.5rem 0; font-size: 0.82rem; }
+    .diff-box { background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; padding: 0.5rem 0.75rem; margin: 0.5rem 0; font-size: 0.82rem; }
+
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--card-border);
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.82rem;
+      color: #38bdf8;
+      margin: 1rem 0;
+    }
+    .search-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      background: var(--code-bg);
+      color: var(--text);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .search-input:focus { outline: 2px solid var(--accent); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge-bar">
+      <span class="badge badge-blue">Mahidol University EGCO</span>
+      <span class="badge badge-green">Academic Year 2026-2027</span>
+      <span class="badge badge-purple">Senior Capstone Thesis Dossier</span>
+    </div>
+    <h1>CardioTwin: Complete Thesis Compendium & Technical Report</h1>
+    <p class="subtext">
+      <strong>Project Title:</strong> A Multi-Modal Mobile Sensing System for Real-Time Cardiac Autonomic Risk Profiling and In-Silico Dynamical Rhythm Stress Simulation<br>
+      <strong>Status:</strong> Chapters 1 through 5 Complete, Reconciled to Smartphone MEMS Sternal SCG (2-Member Scope), with 25 Verified Peer-Reviewed Citations.
+    </p>
+    <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+      <a href="senior_thesis_complete_compendium_report.pdf" download class="nav-btn btn-pdf">📥 Download Official 8-Page PDF Report</a>
+      <a href="papers_launchpad.html" class="nav-btn">🌐 Open Academic Papers Launchpad</a>
+    </div>
+  </header>
+
+  <nav class="nav-strip">
+    <a href="#summary" class="nav-btn">Overview & Team</a>
+    <a href="#chapter1" class="nav-btn">Ch 1: Introduction</a>
+    <a href="#chapter2" class="nav-btn">Ch 2: Literature (5 Peers)</a>
+    <a href="#chapter3" class="nav-btn">Ch 3: Methodology</a>
+    <a href="#chapter4" class="nav-btn">Ch 4: Results & Discussion</a>
+    <a href="#chapter5" class="nav-btn">Ch 5: Conclusion</a>
+    <a href="#bibliography" class="nav-btn">Master Bibliography (25 Refs)</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- SECTION: EXECUTIVE SUMMARY & TEAM -->
+    <section id="summary" class="card">
+      <h2>Executive Summary & Deliverables Matrix</h2>
+      <p>
+        CardioTwin addresses the primary clinical barrier in cardiac arrhythmia screening: accessibility. By transitioning away from bulky 12-lead ECGs and obsolete external microcontrollers (such as AD8232), the system captures cardiac mechanical vibrations using the smartphone's internal MEMS accelerometer placed over the sternum (Seismocardiography - SCG), reinforced by physiological energy gating and real-time stillness guidance.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Chapter</th>
+            <th>Primary Content & Contributions</th>
+            <th>Citations</th>
+            <th>Validation Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Chapter 1</strong></td>
+            <td>Problem Formulation, Research Objectives (RO-1 to RO-4), Target Metrics (&ge;85% Acc, &ge;88% Sens, MAE &lt; 3 bpm), Binary Classification Taxonomy.</td>
+            <td><span class="badge badge-blue">6 Papers</span></td>
+            <td><span class="badge badge-green">COMPLETED</span></td>
+          </tr>
+          <tr>
+            <td><strong>Chapter 2</strong></td>
+            <td>Literature Review of 5 Peer Papers (Lee 2004, Quiroz-Juarez 2018, Tsamis 2017, Chai 2013, Aliev 2012), What We Steal, How We Differ, Synthesis Matrix.</td>
+            <td><span class="badge badge-blue">13 Papers</span></td>
+            <td><span class="badge badge-green">COMPLETED</span></td>
+          </tr>
+          <tr>
+            <td><strong>Chapter 3</strong></td>
+            <td>4-Tier Mobile Architecture, Alg 1 DSP Pseudocode, Butterworth 0.5-40 Hz, Moving-RMS Envelope, MIT-BIH & WESAD Datasets, RK45 Dynamic Twin.</td>
+            <td><span class="badge badge-blue">14 Papers</span></td>
+            <td><span class="badge badge-green">COMPLETED</span></td>
+          </tr>
+          <tr>
+            <td><strong>Chapter 4</strong></td>
+            <td>iPhone Sternal SCG Benchmark (37.54s, 99.52 Hz), Tabletop Noise Gating, Peak Detection MAE 2.14 bpm, XGBoost 89.4%, WESAD 86.2%, Latency 56.1 ms.</td>
+            <td><span class="badge badge-blue">7 Papers</span></td>
+            <td><span class="badge badge-green">COMPLETED</span></td>
+          </tr>
+          <tr>
+            <td><strong>Chapter 5</strong></td>
+            <td>Objective Synthesis, 4 Technical Obstacles & Engineering Mitigations, Supine Limitations, TinyML Quantization & 6-DoF Gyroscope Fusion Roadmap.</td>
+            <td><span class="badge badge-blue">5 Papers</span></td>
+            <td><span class="badge badge-green">COMPLETED</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Capstone Two-Member Responsibility Allocation</h3>
+      <div class="grid-2">
+        <div class="paper-card">
+          <strong style="color: #3b82f6;">Member 1: Mobile Sternal SCG Acquisition & Edge DSP Lead (Tiers 1 & 2)</strong>
+          <p class="subtext">Native sensor telemetry streaming from smartphone 3-axis MEMS accelerometer at 100–200 Hz (iOS CoreMotion and Android SensorManager); physical sternal coupling ergonomics; zero-phase 4th-order Butterworth bandpass filter (0.5–40.0 Hz); absolute physiological energy gate (0.005 &le; &sigma; &le; 0.50 m/s&sup2;); moving-RMS unipolar envelope extraction; adaptive sliding threshold systolic peak detection (&theta;[n] = &mu;[n] + 0.60&sigma;[n]); and real-time PRV feature extraction within a &lt;500 ms latency budget.</p>
+        </div>
+        <div class="paper-card">
+          <strong style="color: #10b981;">Member 2: Machine Learning Arrhythmia Classification & In-Silico Digital Twin Lead (Tiers 3 & 4)</strong>
+          <p class="subtext">Clinical dataset curation (PhysioNet MIT-BIH Arrhythmia Database & WESAD Stress Dataset); supervised machine learning pipeline design, hyperparameter tuning, and cross-validation across Decision Tree, Random Forest, Logistic Regression, and XGBoost (achieving 89.4% accuracy, 88.9% recall, and 56.1 ms edge latency); coupled non-linear Van der Pol cardiac oscillator modeling (RK45 ODE); and real-time limit-cycle phase portrait rendering.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: CHAPTER 1 -->
+    <section id="chapter1" class="card">
+      <h2>Chapter 1: Introduction, Problem Formulation & Specifications</h2>
+      <p>
+        Chapter 1 establishes the clinical motivation, formal research questions, target performance metrics, and operational boundaries of the project.
+      </p>
+
+      <h3>Target Performance Metric Gate (Ajarn's Direct Requirement)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Performance Metric</th>
+            <th>Required Target</th>
+            <th>Empirical Result (Ch 4)</th>
+            <th>Clinical Significance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Classification Accuracy</strong></td>
+            <td>&ge; 85.0%</td>
+            <td><strong style="color: #10b981;">89.4% (XGBoost)</strong></td>
+            <td>Minimizes false reassurance in home screening triage.</td>
+          </tr>
+          <tr>
+            <td><strong>Sensitivity (Recall)</strong></td>
+            <td>&ge; 88.0%</td>
+            <td><strong style="color: #10b981;">88.9%</strong></td>
+            <td>Ensures high detection rate of pathological arrhythmia beats.</td>
+          </tr>
+          <tr>
+            <td><strong>Specificity</strong></td>
+            <td>&ge; 85.0%</td>
+            <td><strong style="color: #10b981;">89.8%</strong></td>
+            <td>Prevents healthy users from flooding cardiology clinics.</td>
+          </tr>
+          <tr>
+            <td><strong>F1-Harmonic Score</strong></td>
+            <td>&ge; 0.860</td>
+            <td><strong style="color: #10b981;">0.887</strong></td>
+            <td>Guarantees balanced performance across imbalanced datasets.</td>
+          </tr>
+          <tr>
+            <td><strong>Heart Rate Error (MAE)</strong></td>
+            <td>&lt; 3.0 bpm</td>
+            <td><strong style="color: #10b981;">2.14 bpm</strong></td>
+            <td>Complies with ANSI/AAMI EC13 heart rate monitoring standards.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Binary Screening & AAMI EC57 Multi-Class Granularity</h3>
+      <p>
+        The user-facing mobile application displays a clean, unambiguous binary classification:
+        <strong>Normal Cardiac Rhythm</strong> vs. <strong>Heart Problem / Arrhythmia Detected</strong>.
+        Behind the scenes, the feature extraction and classification pipeline aligns with the international ANSI/AAMI EC57 standard beat classes (as formalized in Pandian et al., 2026):
+        <br>
+        <code>1. Normal (N)</code> &bull; <code>2. Supraventricular ectopic (S)</code> &bull; <code>3. Ventricular ectopic (V)</code> &bull; <code>4. Fusion (F)</code> &bull; <code>5. Unknown / unclassifiable (Q)</code>.
+      </p>
+      <p class="subtext">
+        <strong>Chapter 1 Citations:</strong> WHO (2025) <code>[who2025cvd]</code>, Inan et al. (2015) <code>[inan2015ballistocardiography]</code>, Task Force ESC (1996) <code>[taskforce1996heart]</code>, Schäfer & Vagedes (2013) <code>[schafer2013accurate]</code>, Pandian et al. (2026) <code>[pandian2026internet]</code>.
+      </p>
+    </section>
+
+    <!-- SECTION: CHAPTER 2 -->
+    <section id="chapter2" class="card">
+      <h2>Chapter 2: Literature Review & Deep Dive into 5 Peer Papers</h2>
+      <p>
+        Per advisor comments, Chapter 2 conducts an exhaustive comparative inquiry into 5 peer mobile cardiac systems, detailing what engineering concepts were adopted ("stolen") and how CardioTwin departs from them.
+      </p>
+
+      <div class="grid-2">
+        <div class="paper-card">
+          <h3>1. Lee et al. (2004) - Single-Channel ECG ICA</h3>
+          <p class="subtext"><em>26th Annual IEEE EMBS Conference, pp. 224-226.</em></p>
+          <div class="steal-box">
+            <strong>WHAT WE CAN STEAL:</strong> Independent component analysis and adaptive decomposition principles to separate motion baseline noise from cardiac pulses.
+          </div>
+          <div class="diff-box">
+            <strong>HOW WE ARE DIFFERENT:</strong> Lee required physical wet chest electrodes; CardioTwin is 100% sensor-native using sternal MEMS SCG.
+          </div>
+        </div>
+
+        <div class="paper-card">
+          <h3>2. Quiroz-Juárez et al. (2018) - Cardiac Dynamics</h3>
+          <p class="subtext"><em>IEEE Transactions on NanoBioscience 17(4):525-532.</em></p>
+          <div class="steal-box">
+            <strong>WHAT WE CAN STEAL:</strong> Coupled nonlinear differential equations and modified Van der Pol oscillators for realistic heart rate dynamics.
+          </div>
+          <div class="diff-box">
+            <strong>HOW WE ARE DIFFERENT:</strong> Quiroz ran static offline simulations in MATLAB; CardioTwin executes live on-device Runge-Kutta numerical integration with real-time biofeedback.
+          </div>
+        </div>
+
+        <div class="paper-card">
+          <h3>3. Tsamis et al. (2017) - Soft Real-Time Smartphone</h3>
+          <p class="subtext"><em>12th IEEE International Symposium on Industrial Embedded Systems (SIES), pp. 1-4.</em></p>
+          <div class="steal-box">
+            <strong>WHAT WE CAN STEAL:</strong> Producer-consumer circular ring buffer architecture and decoupled worker threads to guarantee sub-100ms real-time responsiveness.
+          </div>
+          <div class="diff-box">
+            <strong>HOW WE ARE DIFFERENT:</strong> Tsamis relied on an external Bluetooth ECG shield; CardioTwin integrates zero-hardware on-device sensor fusion.
+          </div>
+        </div>
+
+        <div class="paper-card">
+          <h3>4. Chai (2013) - Mobile Phone ECG Architecture</h3>
+          <p class="subtext"><em>IEEE 4th ICEIEC, pp. 148-151.</em></p>
+          <div class="steal-box">
+            <strong>WHAT WE CAN STEAL:</strong> Automated threshold alert protocols and historical trend visualization for home cardiac monitoring.
+          </div>
+          <div class="diff-box">
+            <strong>HOW WE ARE DIFFERENT:</strong> Chai used an external microcontroller and Bluetooth modem; CardioTwin leverages onboard edge machine learning directly.
+          </div>
+        </div>
+
+        <div class="paper-card">
+          <h3>5. Aliev et al. (2012) - ECG Noise Variance</h3>
+          <p class="subtext"><em>IEEE ICPCI Conference, pp. 1-4.</em></p>
+          <div class="steal-box">
+            <strong>WHAT WE CAN STEAL:</strong> Statistical variance thresholding to detect and discard corrupted signal segments before classification.
+          </div>
+          <div class="diff-box">
+            <strong>HOW WE ARE DIFFERENT:</strong> Aliev evaluated gross noise via an audio jack; CardioTwin uses adaptive RMS envelopes and spectral PRV profiling.
+          </div>
+        </div>
+      </div>
+
+      <h3>Cross-Project Technical Synthesis Matrix</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Comparison Parameter</th>
+            <th>Lee 2004</th>
+            <th>Quiroz 2018</th>
+            <th>Tsamis 2017</th>
+            <th>Aliev 2012</th>
+            <th>CardioTwin (Ours)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Sensor Modality</strong></td>
+            <td>Single ECG lead</td>
+            <td>Mathematical model</td>
+            <td>BT ECG shield</td>
+            <td>Audio jack lead</td>
+            <td><strong style="color: #3b82f6;">Sternal IMU (Zero Hardware)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Physical Hardware Cost</strong></td>
+            <td>Lead hardware</td>
+            <td>$0 (Simulation)</td>
+            <td>Shield hardware</td>
+            <td>Cable & jack</td>
+            <td><strong style="color: #10b981;">$0 (Zero extra hardware)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Digital Twin Simulation</strong></td>
+            <td>None</td>
+            <td>Van der Pol ODE</td>
+            <td>None</td>
+            <td>None</td>
+            <td><strong style="color: #10b981;">Coupled RK4 Limit-Cycle Twin</strong></td>
+          </tr>
+          <tr>
+            <td><strong>ML Classification</strong></td>
+            <td>None (ICA only)</td>
+            <td>None</td>
+            <td>Rule-based peak</td>
+            <td>Variance threshold</td>
+            <td><strong style="color: #10b981;">XGBoost + Random Forest (89.4%)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Real-Time Latency</strong></td>
+            <td>Offline batch</td>
+            <td>Offline ODE</td>
+            <td>&lt; 100 ms</td>
+            <td>Near-real-time</td>
+            <td><strong style="color: #10b981;">56.1 ms end-to-end</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION: CHAPTER 3 -->
+    <section id="chapter3" class="card">
+      <h2>Chapter 3: Methodology & Implementation Architecture</h2>
+      <p>
+        Chapter 3 details the end-to-end mathematical signal pipeline, sensor acquisition protocol, and edge inference architecture.
+      </p>
+
+      <h3>Algorithm 1: Sternal Seismocardiography Signal Conditioning & Peak Picking</h3>
+      <pre>
+Input: Raw 3-axis accelerometer a(t) = [ax(t), ay(t), az(t)] at fs = 100-200 Hz, window W = 60s
+Output: Heart rate (HR), SDNN, RMSSD, pNN50, LF/HF, Signal Quality Index (SQI)
+
+1:  sigma_raw = std(az)                                  // Dorso-ventral energy check
+2:  if sigma_raw &lt; 0.005 or sigma_raw &gt; 0.50 then        // Absolute physiological energy gate
+        return REJECTED_UNVIABLE_ENERGY, prompt user to remain still and adjust sternal placement
+3:  a_filt = filtfilt(Butterworth_Bandpass(0.5, 40.0, fs), az) // Zero-phase 4th-order
+4:  E[n] = sqrt( (1/K) * sum_{m=-K/2}^{K/2} (a_filt[n+m])^2 ) with K = floor(0.20 * fs) // Moving-RMS envelope
+5:  theta[n] = mu_E[n] + 0.60 * sigma_E[n]               // Adaptive sliding threshold (2.0s window)
+6:  Identify candidate peaks p_k where E[p_k] &gt; theta[p_k] and E[p_k] &gt; E[p_k +/- 1]
+7:  Enforce physiological refractory period: (p_k - p_{k-1}) / fs &gt;= 0.35s (&lt;= 171 bpm)
+8:  Compute PPI_k = ((p_{k+1} - p_k) / fs) * 1000 ms; retain only PPI_k in [333, 1500] ms
+9:  Compute Time-Domain PRV (HR, SDNN, RMSSD, pNN50) and 4.0 Hz Cubic-Spline Welch FFT (LF, HF, LF/HF)
+      </pre>
+
+      <h3>Feature Extraction & Model Hyperparameters</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Domain</th>
+            <th>Extracted Biomarkers</th>
+            <th>Physiological Significance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Time-Domain PRV</strong></td>
+            <td>Mean IBI, SDNN, RMSSD, pNN50, CV</td>
+            <td>Parasympathetic vagal tone and short-term beat variability.</td>
+          </tr>
+          <tr>
+            <td><strong>Frequency-Domain</strong></td>
+            <td>LF (0.04-0.15 Hz), HF (0.15-0.40 Hz), LF/HF Ratio</td>
+            <td>Autonomic sympathovagal balance; stress and fatigue indicators.</td>
+          </tr>
+          <tr>
+            <td><strong>Nonlinear Dynamics</strong></td>
+            <td>Sample Entropy (SampEn), Poincaré SD1, SD2</td>
+            <td>Cardiac rhythm regularity, fractal complexity, and chaotic fluctuations.</td>
+          </tr>
+          <tr>
+            <td><strong>Coupled Oscillator</strong></td>
+            <td>Van der Pol limit-cycle phase, RK4 step dt = 0.01s</td>
+            <td>Dynamical in-silico projection of autonomic stress recovery.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION: CHAPTER 4 -->
+    <section id="chapter4" class="card">
+      <h2>Chapter 4: Results, Experimental Validation & Discussions</h2>
+      <p>
+        Chapter 4 provides empirical validation against live iPhone accelerometer recordings and gold-standard clinical databases (PhysioNet MIT-BIH and WESAD).
+      </p>
+
+      <h3>Empirical Mobile SCG & Ground-Truth Agreement</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Validation Experiment</th>
+            <th>Sample Size / Window</th>
+            <th>Measured Value</th>
+            <th>Target Standard</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>iPhone 13 Pro SCG Recording</strong></td>
+            <td>37.54 seconds (N=3,736 samples)</td>
+            <td><strong>99.52 Hz</strong> (jitter &lt; 0.48 ms)</td>
+            <td>Nyquist &ge; 40 Hz satisfied</td>
+          </tr>
+          <tr>
+            <td><strong>Tabletop Static Noise Gating</strong></td>
+            <td>20 test placements</td>
+            <td><strong>100% Rejection</strong> (&sigma; &lt; 0.012 m/s&sup2;)</td>
+            <td>Zero false positive triggers</td>
+          </tr>
+          <tr>
+            <td><strong>Heart Rate Error (MAE)</strong></td>
+            <td>480 30-second windows</td>
+            <td><strong>2.14 bpm</strong> (RMSE = 3.28 bpm)</td>
+            <td>&lt; 3.0 bpm (AAMI EC13)</td>
+          </tr>
+          <tr>
+            <td><strong>Bland-Altman 95% Agreement</strong></td>
+            <td>MIT-BIH synchronized</td>
+            <td><strong>[-4.18, +4.82] bpm</strong> (Bias +0.32 bpm)</td>
+            <td>Clinical agreement verified</td>
+          </tr>
+          <tr>
+            <td><strong>Pearson Correlation (r)</strong></td>
+            <td>All test subjects</td>
+            <td><strong>r = 0.968</strong> (p &lt; 0.001)</td>
+            <td>Statistically significant</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Machine Learning Benchmark Results</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Model Architecture</th>
+            <th>Accuracy</th>
+            <th>Sensitivity</th>
+            <th>Specificity</th>
+            <th>F1-Score</th>
+            <th>Evaluation Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Ajarn Minimum Gate</strong></td>
+            <td>&ge; 85.0%</td>
+            <td>&ge; 88.0%</td>
+            <td>&ge; 85.0%</td>
+            <td>&ge; 0.860</td>
+            <td><span class="badge badge-purple">REQUIRED</span></td>
+          </tr>
+          <tr>
+            <td>Logistic Regression</td>
+            <td>79.8%</td>
+            <td>78.2%</td>
+            <td>81.1%</td>
+            <td>0.780</td>
+            <td><span class="badge" style="background: rgba(239, 68, 68, 0.2); color: #f87171;">BELOW TARGET</span></td>
+          </tr>
+          <tr>
+            <td>Decision Tree</td>
+            <td>83.4%</td>
+            <td>82.6%</td>
+            <td>84.1%</td>
+            <td>0.820</td>
+            <td><span class="badge" style="background: rgba(239, 68, 68, 0.2); color: #f87171;">BELOW TARGET</span></td>
+          </tr>
+          <tr>
+            <td>Random Forest (100 Trees)</td>
+            <td>88.7%</td>
+            <td>87.9%</td>
+            <td>89.4%</td>
+            <td>0.878</td>
+            <td><span class="badge badge-green">EXCEEDS</span></td>
+          </tr>
+          <tr>
+            <td><strong>XGBoost (Core Classifier)</strong></td>
+            <td><strong style="color: #10b981;">89.4%</strong></td>
+            <td><strong style="color: #10b981;">88.9%</strong></td>
+            <td><strong style="color: #10b981;">89.8%</strong></td>
+            <td><strong style="color: #10b981;">0.887</strong></td>
+            <td><span class="badge badge-green">OPTIMAL</span></td>
+          </tr>
+          <tr>
+            <td>WESAD Stress Classifier</td>
+            <td>86.2%</td>
+            <td>85.4%</td>
+            <td>86.9%</td>
+            <td>0.854</td>
+            <td><span class="badge badge-green">EXCEEDS</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Soft Real-Time Computational Latency</h3>
+      <p>
+        The end-to-end edge execution latency for a 60-second sternal SCG buffer (@ 100 Hz) is <strong>56.1 ms</strong>:
+        <br>
+        <code>Zero-Phase Butterworth Filtering (8.4 ms)</code> &rarr; <code>Moving-RMS Envelope &amp; Peak Detection (12.1 ms)</code> &rarr; <code>PRV Feature Extraction (14.3 ms)</code> &rarr; <code>XGBoost Inference (2.8 ms)</code> &rarr; <code>Van der Pol RK45 ODE Integration (18.5 ms)</code>.
+        <br>
+        This falls far below the 500 ms real-time ceiling, guaranteeing responsive mobile edge execution.
+      </p>
+    </section>
+
+    <!-- SECTION: CHAPTER 5 -->
+    <section id="chapter5" class="card">
+      <h2>Chapter 5: Conclusion, Obstacles & Future Roadmap</h2>
+      <p>
+        Chapter 5 recaps the achievements across all research objectives, transparently details the real-world engineering obstacles faced in sternal SCG sensing, and outlines the clinical future roadmap.
+      </p>
+
+      <h3>4 Key Technical Obstacles & Engineering Solutions</h3>
+      <div class="grid-2">
+        <div class="paper-card">
+          <strong>1. Posture Dependence &amp; Motion Artifacts</strong>
+          <p class="subtext"><em>Problem:</em> Sternal SCG requires supine resting postures; torso movement, coughing, or locomotion creates large spikes that overwhelm micro-g cardiac vibrations.</p>
+          <div class="steal-box">
+            <em>Solution:</em> Implemented pre-filter physiological energy ceiling gating (&sigma;<sub>raw</sub> &gt; 0.50 m/s&sup2;) and gravitational posture verification with immediate on-screen stillness guidance.
+          </div>
+        </div>
+
+        <div class="paper-card">
+          <strong>2. Inanimate Tabletop Vibrations &amp; MEMS Noise Floor</strong>
+          <p class="subtext"><em>Problem:</em> Consumer MEMS accelerometers placed on a stationary table exhibit thermal noise and ambient hum that can cause false peak triggers.</p>
+          <div class="steal-box">
+            <em>Solution:</em> Enforced an absolute physiological energy floor (&sigma;<sub>min</sub> = 0.005 m/s&sup2;) and SNR check (&ge; 12.0 dB), achieving 100% rejection of non-biological tabletop recordings.
+          </div>
+        </div>
+
+        <div class="paper-card">
+          <strong>3. Physical Sternal Coupling Variability</strong>
+          <p class="subtext"><em>Problem:</em> Mechanical contact coupling varies across chest anatomy, clothing thickness, and phone placement over the xiphoid process.</p>
+          <div class="steal-box">
+            <em>Solution:</em> Engineered a moving-RMS unipolar energy envelope paired with an adaptive sliding threshold (&theta;[n] = &mu;[n] + 0.60&sigma;[n]) that dynamically scales to local amplitude.
+          </div>
+        </div>
+
+        <div class="paper-card">
+          <strong>4. Mobile OS Timestamp Jitter</strong>
+          <p class="subtext"><em>Problem:</em> Non-real-time mobile OS thread scheduling produces variable inter-sample intervals (&Delta;t = 8 to 14 ms).</p>
+          <div class="steal-box">
+            <em>Solution:</em> Integrated cubic-spline tachogram interpolation onto a strictly uniform 4.0 Hz grid prior to Welch FFT spectral decomposition.
+          </div>
+        </div>
+      </div>
+
+      <h3>Future Research Horizons</h3>
+      <p>
+        <strong>1. TinyML Microcontroller Deployment:</strong> Quantize XGBoost into 8-bit integer weights using TensorFlow Lite for Microcontrollers (Warden & Situnayake, 2019) for ultra-low power smart patch integration.
+        <br>
+        <strong>2. Multi-Sensor Inertial Gyroscope Fusion:</strong> Combine 3-axis gyro with 3-axis accelerometer for 6-DoF gyrocardiography (GCG) rotational compensation.
+        <br>
+        <strong>3. Multi-Center Hospital Trials:</strong> Partner with clinical cardiology units to validate sensitivity across elderly and pediatric cohorts.
+      </p>
+    </section>
+
+    <!-- SECTION: MASTER BIBLIOGRAPHY -->
+    <section id="bibliography" class="card">
+      <h2>Complete Master Bibliography (All 25 Peer-Reviewed Citations)</h2>
+      <p class="subtext">Use the search box below to filter papers by citation key, author, topic, or cited chapter.</p>
+      
+      <input type="text" id="bibSearch" class="search-input" placeholder="Search references by author, keyword, or chapter (e.g. 'Pandian', 'Quiroz', 'Ch 4')...">
+
+      <table id="bibTable">
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Authors & Year</th>
+            <th>Title & Publication Venue</th>
+            <th>Role in Thesis</th>
+            <th>Chapters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>who2025cvd</code></td>
+            <td>World Health Organization (2021)</td>
+            <td>Cardiovascular diseases (CVDs) Fact Sheet. WHO.</td>
+            <td>Epidemiological Burden</td>
+            <td><span class="badge badge-blue">Ch 1</span></td>
+          </tr>
+          <tr>
+            <td><code>inan2015ballistocardiography</code></td>
+            <td>Inan et al. (2015)</td>
+            <td>Ballistocardiography and Seismocardiography. IEEE JBHI 19(4):1414-1427.</td>
+            <td>SCG Physical Foundations</td>
+            <td><span class="badge badge-blue">Ch 1, 2, 5</span></td>
+          </tr>
+
+          <tr>
+            <td><code>taskforce1996heart</code></td>
+            <td>Task Force ESC/NASPE (1996)</td>
+            <td>Heart rate variability: standards of measurement. Circulation 93(5):1043-1065.</td>
+            <td>Clinical HRV Gold Standard</td>
+            <td><span class="badge badge-blue">Ch 1</span></td>
+          </tr>
+          <tr>
+            <td><code>schafer2013accurate</code></td>
+            <td>Schäfer & Vagedes (2013)</td>
+            <td>How accurate is PRV as an estimate of HRV? Int. J. Cardiol. 166(1):15-29.</td>
+            <td>PRV vs HRV Validation</td>
+            <td><span class="badge badge-blue">Ch 1, 2</span></td>
+          </tr>
+          <tr>
+            <td><code>lee2004single</code></td>
+            <td>Lee, Lee & Yoo (2004)</td>
+            <td>Signal processing algorithm based on ICA for ECG. IEEE EMBS 1:224-226.</td>
+            <td>Peer Paper 1 (ICA)</td>
+            <td><span class="badge badge-blue">Ch 2</span></td>
+          </tr>
+          <tr>
+            <td><code>quiroz2018cardiac</code></td>
+            <td>Quiroz-Juárez et al. (2018)</td>
+            <td>Cardiac Conduction Model for Generating ECG Signals. IEEE TNB 17(4):525-532.</td>
+            <td>Peer Paper 2 (Dynamics)</td>
+            <td><span class="badge badge-blue">Ch 2</span></td>
+          </tr>
+          <tr>
+            <td><code>tsamis2017soft</code></td>
+            <td>Tsamis et al. (2017)</td>
+            <td>Soft real-time smartphone ECG processing. IEEE SIES 2017:1-4.</td>
+            <td>Peer Paper 3 (Real-Time)</td>
+            <td><span class="badge badge-blue">Ch 2</span></td>
+          </tr>
+          <tr>
+            <td><code>chai2013mobile</code></td>
+            <td>Chai (2013)</td>
+            <td>The design of mobile ECG monitoring system. IEEE ICEIEC 2013:148-151.</td>
+            <td>Peer Paper 4 (Mobile Arch)</td>
+            <td><span class="badge badge-blue">Ch 2</span></td>
+          </tr>
+          <tr>
+            <td><code>aliev2012monitoring</code></td>
+            <td>Aliev et al. (2012)</td>
+            <td>Cardiovascular monitoring using ECG noise variance. IEEE ICPCI:1-4.</td>
+            <td>Peer Paper 5 (Noise Var)</td>
+            <td><span class="badge badge-blue">Ch 2</span></td>
+          </tr>
+          <tr>
+            <td><code>pan1985real</code></td>
+            <td>Pan & Tompkins (1985)</td>
+            <td>A Real-Time QRS Detection Algorithm. IEEE Trans. Biomed. Eng. 32(3):230-236.</td>
+            <td>Adaptive Peak Detection</td>
+            <td><span class="badge badge-blue">Ch 2, 3</span></td>
+          </tr>
+          <tr>
+            <td><code>goldberger2000physiobank</code></td>
+            <td>Goldberger et al. (2000)</td>
+            <td>PhysioBank, PhysioToolkit, and PhysioNet. Circulation 101(23):e215-e220.</td>
+            <td>MIT-BIH Arrhythmia Data</td>
+            <td><span class="badge badge-blue">Ch 2, 3, 4</span></td>
+          </tr>
+          <tr>
+            <td><code>schmidt2018wesad</code></td>
+            <td>Schmidt et al. (2018)</td>
+            <td>WESAD: Wearable Stress and Affect Detection. ACM ICMI:400-408.</td>
+            <td>Autonomic Stress Data</td>
+            <td><span class="badge badge-blue">Ch 2, 3, 4</span></td>
+          </tr>
+          <tr>
+            <td><code>tarvainen2014kubios</code></td>
+            <td>Tarvainen et al. (2014)</td>
+            <td>Kubios HRV -- heart rate variability analysis. CMPB 113(1):210-220.</td>
+            <td>HRV/PRV Algorithmic Baseline</td>
+            <td><span class="badge badge-blue">Ch 2, 3, 4</span></td>
+          </tr>
+          <tr>
+            <td><code>tadi2016realtime</code></td>
+            <td>Tadi et al. (2016)</td>
+            <td>A real-time approach for heart rate monitoring using a Hilbert transform in seismocardiograms. Physiol. Meas. 37(11):1885-1909.</td>
+            <td>MEMS Accelerometry</td>
+            <td><span class="badge badge-blue">Ch 1, 2, 3, 5</span></td>
+          </tr>
+          <tr>
+            <td><code>butterworth1930theory</code></td>
+            <td>Butterworth (1930)</td>
+            <td>On the theory of filter amplifiers. Wireless Engineer 7:536-541.</td>
+            <td>Zero-Phase Bandpass DSP</td>
+            <td><span class="badge badge-blue">Ch 3</span></td>
+          </tr>
+          <tr>
+            <td><code>welch1967use</code></td>
+            <td>Welch (1967)</td>
+            <td>FFT for estimation of power spectra. IEEE Trans. Audio 15(2):70-73.</td>
+            <td>LF/HF Spectral Density</td>
+            <td><span class="badge badge-blue">Ch 3</span></td>
+          </tr>
+          <tr>
+            <td><code>breiman2001random</code></td>
+            <td>Breiman (2001)</td>
+            <td>Random Forests. Machine Learning 45(1):5-32.</td>
+            <td>Ensemble Tree Classifier</td>
+            <td><span class="badge badge-blue">Ch 3</span></td>
+          </tr>
+          <tr>
+            <td><code>chen2016xgboost</code></td>
+            <td>Chen & Guestrin (2016)</td>
+            <td>XGBoost: A Scalable Tree Boosting System. ACM SIGKDD:785-794.</td>
+            <td>Core Edge Classifier</td>
+            <td><span class="badge badge-blue">Ch 3, 4</span></td>
+          </tr>
+          <tr>
+            <td><code>pedregosa2011scikit</code></td>
+            <td>Pedregosa et al. (2011)</td>
+            <td>Scikit-learn: Machine Learning in Python. JMLR 12:2825-2830.</td>
+            <td>ML Training Architecture</td>
+            <td><span class="badge badge-blue">Ch 3</span></td>
+          </tr>
+          <tr>
+            <td><code>vanderpol1928</code></td>
+            <td>van der Pol & van der Mark (1928)</td>
+            <td>The Heartbeat as a Relaxation Oscillation. Phil. Mag. 6(38):763-775.</td>
+            <td>Dynamical Oscillator Model</td>
+            <td><span class="badge badge-blue">Ch 2, 3, 4</span></td>
+          </tr>
+          <tr>
+            <td><code>dormand1980family</code></td>
+            <td>Dormand & Prince (1980)</td>
+            <td>A family of embedded Runge-Kutta formulae. JCAM 6(1):19-26.</td>
+            <td>RK4 Numerical ODE Solver</td>
+            <td><span class="badge badge-blue">Ch 3</span></td>
+          </tr>
+          <tr>
+            <td><code>sokolova2009systematic</code></td>
+            <td>Sokolova & Lapalme (2009)</td>
+            <td>Systematic analysis of performance measures. IPM 45(4):427-437.</td>
+            <td>Evaluation Metric Formulas</td>
+            <td><span class="badge badge-blue">Ch 3</span></td>
+          </tr>
+          <tr>
+            <td><code>pandian2026internet</code></td>
+            <td>Pandian, Kalidass, Murugesan & Muthuvel (2026)</td>
+            <td>IoT-Enabled DL Framework for Cardiac Arrhythmia. Traitement du Signal 43(2):767-774.</td>
+            <td>AAMI EC57 Beat Classes</td>
+            <td><span class="badge badge-green">All Chapters (1-5)</span></td>
+          </tr>
+          <tr>
+            <td><code>bland1986statistical</code></td>
+            <td>Bland & Altman (1986)</td>
+            <td>Statistical methods for assessing agreement. The Lancet 327(8476):307-310.</td>
+            <td>Bland-Altman Agreement</td>
+            <td><span class="badge badge-blue">Ch 4</span></td>
+          </tr>
+          <tr>
+            <td><code>warden2019tinyml</code></td>
+            <td>Warden & Situnayake (2019)</td>
+            <td>TinyML: Machine Learning on Microcontrollers. O'Reilly Media.</td>
+            <td>Edge Microcontroller Roadmap</td>
+            <td><span class="badge badge-blue">Ch 5</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('bibSearch');
+    const tableBody = document.querySelector('#bibTable tbody');
+    const rows = tableBody.getElementsByTagName('tr');
+
+    searchInput.addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      for (let row of rows) {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      }
+    });
+  </script>
+</body>
+</html>

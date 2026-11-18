@@ -1,0 +1,166 @@
+METHODOLOGY
+This chapter outlines the methodology and architectural design of the proposed multi-modal mobile cardiovascular sensing system. The pipeline integrates non-invasive sternal seismocardiography (SCG) with optical photoplethysmography (PPG) as an automatic fallback, followed by automated signal conditioning, statistical pulse rate variability (PRV) extraction, and machine learning-based risk classification. To make the design easy to present and replicate, the system is described through an architectural block diagram, an operational flowchart, algorithmic pseudocode, and a summary specification table.
+
+System Design
+Overview
+The system follows a modular four-tier architecture, chosen so that the heavy lifting runs on consumer mobile hardware while the backend stays lightweight.
+Each tier is decoupled, meaning a failure or degradation in one layer (for example, poor SCG quality) can be handled by the next tier without restarting the whole pipeline.
+The four layers (described as a block diagram flow, left to right):
+Tier 1 – Data Acquisition Layer
+Primary sensor: tri-axial sternal MEMS accelerometer (±2 g) sampling at 100–200 Hz, capturing the dorso-ventral (Z-axis) SCG signal.
+Secondary/fallback sensor: optical fingertip camera PPG at 30–60 FPS, activated automatically when SCG quality is insufficient.
+Tier 2 – Signal Conditioning and Pre-processing Layer
+Attenuates out-of-band physiological noise, baseline wander, and motion artifacts using zero-phase digital filtering.
+Includes a signal quality check based on SNR and posture gating (supine/static verification).
+Tier 3 – Feature Extraction Layer
+Uses an adaptive threshold detector to locate aortic opening (AO) systolic peaks.
+Derives continuous Peak-to-Peak Intervals (PPI) and computes time-domain and frequency-domain PRV metrics.
+Duplicate signals and reduce noise for accurate heart rate output
+Tier 4 – Analytical and In-Silico Simulation Layer
+Feeds PRV feature vectors into a dual-target supervised classifier (autonomic stress and rhythm irregularity).
+Drives a coupled nonlinear cardiac oscillator (Van der Pol) for dynamical rhythm stability analysis.
+System Block Diagram (described in words, for redrawing as a figure):
+Place the SCG IMU block and the PPG fallback block stacked vertically on the left, grouped under a container labelled "1. Acquisition Layer."
+To the right, a "Digital Filtering — Butterworth Bandpass (0.5–40 Hz)" block and, below it, a "Signal Quality Check — SNR & Posture Gating" block, grouped as "2. Conditioning Layer."
+Further right, an "Adaptive Peak Detection — AO Peak / Systolic Wave" block and, below it, "PRV Computation — Time: SDNN, RMSSD; Freq: LF, HF, LF/HF," grouped as "3. Feature Extraction."
+On the far right, "ML Classification — Stress / Autonomic State (Random Forest / XGBoost)" and, below it, "In-Silico Simulation — Nonlinear Limit Cycle (Coupled Van der Pol)," grouped as "4. Analytics & Simulation."
+Connections: SCG → Filtering; PPG → Signal Quality Check; Filtering → Signal Quality Check; Signal Quality Check → Peak Detection; Peak Detection → PRV Computation; PRV Computation → ML Classification; PRV Computation → Simulation.
+Operational Flowchart (described as a decision loop):
+Start Measurement (start/stop terminal).
+Acquire a 30–60 s windowed buffer.
+Decision: Posture supine / static?
+If Yes → proceed to bandpass filter the SCG (0.5–40 Hz).
+If No → switch to the optical PPG fallback.
+Decision: SNR ≥ 12 dB? (after SCG filtering)
+If Yes → proceed to adaptive sternal peak detection.
+If No → switch to the optical PPG fallback (which also feeds into peak detection).
+Adaptive sternal peak detection.
+Compute tachogram and PRV indices.
+Generate autonomic profile and stress risk.
+Display real-time results (end terminal).
+This flowchart is the key runtime logic: posture gating and the SNR check are the two places where the system can divert to the PPG fallback.
+Pseudocode — Sternal SCG Conditioning and Pulse Rate Variability Extraction
+Inputs: raw dorso-ventral IMU signal a_z[n], sampling frequency f_s ∈ [100, 200] Hz, window size W = 60 s.
+Outputs: mean heart rate (HR), SDNN, RMSSD, and LF/HF ratio.
+Initialize: filter order N = 4, cutoffs f_l = 0.5 Hz and f_h = 40 Hz, refractory period δ_ref = 0.35 s.
+Step 1 – Signal Conditioning
+Apply a zero-phase Butterworth bandpass filter: ã_z = FiltFilt(a_z, f_l, f_h, N, f_s).
+Compute the signal envelope via Hilbert transform or moving RMS: E[n] = sqrt of the moving mean of ã_z² over K samples.
+Step 2 – Adaptive Systolic Peak Detection
+Compute a local sliding threshold: θ[n] = μ_E[n] + α·σ_E[n], with α ≈ 0.6 chosen empirically.
+Identify candidate peaks where E[n] > θ[n] and E[n] is a local maximum (E[n] > E[n±1]).
+Reject physiologically invalid peaks by enforcing a minimum spacing: |n_i − n_{i−1}| / f_s ≥ δ_ref (corresponds to a maximum of about 180 bpm).
+Step 3 – Tachogram Construction and Metric Extraction
+Compute peak-to-peak intervals: PPI_k = (n_{k+1} − n_k)/f_s × 1000 ms.
+Filter outliers: retain only PPI_k within 333–1500 ms.
+Compute time-domain PRV: HR = 60000/mean(PPI); SDNN = standard deviation of PPI; RMSSD = root mean square of successive PPI differences (ΔPPI).
+Interpolate the PPI tachogram uniformly to 4 Hz using cubic splines.
+Compute the Welch power spectral density via FFT of the resampled tachogram.
+Integrate band power: LF = integral of PSD from 0.04 to 0.15 Hz; HF = integral from 0.15 to 0.40 Hz; Ratio = LF/HF.
+Return: {HR, SDNN, RMSSD, LF/HF}.
+Technical Configuration Summary (table content in bullet form):
+Hardware – Mobile sensors: sternal 3-axis MEMS accelerometer (±2 g, 100–200 Hz); rear camera (30–60 FPS).
+Conditioning – Digital filter: 4th-order zero-phase Butterworth bandpass (0.5–40 Hz); cubic-spline detrending.
+Software – DSP and modeling: Python 3.9+ with NumPy, SciPy.signal, and scipy.integrate.solve_ivp.
+Machine learning: Scikit-Learn and XGBoost, with features HR, SDNN, RMSSD, and LF/HF.
+Dynamical model: coupled Van der Pol nonlinear oscillators simulating autonomic cardiac stress.
+Validation – Clinical benchmarks: PhysioNet MIT-BIH Arrhythmia Database and the WESAD Stress Dataset.
+Evaluation metrics: MAE and RMSE for heart rate (target < 3 bpm); Macro-F1 for stress states.
+
+Data
+Collection setup: data is captured from the phone's sternal-mounted accelerometer as the primary modality, with camera PPG as the fallback modality when the accelerometer signal fails quality checks.
+Acquisition window: each measurement session captures a 30–60 s buffer (the 60 s window is used as the default for PRV estimation), which is long enough for frequency-domain analysis but short enough for a responsive user experience.
+Posture and activity gating: samples are only accepted when the subject is supine/static, since posture changes and motion corrupt the SCG morphology. This is enforced before filtering.
+Fallback data path: if posture gating fails or the SCG SNR falls below 12 dB, the pipeline switches to the PPG stream and uses it for peak detection and PRV extraction instead.
+Pre-processing and cleaning: baseline wander and out-of-band noise are removed by zero-phase bandpass filtering; the envelope is computed via Hilbert transform or moving RMS; physiologically implausible beats are removed by the refractory-period rule and the 333–1500 ms PPI bounds.
+Outlier handling: PPI values outside the physiological range are discarded before computing time-domain metrics; the remaining tachogram is cubic-spline interpolated to a uniform 4 Hz grid for spectral analysis.
+Reference/benchmark datasets: PhysioNet MIT-BIH Arrhythmia Database for rhythm irregularity, and the WESAD Stress Dataset for stress-state classification, used to validate the pipeline against established ground truth.
+
+Methods
+Signal conditioning: a 4th-order zero-phase Butterworth bandpass filter (0.5–40 Hz) removes baseline drift and high-frequency noise without introducing phase distortion, which is important because peak timing directly determines the PRV values.
+Envelope extraction: a Hilbert transform or moving-RMS envelope converts the oscillatory SCG into a smooth energy signal so that systolic events appear as prominent, separable peaks.
+Adaptive threshold peak detection: instead of a fixed threshold, the detector uses a local sliding threshold θ[n] = μ_E[n] + α·σ_E[n]. This adapts to changing signal amplitude across subjects and recording conditions.
+Physiological rejection rules: a refractory period of 0.35 s caps the detectable rate at about 180 bpm, and PPI bounds of 333–1500 ms remove ectopic or missed-beat artifacts.
+Time-domain PRV features: mean heart rate, SDNN (overall variability), and RMSSD (short-term/beat-to-beat variability) are computed from the cleaned PPI series.
+Frequency-domain PRV features: the tachogram is cubic-spline interpolated to 4 Hz, and Welch PSD is used to integrate LF (0.04–0.15 Hz) and HF (0.15–0.40 Hz) power, with LF/HF as the autonomic balance indicator.
+Machine learning classification: PRV feature vectors (HR, SDNN, RMSSD, LF/HF) are fed into a dual-target supervised classifier — Random Forest and XGBoost — to predict autonomic stress state and rhythm irregularity.
+In-silico simulation: a coupled Van der Pol nonlinear oscillator model is driven by the extracted features to analyze dynamical rhythm stability, providing a mechanistic complement to the statistical classifier.
+
+Hyperparameter Configurations
+Sampling frequency (f_s): 100–200 Hz for the IMU; 30–60 FPS for camera PPG.
+Filter order: N = 4.
+Bandpass cutoffs: f_l = 0.5 Hz, f_h = 40 Hz.
+Envelope window size: K samples for the moving RMS (chosen relative to f_s).
+Adaptive threshold coefficient: α ≈ 0.6 (set empirically).
+Refractory period: δ_ref = 0.35 s (max ~180 bpm).
+PPI validity range: 333 ms to 1500 ms.
+Tachogram resampling rate: 4 Hz (cubic spline interpolation).
+Frequency bands: LF = 0.04–0.15 Hz; HF = 0.15–0.40 Hz.
+Analysis window length: W = 60 s (with 30–60 s acquisition buffers).
+SNR acceptance threshold: 12 dB before SCG peak detection is allowed.
+ML models: Random Forest and XGBoost, trained on the four-feature PRV vector.
+Note on tuning: these values are the configured starting points; final ML hyperparameters (tree depth, estimators, learning rate) are to be finalized during experimental trials rather than locked in at design time.
+
+Performance Evaluation
+Heart rate accuracy: measured with Mean Absolute Error (MAE) and RMSE against reference heart rate, with a target of less than 3 bpm error.
+Stress-state classification: evaluated using Macro-F1 to account for class imbalance across stress/autonomic states.
+Validation datasets: PhysioNet MIT-BIH Arrhythmia Database (rhythm irregularity benchmark) and WESAD Stress Dataset (stress-state benchmark).
+Comparison strategy: SCG-derived PRV is compared against the PPG fallback path and against the reference datasets to confirm that the primary modality meets accuracy targets and that the fallback degrades gracefully.
+Robustness checks: performance is assessed under posture-gating failures and low-SNR conditions to verify that fallback triggering behaves as intended in the flowchart.
+Simulation validation: the Van der Pol model output is compared qualitatively and quantitatively against observed PRV dynamics to confirm that the simulated rhythm stability trends match the real extracted features.
+
+AAAAAAAAAAAASDD
+1. System Overview (the big picture)
+The system has 4 layers that run one after another, like an assembly line.
+Each layer works on its own, so if one part has a problem (like a bad chest signal), the system can switch to a backup without restarting.
+Most of the work runs on the phone itself.
+2. The 4 Layers [STEPS/PROCESS]
+Layer 1: Collect the signal. The phone sits on the chest, and the accelerometer picks up heartbeat vibrations (SCG). If that signal is bad, the system switches to the camera + flash on the fingertip (PPG) as a backup.
+Layer 2: Clean the signal. It filters out noise and drift, then checks whether the signal is good enough to use.
+Layer 3: Heartbeat Detection. It detects each beat, measures the time between beats, and calculates PRV (heart rate variability).
+Layer 4: Cardiac Forecast. Machine learning predicts stress and irregular rhythm, and a heart model simulates how the rhythm behaves under stress.
+3. Flowchart (how one measurement runs)
+Press start, and the phone records 30 to 60 seconds.
+Check 1: Is the person lying still? If not, switch to the camera backup.
+Check 2: Is the chest signal clean enough (SNR ≥ 12 dB)? If not, switch to the camera backup.
+Find the heartbeats, calculate PRV, estimate stress, and show the results.
+These two checks are the only points where the system switches to the backup sensor.
+MORE DATA FRAME. Machine learning specification. how to evaluate the accuracy of the model etc. (accuracy, specificity, f1, recall, etc.)
+
+4. Pseudocode (the step-by-step algorithm)
+Step 1: Clean. Filter the chest signal to keep only heartbeat frequencies (0.5 to 40 Hz), then smooth it so each beat shows up as a clear bump.
+Step 2: Find beats. The threshold for a valid beat adjusts automatically to each person’s signal strength. Beats that come too close together (faster than 180 bpm) are ignored as fake.
+Step 3: Calculate results. Measure the time between beats and throw out impossible values. Then calculate heart rate, SDNN, RMSSD, and LF/HF.
+Output: heart rate, SDNN, RMSSD, and LF/HF.
+5. Tools and Setup
+Hardware: only the phone’s accelerometer and rear camera.
+Software: Python with NumPy and SciPy for signal processing and the heart model.
+Machine learning: Scikit-Learn and XGBoost.
+Testing data: public datasets (MIT-BIH and WESAD).
+Success targets: heart rate within 3 bpm of the true value, plus a good F1 score for stress detection.
+6. Data
+The chest accelerometer is the main sensor, and the camera is the backup.
+Each recording is 60 seconds, long enough for the frequency analysis but still quick for the user.
+Data is only accepted when the person is lying still, because movement ruins the chest signal.
+Noise and fake beats are removed before any calculation.
+Public datasets give us “correct answers” to check our results against.
+7. Methods (why we chose each technique)
+Zero-phase filter: removes noise without shifting beat timing, which matters because PRV depends on exact timing.
+Envelope: turns the wavy signal into clear peaks, one per heartbeat.
+Adaptive threshold: works for different people and conditions instead of using one fixed value.
+Rejection rules: remove beats that are physically impossible.
+PRV features: SDNN shows overall variability, RMSSD shows beat-to-beat changes, and LF/HF shows the stress balance.
+Machine learning: Random Forest and XGBoost predict stress and irregular rhythm.
+Simulation: the Van der Pol heart model shows why the rhythm changes, while the ML only predicts what will happen.
+8. Settings (Hyperparameters)
+These are the starting values for each step, such as the filter range, the 180 bpm limit, the 60 s window, and the 12 dB quality check.
+The ML model settings will be tuned during testing, not fixed now.
+
+
+Check these before your professor does:
+ML models don’t match. This section says Random Forest/XGBoost, but your Objectives say Decision Tree/Logistic Regression. Pick one pair and use it everywhere.
+Datasets don’t match. This section uses MIT-BIH, but your Scope and Expected Results say WESAD and CapnoBase. MIT-BIH is ECG data, so it doesn’t fit a phone-based system well. CapnoBase (which has PPG) fits better.
+Posture doesn’t match. This section says “lying down (supine)”, but your Scope says volunteers “sitting at rest”.
+Stray line: Tier 3 has an unclear line, “Duplicate signals and reduce noise…”. Delete it or reword it.
+Cut-off text: the last sentence ends at “desi”. Finish it (“design phase”).
+

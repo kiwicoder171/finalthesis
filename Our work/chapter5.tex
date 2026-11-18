@@ -1,0 +1,40 @@
+\chapter{Conclusion}
+
+This final chapter presents a comprehensive conclusion of the thesis, summarizing the research objectives, technical contributions, and experimental findings. It details the individual engineering deliverables completed across all four project tiers, discusses the primary obstacles and technical limitations encountered during development, and outlines concrete directions for future research and system expansion.
+
+\section{Conclusion}
+
+This undergraduate senior capstone thesis has designed, implemented, and validated an integrated smartphone sternal seismocardiography (SCG) sensing, machine learning risk classification, and in-silico cardiac digital-twin simulation platform. The system addresses a fundamental limitation in consumer digital health: the lack of accessible, zero-external-hardware cardiovascular monitoring capable of bridging static biometric measurements with predictive physiological modeling.
+
+The major technical accomplishments of this work are summarized across its four functional tiers:
+\begin{enumerate}
+    \item \textbf{Tier 1 --- Mobile Sternal SCG Acquisition:} We established a zero-hardware mobile sensing layer that captures sternal seismocardiography (SCG) directly via consumer smartphone 3-axis MEMS accelerometers ($100\text{--}200\text{ Hz}$) placed flat on the sternum, paired with real-time posture and stillness guidance.
+    \item \textbf{Tier 2 --- DSP Conditioning \& Physiological Gating:} We developed a zero-phase 4th-order Butterworth bandpass filter ($0.5\text{--}40.0\text{ Hz}$) that removes respiratory baseline wander and motion drift without introducing phase delays that corrupt peak timing. We implemented an absolute physiological energy gate ($0.005\text{ m/s}^2 \le \sigma_{raw} \le 0.50\text{ m/s}^2$) that achieves $100\%$ rejection of non-biological tabletop vibrations, paired with a quantitative SNR check ($\ge 12\text{ dB}$) that guarantees only clean, viable cardiac cycles proceed to feature extraction.
+    \item \textbf{Tier 3 --- Systolic Peak Detection \& PRV Extraction:} Utilizing a moving-RMS unipolar energy envelope and adaptive sliding thresholding ($\theta[n] = \mu[n] + 0.6\sigma[n]$), the system achieved high peak detection accuracy against simultaneous gold-standard clinical ECG, yielding a pulse rate estimation Mean Absolute Error of $\text{MAE} = 2.14\text{ bpm}$ (comfortably exceeding the $<3.0\text{ bpm}$ project target) and an $\text{RMSE} = 3.28\text{ bpm}$. Standardized time-domain (SDNN, RMSSD, pNN50) and frequency-domain (Welch FFT LF, HF, and LF/HF) metrics were successfully computed in soft real time ($<57\text{ ms}$ processing latency).
+    \item \textbf{Tier 4 --- Machine Learning Classification \& In-Silico Simulation:} 
+    \begin{itemize}
+        \item Supervised machine learning models evaluated on the PhysioNet MIT-BIH Arrhythmia Database achieved an overall classification Accuracy of $89.4\%$, a Sensitivity (Recall) of $88.9\%$ (crucial for minimizing missed arrhythmias), a Specificity of $89.8\%$, and an F1-score of $0.887$ using XGBoost across the standardized 5 AAMI beat categories \cite{pandian2026internet}.
+        \item On the WESAD dataset, the system achieved an autonomic stress classification Accuracy of $86.2\%$ and an F1-score of $0.854$.
+        \item The extracted PRV telemetry successfully drove a coupled nonlinear Van der Pol oscillator system, visualizing limit-cycle phase portraits and bifurcation breakdowns under simulated stress challenges.
+    \end{itemize}
+\end{enumerate}
+
+\section{Obstacles and Limitations}
+
+Despite successful validation, several technical obstacles and inherent constraints were identified during system development:
+\begin{enumerate}
+    \item \textbf{Posture Dependence of Sternal SCG:} Sternal SCG acquisition strictly requires supine (lying flat) or semi-recumbent ($45^\circ$) resting postures to keep the sensor's measurement axis aligned with cardiac ventricular ejection vectors. Ambulatory motion artifacts during walking or running overwhelm the micro-$g$ cardiac vibrations, requiring the user to remain still during the 30--60 second recording window.
+    \item \textbf{Consumer MEMS Sensor Noise Floors:} Off-the-shelf smartphone accelerometers exhibit higher thermal noise, quantization drift, and inter-manufacturer calibration variability compared to clinical-grade seismometers.
+    \item \textbf{Physical Sternal Coupling Variability:} Mechanical contact coupling depends on chest anatomy, clothing thickness, and phone placement stability over the xiphoid process, introducing inter-subject attenuation of acceleration peaks.
+    \item \textbf{Mobile OS Scheduling and Timestamp Jitter:} Consumer mobile operating systems (iOS and Android) do not offer hard real-time scheduling guarantees. Background processes introduce variable inter-sample timestamp jitter, which was mitigated through cubic-spline interpolation before spectral decomposition.
+\end{enumerate}
+
+\section{Future Work}
+
+To advance this engineering prototype toward broader clinical and consumer deployment, several promising avenues for future research are identified:
+\begin{enumerate}
+    \item \textbf{On-Device Edge Deep Learning (TinyML):} Deploying quantized neural network architectures using TinyML frameworks \cite{warden2019tinyml} (such as TensorFlow Lite for Microcontrollers / CoreML) directly on smartphone neural processing units (NPUs) to perform continuous, sub-millisecond beat-by-beat arrhythmia inference with minimal battery consumption.
+    \item \textbf{Multi-Sensor Inertial Gyroscope Fusion:} Integrating 3-axis gyroscope angular velocity data with 3-axis accelerometer signals to perform 6-DoF inertial sensor fusion (gyrocardiography - GCG), enabling automated motion artifact cancellation and rotational posture compensation.
+    \item \textbf{Bi-Directional Digital-Twin Closed Loop:} Enhancing the coupled Van der Pol oscillator model to incorporate personalized physiological feedback parameters (e.g., baroreflex sensitivity and respiratory coupling), allowing the digital twin to predict user-specific recovery trajectories following acute physical or cognitive stress.
+    \item \textbf{Multi-Center Clinical Validation:} Conducting large-scale observational trials on diverse patient cohorts exhibiting specific rhythm disorders (such as persistent atrial fibrillation and premature ventricular complexes) alongside simultaneous multi-lead Holter monitoring to establish formal medical-grade efficacy.
+\end{enumerate}

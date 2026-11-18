@@ -36,3 +36,6 @@ ENV/
 # Temporary browser files & test artifacts
 .chrome-temp/
 test.pdf
+.pytest_cache/
+.kanban/
+.agents/

@@ -1,0 +1,1042 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 3 0 R >>
+endobj
+2 0 obj
+<< /Type /Outlines /Count 0 >>
+endobj
+3 0 obj
+<< /Type /Pages /Kids [ 10 0 R 12 0 R 14 0 R 16 0 R 18 0 R 20 0 R 22 0 R 24 0 R ] /Count 8 >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+8 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier-Bold >>
+endobj
+9 0 obj
+<< /Length 9011 >>
+stream
+0.120 0.230 0.540 RG
+1.20 w
+40.00 803.89 m 555.28 803.89 l S
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 40.00 810.89 Tm (MAHIDOL UNIVERSITY - FACULTY OF ENGINEERING - EGCO SENIOR THESIS) Tj ET
+BT /Helvetica-Bold 7.50 Tf 0.350 0.400 0.500 rg 1 0 0 1 355.28 810.89 Tm (THESIS PROGRESS COMPENDIUM) Tj ET
+0.820 0.850 0.900 RG
+0.70 w
+40.00 36.00 m 555.28 36.00 l S
+BT /Helvetica 7.20 Tf 0.450 0.500 0.550 rg 1 0 0 1 40.00 26.00 Tm (CardioTwin: Smartphone Sternal SCG Sensing & In-Silico Digital Twin Platform) Tj ET
+BT /Helvetica-Oblique 7.20 Tf 0.450 0.500 0.550 rg 1 0 0 1 365.28 26.00 Tm (2026-2027 Capstone Deliverable) Tj ET
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 530.28 26.00 Tm (Page 1) Tj ET
+0.950 0.970 1.000 rg
+0.120 0.230 0.540 RG
+1.20 w
+40.00 731.89 515.28 58.00 re B
+BT /Helvetica-Bold 11.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 52.00 773.89 Tm (EGCO BACHELOR THESIS - COMPLETE PROJECT COMPENDIUM) Tj ET
+BT /Helvetica-Bold 9.50 Tf 0.150 0.200 0.300 rg 1 0 0 1 52.00 758.89 Tm (CardioTwin: Smartphone Sternal Seismocardiography for Non-Invasive Cardiovascular) Tj ET
+BT /Helvetica-Bold 9.50 Tf 0.150 0.200 0.300 rg 1 0 0 1 52.00 745.89 Tm (Health Risk Screening and In-Silico Digital-Twin Simulation) Tj ET
+0.920 0.940 0.970 rg
+0.750 0.800 0.880 RG
+0.80 w
+40.00 699.89 515.28 22.00 re B
+BT /Helvetica-Bold 8.00 Tf 0.200 0.250 0.350 rg 1 0 0 1 50.00 707.89 Tm (Academic Year: 2026-2027) Tj ET
+BT /Helvetica 8.00 Tf 0.200 0.250 0.350 rg 1 0 0 1 185.00 707.89 Tm (Dept: Computer Engineering, Mahidol University) Tj ET
+BT /Helvetica-Bold 8.00 Tf 0.050 0.500 0.250 rg 1 0 0 1 360.00 707.89 Tm (Status: 2-Member Scope Reconciled \(100% Complete\)) Tj ET
+0.980 0.980 0.990 rg
+0.800 0.840 0.900 RG
+0.80 w
+40.00 599.39 515.28 90.50 re B
+BT /Helvetica-Bold 8.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 50.00 675.89 Tm (EXECUTIVE COMPENDIUM PURPOSE & SCOPE) Tj ET
+BT /Helvetica 7.30 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 663.89 Tm (This compendium serves as the comprehensive review dossier for the capstone engineering team and) Tj ET
+BT /Helvetica 7.30 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 654.39 Tm (faculty advisors. It provides a granular walkthrough of all 5 completed thesis chapters,) Tj ET
+BT /Helvetica 7.30 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 644.89 Tm (implementation artifacts, DSP mathematics, benchmark results, and all 25 peer-reviewed) Tj ET
+BT /Helvetica 7.30 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 635.39 Tm (literature citations. The project establishes an end-to-end smartphone-only cardiac screening) Tj ET
+BT /Helvetica 7.30 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 625.89 Tm (paradigm that replaces costly, obtrusive hardware with sternal MEMS seismocardiography \(SCG\),) Tj ET
+BT /Helvetica 7.30 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 616.39 Tm (physiological energy gating, edge machine learning \(XGBoost\), and in-silico nonlinear) Tj ET
+BT /Helvetica 7.30 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 606.89 Tm (digital-twin simulations.) Tj ET
+BT /Helvetica-Bold 9.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 40.00 581.39 Tm (THESIS STRUCTURE & DELIVERABLE STATUS MATRIX) Tj ET
+0.150 0.220 0.400 rg
+40.00 560.39 515.28 15.00 re f
+BT /Helvetica-Bold 7.20 Tf 1.000 1.000 1.000 rg 1 0 0 1 45.00 564.39 Tm (Chapter & Title) Tj ET
+BT /Helvetica-Bold 7.20 Tf 1.000 1.000 1.000 rg 1 0 0 1 185.00 564.39 Tm (Key Technical Contributions) Tj ET
+BT /Helvetica-Bold 7.20 Tf 1.000 1.000 1.000 rg 1 0 0 1 415.00 564.39 Tm (Citations) Tj ET
+BT /Helvetica-Bold 7.20 Tf 1.000 1.000 1.000 rg 1 0 0 1 475.00 564.39 Tm (Status) Tj ET
+0.970 0.980 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 544.39 515.28 16.00 re B
+BT /Helvetica-Bold 7.20 Tf 0.150 0.200 0.300 rg 1 0 0 1 45.00 549.39 Tm (Ch 1: Introduction & Scope) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.350 rg 1 0 0 1 185.00 549.39 Tm (CVD burden, Sternal SCG mobile sensing, RO1-RO5, >=85% target) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 415.00 549.39 Tm (6 refs) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.050 0.500 0.250 rg 1 0 0 1 475.00 549.39 Tm (COMPLETED) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 528.39 515.28 16.00 re B
+BT /Helvetica-Bold 7.20 Tf 0.150 0.200 0.300 rg 1 0 0 1 45.00 533.39 Tm (Ch 2: Literature & Peer Analysis) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.350 rg 1 0 0 1 185.00 533.39 Tm (Deep analysis of 5 papers \(Lee, Quiroz, Tsamis, Chai, Aliev\)) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 415.00 533.39 Tm (13 refs) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.050 0.500 0.250 rg 1 0 0 1 475.00 533.39 Tm (COMPLETED) Tj ET
+0.970 0.980 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 512.39 515.28 16.00 re B
+BT /Helvetica-Bold 7.20 Tf 0.150 0.200 0.300 rg 1 0 0 1 45.00 517.39 Tm (Ch 3: Methodology & Architecture) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.350 rg 1 0 0 1 185.00 517.39 Tm (4-Tier Pipeline, Alg 1 SCG DSP, MIT-BIH & WESAD, RK45 ODE) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 415.00 517.39 Tm (14 refs) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.050 0.500 0.250 rg 1 0 0 1 475.00 517.39 Tm (COMPLETED) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 496.39 515.28 16.00 re B
+BT /Helvetica-Bold 7.20 Tf 0.150 0.200 0.300 rg 1 0 0 1 45.00 501.39 Tm (Ch 4: Results & Discussion) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.350 rg 1 0 0 1 185.00 501.39 Tm (iPhone SCG test \(MAE 2.14 bpm\), XGBoost 89.4%, Latency 56.1ms) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 415.00 501.39 Tm (7 refs) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.050 0.500 0.250 rg 1 0 0 1 475.00 501.39 Tm (COMPLETED) Tj ET
+0.970 0.980 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 480.39 515.28 16.00 re B
+BT /Helvetica-Bold 7.20 Tf 0.150 0.200 0.300 rg 1 0 0 1 45.00 485.39 Tm (Ch 5: Conclusion & Future Work) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.350 rg 1 0 0 1 185.00 485.39 Tm (Objective synthesis, 4 engineering obstacles & mitigations, TinyML) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 415.00 485.39 Tm (5 refs) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.050 0.500 0.250 rg 1 0 0 1 475.00 485.39 Tm (COMPLETED) Tj ET
+BT /Helvetica-Bold 9.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 40.00 462.39 Tm (TWO-MEMBER CAPSTONE TEAM IMPLEMENTATION RESPONSIBILITY ALLOCATION) Tj ET
+0.980 0.980 0.990 rg
+0.820 0.860 0.920 RG
+0.70 w
+40.00 384.89 515.28 71.50 re B
+BT /Helvetica-Bold 7.80 Tf 0.120 0.230 0.540 rg 1 0 0 1 48.00 444.39 Tm (Member 1: Mobile Sternal SCG Acquisition & Edge Digital Signal Processing) Tj ET
+BT /Helvetica-Bold 7.50 Tf 0.600 0.200 0.100 rg 1 0 0 1 475.28 444.39 Tm ([Tiers 1 & 2 Lead]) Tj ET
+BT /Helvetica 7.00 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 432.39 Tm (Low-level sensor telemetry from smartphone 3-axis MEMS accelerometer at 100-200 Hz \(iOS) Tj ET
+BT /Helvetica 7.00 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 422.89 Tm (CoreMotion and Android SensorManager\); physical sternal coupling ergonomics; zero-phase) Tj ET
+BT /Helvetica 7.00 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 413.39 Tm (4th-order Butterworth bandpass filter \(0.5-40 Hz\); absolute physiological energy gate \(0.005 <=) Tj ET
+BT /Helvetica 7.00 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 403.89 Tm (sigma <= 0.50 m/s^2\); moving-RMS unipolar envelope extraction; adaptive sliding threshold) Tj ET
+BT /Helvetica 7.00 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 394.39 Tm (systolic peak detection; and real-time PRV feature extraction within a <500 ms latency budget.) Tj ET
+0.980 0.980 0.990 rg
+0.820 0.860 0.920 RG
+0.70 w
+40.00 305.39 515.28 71.50 re B
+BT /Helvetica-Bold 7.80 Tf 0.120 0.230 0.540 rg 1 0 0 1 48.00 364.89 Tm (Member 2: Machine Learning Arrhythmia Classification & In-Silico Digital Twin Simulation) Tj ET
+BT /Helvetica-Bold 7.50 Tf 0.600 0.200 0.100 rg 1 0 0 1 475.28 364.89 Tm ([Tiers 3 & 4 Lead]) Tj ET
+BT /Helvetica 7.00 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 352.89 Tm (Clinical dataset curation \(PhysioNet MIT-BIH Arrhythmia Database & WESAD Stress Dataset\);) Tj ET
+BT /Helvetica 7.00 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 343.39 Tm (supervised machine learning pipeline design, hyperparameter tuning, and cross-validation across) Tj ET
+BT /Helvetica 7.00 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 333.89 Tm (Decision Tree, Random Forest, Logistic Regression, and XGBoost \(achieving 89.4% accuracy, 88.9%) Tj ET
+BT /Helvetica 7.00 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 324.39 Tm (recall, and 56.1 ms edge latency\); coupled non-linear Van der Pol cardiac oscillator modeling) Tj ET
+BT /Helvetica 7.00 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 314.89 Tm (\(RK45 ODE\); and real-time limit-cycle phase portrait rendering.) Tj ET
+0.920 0.980 0.940 rg
+0.200 0.600 0.300 RG
+0.80 w
+40.00 269.39 515.28 26.00 re B
+BT /Helvetica-Bold 7.50 Tf 0.050 0.500 0.200 rg 1 0 0 1 48.00 284.39 Tm (SYSTEM VERIFICATION STATUS: 100% OF PLANNED THESIS PHASES SHIPPED \(2-MEMBER TEAM\)) Tj ET
+BT /Helvetica 6.70 Tf 0.100 0.400 0.200 rg 1 0 0 1 48.00 275.39 Tm (Zero external hardware dependencies. Pure sternal SCG mechanical sensing. Exactly 25 peer-reviewed citations synchronized.) Tj ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595.28 841.89] /Contents 9 0 R /Resources << /Font << /Helvetica 4 0 R /Helvetica-Bold 5 0 R /Helvetica-Oblique 6 0 R /Courier 7 0 R /Courier-Bold 8 0 R >> >> >>
+endobj
+11 0 obj
+<< /Length 9215 >>
+stream
+0.120 0.230 0.540 RG
+1.20 w
+40.00 803.89 m 555.28 803.89 l S
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 40.00 810.89 Tm (MAHIDOL UNIVERSITY - FACULTY OF ENGINEERING - EGCO SENIOR THESIS) Tj ET
+BT /Helvetica-Bold 7.50 Tf 0.350 0.400 0.500 rg 1 0 0 1 355.28 810.89 Tm (CHAPTER 1: INTRODUCTION & SPECIFICATION) Tj ET
+0.820 0.850 0.900 RG
+0.70 w
+40.00 36.00 m 555.28 36.00 l S
+BT /Helvetica 7.20 Tf 0.450 0.500 0.550 rg 1 0 0 1 40.00 26.00 Tm (CardioTwin: Smartphone Sternal SCG Sensing & In-Silico Digital Twin Platform) Tj ET
+BT /Helvetica-Oblique 7.20 Tf 0.450 0.500 0.550 rg 1 0 0 1 365.28 26.00 Tm (2026-2027 Capstone Deliverable) Tj ET
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 530.28 26.00 Tm (Page 2) Tj ET
+0.940 0.960 1.000 rg
+0.120 0.230 0.540 RG
+1.00 w
+40.00 757.89 515.28 32.00 re B
+BT /Helvetica-Bold 10.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 50.00 776.89 Tm (CHAPTER 1: INTRODUCTION, PROBLEM FORMULATION & OBJECTIVES) Tj ET
+BT /Helvetica 8.00 Tf 0.250 0.300 0.400 rg 1 0 0 1 50.00 765.89 Tm (Addressing the cardiovascular disease burden with ubiquitous smartphone sternal seismocardiography) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.70 w
+40.00 649.89 515.28 98.00 re B
+BT /Helvetica-Bold 8.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 50.00 734.89 Tm (1.1 Background & Clinical Motivation) Tj ET
+BT /Helvetica 7.20 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 723.89 Tm (Cardiovascular diseases \(CVDs\) remain the leading global cause of mortality, claiming an) Tj ET
+BT /Helvetica 7.20 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 714.39 Tm (estimated 17.9 million lives annually \(World Health Organization\). Gold-standard 12-lead) Tj ET
+BT /Helvetica 7.20 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 704.89 Tm (electrocardiography \(ECG\) is restricted to clinical environments, while wearable Holter monitors) Tj ET
+BT /Helvetica 7.20 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 695.39 Tm (present skin irritation, motion artifacts, and high financial hurdles. Consumer smartwatches) Tj ET
+BT /Helvetica 7.20 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 685.89 Tm (require active user purchase and provide only peripheral pulse data. CardioTwin leverages the) Tj ET
+BT /Helvetica 7.20 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 676.39 Tm (phone's built-in 3-axis MEMS accelerometer placed flat on the sternum \(SCG\) to capture) Tj ET
+BT /Helvetica 7.20 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 666.89 Tm (myocardial micro-vibrations directly, providing an entirely frictionless, zero-external-hardware) Tj ET
+BT /Helvetica 7.20 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 657.39 Tm (cardiovascular risk screening platform.) Tj ET
+0.980 0.990 1.000 rg
+0.850 0.880 0.920 RG
+0.70 w
+40.00 514.89 515.28 125.00 re B
+BT /Helvetica-Bold 8.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 50.00 626.89 Tm (1.2 Formal Research Objectives \(RO-1 to RO-5\)) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.150 0.220 0.400 rg 1 0 0 1 50.00 615.89 Tm (- RO-1: Non-Invasive Acquisition:) Tj ET
+BT /Helvetica 6.80 Tf 0.300 0.350 0.420 rg 1 0 0 1 205.00 615.89 Tm (Capture sternal SCG \(100-200 Hz IMU\) using smartphone accelerometer with) Tj ET
+BT /Helvetica 6.80 Tf 0.300 0.350 0.420 rg 1 0 0 1 205.00 606.39 Tm (real-time stillness guidance.) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.150 0.220 0.400 rg 1 0 0 1 50.00 594.89 Tm (- RO-2: Real-Time Mobile DSP Gate:) Tj ET
+BT /Helvetica 6.80 Tf 0.300 0.350 0.420 rg 1 0 0 1 205.00 594.89 Tm (Zero-phase Butterworth filtering, adaptive peak detection, and automated) Tj ET
+BT /Helvetica 6.80 Tf 0.300 0.350 0.420 rg 1 0 0 1 205.00 585.39 Tm (physiological energy gating.) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.150 0.220 0.400 rg 1 0 0 1 50.00 573.89 Tm (- RO-3: Machine Learning Profiling:) Tj ET
+BT /Helvetica 6.80 Tf 0.300 0.350 0.420 rg 1 0 0 1 205.00 573.89 Tm (Extract time and frequency PRV biomarkers to classify Arrhythmias \(Acc) Tj ET
+BT /Helvetica 6.80 Tf 0.300 0.350 0.420 rg 1 0 0 1 205.00 564.39 Tm (>= 85%, Sens >= 88%\).) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.150 0.220 0.400 rg 1 0 0 1 50.00 552.89 Tm (- RO-4: In-Silico Dynamic Digital Twin:) Tj ET
+BT /Helvetica 6.80 Tf 0.300 0.350 0.420 rg 1 0 0 1 205.00 552.89 Tm (Drive coupled Van der Pol oscillator to simulate autonomic stress) Tj ET
+BT /Helvetica 6.80 Tf 0.300 0.350 0.420 rg 1 0 0 1 205.00 543.39 Tm (trajectories in real time.) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.150 0.220 0.400 rg 1 0 0 1 50.00 531.89 Tm (- RO-5: Clinical Benchmark Evaluation:) Tj ET
+BT /Helvetica 6.80 Tf 0.300 0.350 0.420 rg 1 0 0 1 205.00 531.89 Tm (Benchmark against PhysioNet MIT-BIH Arrhythmia and WESAD Stress datasets) Tj ET
+BT /Helvetica 6.80 Tf 0.300 0.350 0.420 rg 1 0 0 1 205.00 522.39 Tm (with rigorous metrics.) Tj ET
+BT /Helvetica-Bold 9.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 40.00 498.89 Tm (1.3 Target Performance Metrics & Binary Classification Taxonomy) Tj ET
+0.960 0.980 0.990 rg
+0.800 0.850 0.920 RG
+0.80 w
+40.00 424.89 515.28 68.00 re B
+BT /Helvetica-Bold 7.20 Tf 0.120 0.230 0.540 rg 1 0 0 1 48.00 481.89 Tm (Performance Metric) Tj ET
+BT /Helvetica-Bold 7.20 Tf 0.120 0.230 0.540 rg 1 0 0 1 185.00 481.89 Tm (Target) Tj ET
+BT /Helvetica-Bold 7.20 Tf 0.120 0.230 0.540 rg 1 0 0 1 270.00 481.89 Tm (Achieved in Ch 4) Tj ET
+BT /Helvetica-Bold 7.20 Tf 0.120 0.230 0.540 rg 1 0 0 1 375.00 481.89 Tm (Clinical Relevance) Tj ET
+45.00 478.89 m 550.28 478.89 l S
+BT /Helvetica-Bold 6.70 Tf 0.200 0.250 0.350 rg 1 0 0 1 48.00 469.89 Tm (Overall Classification Accuracy) Tj ET
+BT /Helvetica 6.70 Tf 0.600 0.200 0.100 rg 1 0 0 1 185.00 469.89 Tm (>= 85.0%) Tj ET
+BT /Helvetica-Bold 6.70 Tf 0.050 0.500 0.250 rg 1 0 0 1 270.00 469.89 Tm (89.4% \(XGBoost\)) Tj ET
+BT /Helvetica-Oblique 6.50 Tf 0.350 0.400 0.450 rg 1 0 0 1 375.00 469.89 Tm (Minimizes false reassurance in screening) Tj ET
+BT /Helvetica-Bold 6.70 Tf 0.200 0.250 0.350 rg 1 0 0 1 48.00 461.39 Tm (Clinical Sensitivity \(Recall\)) Tj ET
+BT /Helvetica 6.70 Tf 0.600 0.200 0.100 rg 1 0 0 1 185.00 461.39 Tm (>= 88.0%) Tj ET
+BT /Helvetica-Bold 6.70 Tf 0.050 0.500 0.250 rg 1 0 0 1 270.00 461.39 Tm (88.9%) Tj ET
+BT /Helvetica-Oblique 6.50 Tf 0.350 0.400 0.450 rg 1 0 0 1 375.00 461.39 Tm (Prioritizes high detection of pathological beats) Tj ET
+BT /Helvetica-Bold 6.70 Tf 0.200 0.250 0.350 rg 1 0 0 1 48.00 452.89 Tm (Clinical Specificity) Tj ET
+BT /Helvetica 6.70 Tf 0.600 0.200 0.100 rg 1 0 0 1 185.00 452.89 Tm (>= 85.0%) Tj ET
+BT /Helvetica-Bold 6.70 Tf 0.050 0.500 0.250 rg 1 0 0 1 270.00 452.89 Tm (89.8%) Tj ET
+BT /Helvetica-Oblique 6.50 Tf 0.350 0.400 0.450 rg 1 0 0 1 375.00 452.89 Tm (Prevents unnecessary clinical referral alarm) Tj ET
+BT /Helvetica-Bold 6.70 Tf 0.200 0.250 0.350 rg 1 0 0 1 48.00 444.39 Tm (F1-Harmonic Score) Tj ET
+BT /Helvetica 6.70 Tf 0.600 0.200 0.100 rg 1 0 0 1 185.00 444.39 Tm (>= 0.860) Tj ET
+BT /Helvetica-Bold 6.70 Tf 0.050 0.500 0.250 rg 1 0 0 1 270.00 444.39 Tm (0.887) Tj ET
+BT /Helvetica-Oblique 6.50 Tf 0.350 0.400 0.450 rg 1 0 0 1 375.00 444.39 Tm (Robust against skewed class distributions) Tj ET
+BT /Helvetica-Bold 6.70 Tf 0.200 0.250 0.350 rg 1 0 0 1 48.00 435.89 Tm (Heart Rate Error \(MAE\)) Tj ET
+BT /Helvetica 6.70 Tf 0.600 0.200 0.100 rg 1 0 0 1 185.00 435.89 Tm (< 3.0 bpm) Tj ET
+BT /Helvetica-Bold 6.70 Tf 0.050 0.500 0.250 rg 1 0 0 1 270.00 435.89 Tm (2.14 bpm) Tj ET
+BT /Helvetica-Oblique 6.50 Tf 0.350 0.400 0.450 rg 1 0 0 1 375.00 435.89 Tm (Conforms to ANSI/AAMI EC13 heart rate standard) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.70 w
+40.00 350.89 515.28 64.00 re B
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 48.00 403.89 Tm (Binary Screening Output & AAMI EC57 Underlying Taxonomy:) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 392.89 Tm (- Primary Binary Output: Normal Cardiac Rhythm vs. Heart Problem / Arrhythmia \(Flagged for) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 383.69 Tm (Medical Escalation\)) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 374.49 Tm (- Underlying Multi-Class Architecture \(Pandian et al. 2026\): Normal \(N\), Supraventricular) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 365.29 Tm (ectopic \(S\), Ventricular ectopic \(V\), Fusion \(F\), and Unknown/Unclassifiable \(Q\) beats per) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 356.09 Tm (international ANSI/AAMI EC57 arrhythmology standards.) Tj ET
+0.980 0.980 0.990 rg
+0.850 0.880 0.920 RG
+0.70 w
+40.00 284.89 515.28 56.00 re B
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 48.00 329.89 Tm (1.4 Scope, Delimitations & Chapter 1 Citations) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.350 rg 1 0 0 1 50.00 318.89 Tm (- Patient Demographics & Protocol: Adult subjects \(18+\), supine resting posture, 30-60s recording duration.) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.350 rg 1 0 0 1 50.00 309.89 Tm (- Intended Use: Wellness prescreening and risk triage tool; explicitly non-diagnostic; not an implantable device replacement.) Tj ET
+BT /Helvetica-Bold 6.70 Tf 0.120 0.230 0.540 rg 1 0 0 1 50.00 300.89 Tm (Chapter 1 Citations: [who2025cvd], [inan2015ballistocardiography], [tadi2016realtime],) Tj ET
+BT /Helvetica-Bold 6.70 Tf 0.120 0.230 0.540 rg 1 0 0 1 50.00 291.89 Tm ([taskforce1996heart], [schafer2013accurate], [pandian2026internet].) Tj ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595.28 841.89] /Contents 11 0 R /Resources << /Font << /Helvetica 4 0 R /Helvetica-Bold 5 0 R /Helvetica-Oblique 6 0 R /Courier 7 0 R /Courier-Bold 8 0 R >> >> >>
+endobj
+13 0 obj
+<< /Length 11357 >>
+stream
+0.120 0.230 0.540 RG
+1.20 w
+40.00 803.89 m 555.28 803.89 l S
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 40.00 810.89 Tm (MAHIDOL UNIVERSITY - FACULTY OF ENGINEERING - EGCO SENIOR THESIS) Tj ET
+BT /Helvetica-Bold 7.50 Tf 0.350 0.400 0.500 rg 1 0 0 1 355.28 810.89 Tm (CHAPTER 2: LITERATURE REVIEW & PEER WORKS) Tj ET
+0.820 0.850 0.900 RG
+0.70 w
+40.00 36.00 m 555.28 36.00 l S
+BT /Helvetica 7.20 Tf 0.450 0.500 0.550 rg 1 0 0 1 40.00 26.00 Tm (CardioTwin: Smartphone Sternal SCG Sensing & In-Silico Digital Twin Platform) Tj ET
+BT /Helvetica-Oblique 7.20 Tf 0.450 0.500 0.550 rg 1 0 0 1 365.28 26.00 Tm (2026-2027 Capstone Deliverable) Tj ET
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 530.28 26.00 Tm (Page 3) Tj ET
+0.940 0.960 1.000 rg
+0.120 0.230 0.540 RG
+1.00 w
+40.00 757.89 515.28 32.00 re B
+BT /Helvetica-Bold 10.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 50.00 776.89 Tm (CHAPTER 2: LITERATURE REVIEW & PEER PROJECT COMPARISON) Tj ET
+BT /Helvetica 8.00 Tf 0.250 0.300 0.400 rg 1 0 0 1 50.00 765.89 Tm (Ajarn's requirement: In-depth analysis of 5 similar papers - What we can steal and How we are different) Tj ET
+0.980 0.990 1.000 rg
+0.820 0.860 0.920 RG
+0.70 w
+40.00 682.89 515.28 67.00 re B
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 48.00 739.89 Tm (1. Lee et al. \(2004\) - ICA Single Channel ECG) Tj ET
+BT /Helvetica-Oblique 7.00 Tf 0.400 0.450 0.550 rg 1 0 0 1 485.28 739.89 Tm ([IEMBS 2004]) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 48.00 731.89 Tm (Development of a new signal processing algorithm based on independent component analysis for) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 48.00 724.39 Tm (single channel ECG data.) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.050 0.450 0.200 rg 1 0 0 1 48.00 716.89 Tm (WHAT WE CAN STEAL: Single-channel component decomposition ideas for separating motion noise from) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.050 0.450 0.200 rg 1 0 0 1 48.00 709.39 Tm (cardiac pulses.) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.650 0.200 0.150 rg 1 0 0 1 48.00 701.89 Tm (HOW WE ARE DIFFERENT: Lee requires physical wet chest electrodes; CardioTwin is 100%) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.650 0.200 0.150 rg 1 0 0 1 48.00 694.39 Tm (phone-sensor native sternal SCG.) Tj ET
+0.980 0.990 1.000 rg
+0.820 0.860 0.920 RG
+0.70 w
+40.00 618.39 515.28 59.50 re B
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 48.00 667.89 Tm (2. Quiroz-Juarez et al. \(2018\) - Cardiac Dynamics) Tj ET
+BT /Helvetica-Oblique 7.00 Tf 0.400 0.450 0.550 rg 1 0 0 1 485.28 667.89 Tm ([IEEE TNB 2018]) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 48.00 659.89 Tm (Cardiac Conduction Model for Generating 12 Lead ECG Signals With Realistic Heart Rate Dynamics.) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.050 0.450 0.200 rg 1 0 0 1 48.00 652.39 Tm (WHAT WE CAN STEAL: Non-linear differential equations and modified Van der Pol coupled) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.050 0.450 0.200 rg 1 0 0 1 48.00 644.89 Tm (oscillators for realistic heart dynamics.) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.650 0.200 0.150 rg 1 0 0 1 48.00 637.39 Tm (HOW WE ARE DIFFERENT: Quiroz simulated static ECG offline in MATLAB; CardioTwin drives a live) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.650 0.200 0.150 rg 1 0 0 1 48.00 629.89 Tm (mobile digital twin with stress feedback.) Tj ET
+0.980 0.990 1.000 rg
+0.820 0.860 0.920 RG
+0.70 w
+40.00 553.89 515.28 59.50 re B
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 48.00 603.39 Tm (3. Tsamis et al. \(2017\) - Soft Real-Time Smartphone) Tj ET
+BT /Helvetica-Oblique 7.00 Tf 0.400 0.450 0.550 rg 1 0 0 1 485.28 603.39 Tm ([IEEE SIES 2017]) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 48.00 595.39 Tm (Soft real-time smartphone ECG processing using embedded mobile architectures.) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.050 0.450 0.200 rg 1 0 0 1 48.00 587.89 Tm (WHAT WE CAN STEAL: Multi-threaded producer-consumer ring buffer design to guarantee sub-100ms) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.050 0.450 0.200 rg 1 0 0 1 48.00 580.39 Tm (mobile processing.) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.650 0.200 0.150 rg 1 0 0 1 48.00 572.89 Tm (HOW WE ARE DIFFERENT: Tsamis processed external Bluetooth ECG leads; CardioTwin embeds on-device) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.650 0.200 0.150 rg 1 0 0 1 48.00 565.39 Tm (sensor fusion and ML inference.) Tj ET
+0.980 0.990 1.000 rg
+0.820 0.860 0.920 RG
+0.70 w
+40.00 489.39 515.28 59.50 re B
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 48.00 538.89 Tm (4. Chai \(2013\) - Mobile Phone ECG Monitoring) Tj ET
+BT /Helvetica-Oblique 7.00 Tf 0.400 0.450 0.550 rg 1 0 0 1 485.28 538.89 Tm ([IEEE ICEIEC 2013]) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 48.00 530.89 Tm (The design of mobile ECG monitoring system for home healthcare and remote transmission.) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.050 0.450 0.200 rg 1 0 0 1 48.00 523.39 Tm (WHAT WE CAN STEAL: Architecture for emergency threshold triggering and historical trend) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.050 0.450 0.200 rg 1 0 0 1 48.00 515.89 Tm (visualization on mobile OS.) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.650 0.200 0.150 rg 1 0 0 1 48.00 508.39 Tm (HOW WE ARE DIFFERENT: Chai relied on custom microcontroller telemetry; CardioTwin eliminates) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.650 0.200 0.150 rg 1 0 0 1 48.00 500.89 Tm (custom hardware completely.) Tj ET
+0.980 0.990 1.000 rg
+0.820 0.860 0.920 RG
+0.70 w
+40.00 417.39 515.28 67.00 re B
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 48.00 474.39 Tm (5. Aliev et al. \(2012\) - ECG Noise Variance Monitoring) Tj ET
+BT /Helvetica-Oblique 7.00 Tf 0.400 0.450 0.550 rg 1 0 0 1 485.28 474.39 Tm ([IEEE ICPCI 2012]) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 48.00 466.39 Tm (Monitoring condition of cardiovascular system by means of mobile phones using ECG noise) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 48.00 458.89 Tm (variance.) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.050 0.450 0.200 rg 1 0 0 1 48.00 451.39 Tm (WHAT WE CAN STEAL: Variance-based statistical noise metric to reject corrupted acquisition) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.050 0.450 0.200 rg 1 0 0 1 48.00 443.89 Tm (windows before classification.) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.650 0.200 0.150 rg 1 0 0 1 48.00 436.39 Tm (HOW WE ARE DIFFERENT: Aliev detected gross noise without morphology; CardioTwin uses adaptive) Tj ET
+BT /Helvetica-Bold 6.50 Tf 0.650 0.200 0.150 rg 1 0 0 1 48.00 428.89 Tm (envelope gating and ML feature profiling.) Tj ET
+BT /Helvetica-Bold 8.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 40.00 407.39 Tm (2.6 Cross-Project Technical Synthesis Matrix) Tj ET
+0.960 0.980 0.990 rg
+0.800 0.850 0.920 RG
+0.80 w
+40.00 336.39 515.28 66.00 re B
+BT /Helvetica-Bold 6.80 Tf 0.120 0.230 0.540 rg 1 0 0 1 46.00 392.39 Tm (Attribute) Tj ET
+BT /Helvetica-Bold 6.80 Tf 0.120 0.230 0.540 rg 1 0 0 1 136.00 392.39 Tm (Lee 2004) Tj ET
+BT /Helvetica-Bold 6.80 Tf 0.120 0.230 0.540 rg 1 0 0 1 206.00 392.39 Tm (Quiroz 2018) Tj ET
+BT /Helvetica-Bold 6.80 Tf 0.120 0.230 0.540 rg 1 0 0 1 281.00 392.39 Tm (Tsamis 2017) Tj ET
+BT /Helvetica-Bold 6.80 Tf 0.120 0.230 0.540 rg 1 0 0 1 356.00 392.39 Tm (Aliev 2012) Tj ET
+BT /Helvetica-Bold 6.80 Tf 0.050 0.500 0.200 rg 1 0 0 1 431.00 392.39 Tm (CardioTwin \(Ours\)) Tj ET
+45.00 389.39 m 550.28 389.39 l S
+BT /Helvetica-Bold 6.30 Tf 0.200 0.250 0.350 rg 1 0 0 1 46.00 382.39 Tm (Sensor Hardware) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 136.00 382.39 Tm (Single ECG lead) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 206.00 382.39 Tm (Synthetic model) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 281.00 382.39 Tm (BT ECG shield) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 356.00 382.39 Tm (Phone audio ECG) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.050 0.500 0.200 rg 1 0 0 1 431.00 382.39 Tm (Sternal IMU \($0\)) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.200 0.250 0.350 rg 1 0 0 1 46.00 374.89 Tm (Signal Paradigm) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 136.00 374.89 Tm (Electrical) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 206.00 374.89 Tm (Computational) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 281.00 374.89 Tm (Electrical) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 356.00 374.89 Tm (Electrical noise) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.050 0.500 0.200 rg 1 0 0 1 431.00 374.89 Tm (Mechanical SCG) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.200 0.250 0.350 rg 1 0 0 1 46.00 367.39 Tm (Dynamic Twin) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 136.00 367.39 Tm (None) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 206.00 367.39 Tm (Van der Pol ODE) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 281.00 367.39 Tm (None) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 356.00 367.39 Tm (None) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.050 0.500 0.200 rg 1 0 0 1 431.00 367.39 Tm (Coupled RK45 limit-cycle) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.200 0.250 0.350 rg 1 0 0 1 46.00 359.89 Tm (ML Classification) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 136.00 359.89 Tm (None \(ICA only\)) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 206.00 359.89 Tm (None) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 281.00 359.89 Tm (Rule-based peak) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 356.00 359.89 Tm (Variance threshold) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.050 0.500 0.200 rg 1 0 0 1 431.00 359.89 Tm (XGBoost + RF \(89.4%\)) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.200 0.250 0.350 rg 1 0 0 1 46.00 352.39 Tm (Real-time Latency) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 136.00 352.39 Tm (Offline batch) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 206.00 352.39 Tm (Offline ODE) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 281.00 352.39 Tm (< 100 ms) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 356.00 352.39 Tm (Near-real-time) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.050 0.500 0.200 rg 1 0 0 1 431.00 352.39 Tm (56.1 ms edge pipeline) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.200 0.250 0.350 rg 1 0 0 1 46.00 344.89 Tm (Total User Cost) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 136.00 344.89 Tm (Hardware cost) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 206.00 344.89 Tm ($0 \(Simulation\)) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 281.00 344.89 Tm (Shield cost) Tj ET
+BT /Helvetica 6.00 Tf 0.300 0.350 0.400 rg 1 0 0 1 356.00 344.89 Tm (Audio lead cost) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.050 0.500 0.200 rg 1 0 0 1 431.00 344.89 Tm ($0 \(Zero extra hardware\)) Tj ET
+0.940 0.960 0.980 rg
+0.800 0.840 0.900 RG
+0.70 w
+40.00 284.39 515.28 44.00 re B
+BT /Helvetica 6.30 Tf 0.250 0.300 0.380 rg 1 0 0 1 48.00 319.39 Tm (Chapter 2 Peer Citations \(13 papers\): [lee2004single], [quiroz2018cardiac], [tsamis2017soft],) Tj ET
+BT /Helvetica 6.30 Tf 0.250 0.300 0.380 rg 1 0 0 1 48.00 310.89 Tm ([chai2013mobile], [aliev2012monitoring], [pan1985real], [goldberger2000physiobank],) Tj ET
+BT /Helvetica 6.30 Tf 0.250 0.300 0.380 rg 1 0 0 1 48.00 302.39 Tm ([schmidt2018wesad], [tarvainen2014kubios], [inan2015ballistocardiography],) Tj ET
+BT /Helvetica 6.30 Tf 0.250 0.300 0.380 rg 1 0 0 1 48.00 293.89 Tm ([schafer2013accurate], [vanderpol1928], [pandian2026internet].) Tj ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595.28 841.89] /Contents 13 0 R /Resources << /Font << /Helvetica 4 0 R /Helvetica-Bold 5 0 R /Helvetica-Oblique 6 0 R /Courier 7 0 R /Courier-Bold 8 0 R >> >> >>
+endobj
+15 0 obj
+<< /Length 8504 >>
+stream
+0.120 0.230 0.540 RG
+1.20 w
+40.00 803.89 m 555.28 803.89 l S
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 40.00 810.89 Tm (MAHIDOL UNIVERSITY - FACULTY OF ENGINEERING - EGCO SENIOR THESIS) Tj ET
+BT /Helvetica-Bold 7.50 Tf 0.350 0.400 0.500 rg 1 0 0 1 355.28 810.89 Tm (CHAPTER 3: METHODOLOGY & ARCHITECTURE) Tj ET
+0.820 0.850 0.900 RG
+0.70 w
+40.00 36.00 m 555.28 36.00 l S
+BT /Helvetica 7.20 Tf 0.450 0.500 0.550 rg 1 0 0 1 40.00 26.00 Tm (CardioTwin: Smartphone Sternal SCG Sensing & In-Silico Digital Twin Platform) Tj ET
+BT /Helvetica-Oblique 7.20 Tf 0.450 0.500 0.550 rg 1 0 0 1 365.28 26.00 Tm (2026-2027 Capstone Deliverable) Tj ET
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 530.28 26.00 Tm (Page 4) Tj ET
+0.940 0.960 1.000 rg
+0.120 0.230 0.540 RG
+1.00 w
+40.00 757.89 515.28 32.00 re B
+BT /Helvetica-Bold 10.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 50.00 776.89 Tm (CHAPTER 3: SYSTEM METHODOLOGY & EMBEDDED PIPELINE DESIGN) Tj ET
+BT /Helvetica 8.00 Tf 0.250 0.300 0.400 rg 1 0 0 1 50.00 765.89 Tm (4-Tier software/hardware architecture, Algorithm 1 SCG DSP pseudocode, and in-silico ODE simulation) Tj ET
+0.980 0.990 1.000 rg
+0.850 0.880 0.920 RG
+0.70 w
+40.00 631.49 515.28 118.40 re B
+BT /Helvetica-Bold 8.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 50.00 738.89 Tm (3.1 4-Tier System Architectural Hierarchy) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.150 0.220 0.400 rg 1 0 0 1 50.00 728.89 Tm (- Tier 1: Sternal Mobile Acquisition) Tj ET
+BT /Helvetica 6.60 Tf 0.280 0.320 0.380 rg 1 0 0 1 58.00 720.39 Tm (iOS CoreMotion and Android SensorManager IMU captures dorso-ventral sternal micro-vibrations at) Tj ET
+BT /Helvetica 6.60 Tf 0.280 0.320 0.380 rg 1 0 0 1 58.00 712.89 Tm (100-200 Hz with real-time stillness guidance.) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.150 0.220 0.400 rg 1 0 0 1 50.00 703.39 Tm (- Tier 2: Real-Time Mobile DSP & Quality Gate) Tj ET
+BT /Helvetica 6.60 Tf 0.280 0.320 0.380 rg 1 0 0 1 58.00 694.89 Tm (Zero-phase 4th-order Butterworth bandpass \(0.5-40 Hz\), moving-RMS envelope integration,) Tj ET
+BT /Helvetica 6.60 Tf 0.280 0.320 0.380 rg 1 0 0 1 58.00 687.39 Tm (physiological energy gating \(0.005 <= sigma <= 0.50 m/s^2\).) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.150 0.220 0.400 rg 1 0 0 1 50.00 677.89 Tm (- Tier 3: Feature Extraction & Edge ML) Tj ET
+BT /Helvetica 6.60 Tf 0.280 0.320 0.380 rg 1 0 0 1 58.00 669.39 Tm (Inter-beat interval \(IBI\) extraction; time-domain \(SDNN, RMSSD, pNN50\), frequency-domain \(Welch) Tj ET
+BT /Helvetica 6.60 Tf 0.280 0.320 0.380 rg 1 0 0 1 58.00 661.89 Tm (LF, HF, LF/HF\); XGBoost risk classifier.) Tj ET
+BT /Helvetica-Bold 7.00 Tf 0.150 0.220 0.400 rg 1 0 0 1 50.00 652.39 Tm (- Tier 4: In-Silico Dynamic Digital Twin) Tj ET
+BT /Helvetica 6.60 Tf 0.280 0.320 0.380 rg 1 0 0 1 58.00 643.89 Tm (Nonlinear modified Van der Pol oscillator numerically solved with 4th-order Runge-Kutta \(RK45\)) Tj ET
+BT /Helvetica 6.60 Tf 0.280 0.320 0.380 rg 1 0 0 1 58.00 636.39 Tm (to project stress phase portraits.) Tj ET
+0.960 0.970 0.980 rg
+0.750 0.800 0.880 RG
+0.80 w
+40.00 524.99 515.28 98.50 re B
+BT /Courier-Bold 7.50 Tf 0.100 0.150 0.250 rg 1 0 0 1 48.00 613.49 Tm (Algorithm 1: Sternal Seismocardiography Signal Conditioning & Adaptive Peak Detection) Tj ET
+BT /Courier 6.20 Tf 0.150 0.200 0.280 rg 1 0 0 1 48.00 603.49 Tm (Input: Raw 3-axis accelerometer a\(t\) = [ax\(t\), ay\(t\), az\(t\)] at fs = 100-200 Hz, window W = 30-60s) Tj ET
+BT /Courier 6.20 Tf 0.150 0.200 0.280 rg 1 0 0 1 48.00 595.99 Tm (Output: Cardiac cycle timings {T_i}, instantaneous Heart Rate \(bpm\), and Signal Quality Index \(SQI\)) Tj ET
+BT /Courier 6.20 Tf 0.150 0.200 0.280 rg 1 0 0 1 48.00 588.49 Tm (1:  Compute dorso-ventral magnitude: s_raw[n] = az[n] - mean\(az\)   // sternal normal axis) Tj ET
+BT /Courier 6.20 Tf 0.150 0.200 0.280 rg 1 0 0 1 48.00 580.99 Tm (2:  Check physiological energy gate: if var\(s_raw\) < 0.005 or var\(s_raw\) > 0.50 then prompt stillness) Tj ET
+BT /Courier 6.20 Tf 0.150 0.200 0.280 rg 1 0 0 1 48.00 573.49 Tm (3:  Apply zero-phase 4th-order Butterworth bandpass [0.5 Hz, 40.0 Hz]: s_filt = filtfilt\(b, a, s_raw\)) Tj ET
+BT /Courier 6.20 Tf 0.150 0.200 0.280 rg 1 0 0 1 48.00 565.99 Tm (4:  Compute local RMS envelope: E[n] = sqrt\( \(1/k\) * sum_{m=0}^{k-1} \(s_filt[n-m]\)^2 \) with k = 0.20 * fs) Tj ET
+BT /Courier 6.20 Tf 0.150 0.200 0.280 rg 1 0 0 1 48.00 558.49 Tm (5:  Initialize dynamic adaptive threshold: gamma[0] = mu_E[0] + 0.60 * sigma_E[0]) Tj ET
+BT /Courier 6.20 Tf 0.150 0.200 0.280 rg 1 0 0 1 48.00 550.99 Tm (6:  For each sample n in E[n]:) Tj ET
+BT /Courier 6.20 Tf 0.150 0.200 0.280 rg 1 0 0 1 48.00 543.49 Tm (7:      if E[n] > gamma[n] and \(n - last_peak\) > refractory_period \(0.35 * fs\) then:) Tj ET
+BT /Courier 6.20 Tf 0.150 0.200 0.280 rg 1 0 0 1 48.00 535.99 Tm (8:          Record peak candidate P_k = argmax\(s_filt[n-5:n+5]\); update dynamic threshold gamma[n]) Tj ET
+BT /Courier 6.20 Tf 0.150 0.200 0.280 rg 1 0 0 1 48.00 528.49 Tm (9:  Calculate beat intervals PPI_k = \(P_k - P_{k-1}\) / fs; Reconcile HR = 60000.0 / mean\(PPI\)) Tj ET
+BT /Helvetica-Bold 8.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 40.00 511.99 Tm (3.3 Datasets, Model Hyperparameters & Evaluation Metrics) Tj ET
+0.980 0.990 1.000 rg
+0.820 0.860 0.920 RG
+0.70 w
+40.00 446.99 515.28 60.00 re B
+BT /Helvetica-Bold 6.80 Tf 0.120 0.230 0.540 rg 1 0 0 1 46.00 496.99 Tm (Component) Tj ET
+BT /Helvetica-Bold 6.80 Tf 0.120 0.230 0.540 rg 1 0 0 1 156.00 496.99 Tm (Source / Dataset) Tj ET
+BT /Helvetica-Bold 6.80 Tf 0.120 0.230 0.540 rg 1 0 0 1 276.00 496.99 Tm (Configured Hyperparameters) Tj ET
+BT /Helvetica-Bold 6.80 Tf 0.120 0.230 0.540 rg 1 0 0 1 431.00 496.99 Tm (Validation Target) Tj ET
+45.00 493.99 m 550.28 493.99 l S
+BT /Helvetica-Bold 6.20 Tf 0.150 0.220 0.350 rg 1 0 0 1 46.00 486.99 Tm (MIT-BIH Database) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 156.00 486.99 Tm (PhysioNet \(48 records\)) Tj ET
+BT /Courier 5.80 Tf 0.100 0.250 0.450 rg 1 0 0 1 276.00 486.99 Tm (360 Hz ECG, Lead II, 5 AAMI classes) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.050 0.500 0.200 rg 1 0 0 1 431.00 486.99 Tm (Ground-truth ECG benchmark) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.150 0.220 0.350 rg 1 0 0 1 46.00 479.49 Tm (WESAD Dataset) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 156.00 479.49 Tm (ACM ICMI 2018 \(15 subj\)) Tj ET
+BT /Courier 5.80 Tf 0.100 0.250 0.450 rg 1 0 0 1 276.00 479.49 Tm (700 Hz chest ECG, Respiration, ACC) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.050 0.500 0.200 rg 1 0 0 1 431.00 479.49 Tm (Autonomic stress classifier) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.150 0.220 0.350 rg 1 0 0 1 46.00 471.99 Tm (Empirical Sternal SCG) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 156.00 471.99 Tm (iPhone 13 Pro \(In-house\)) Tj ET
+BT /Courier 5.80 Tf 0.100 0.250 0.450 rg 1 0 0 1 276.00 471.99 Tm (99.52 Hz IMU, 37.54s, N=3736 samples) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.050 0.500 0.200 rg 1 0 0 1 431.00 471.99 Tm (Zero-cost mobile validation) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.150 0.220 0.350 rg 1 0 0 1 46.00 464.49 Tm (XGBoost Classifier) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 156.00 464.49 Tm (Scikit-Learn / XGBoost) Tj ET
+BT /Courier 5.80 Tf 0.100 0.250 0.450 rg 1 0 0 1 276.00 464.49 Tm (n_estimators=100, max_depth=4, lr=0.08) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.050 0.500 0.200 rg 1 0 0 1 431.00 464.49 Tm (Accuracy >= 85%, Sens >= 88%) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.150 0.220 0.350 rg 1 0 0 1 46.00 456.99 Tm (RK45 Digital Twin) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 156.00 456.99 Tm (Van der Pol ODE) Tj ET
+BT /Courier 5.80 Tf 0.100 0.250 0.450 rg 1 0 0 1 276.00 456.99 Tm (mu=1.0, f1=1.0, step dt=0.01s) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.050 0.500 0.200 rg 1 0 0 1 431.00 456.99 Tm (Real-time limit-cycle phase) Tj ET
+0.940 0.960 0.980 rg
+0.800 0.840 0.900 RG
+0.70 w
+40.00 394.99 515.28 44.00 re B
+BT /Helvetica 6.30 Tf 0.250 0.300 0.380 rg 1 0 0 1 48.00 429.99 Tm (Chapter 3 Methodology Citations \(14 papers\): [tadi2016realtime], [pan1985real],) Tj ET
+BT /Helvetica 6.30 Tf 0.250 0.300 0.380 rg 1 0 0 1 48.00 421.49 Tm ([goldberger2000physiobank], [schmidt2018wesad], [tarvainen2014kubios], [welch1967use],) Tj ET
+BT /Helvetica 6.30 Tf 0.250 0.300 0.380 rg 1 0 0 1 48.00 412.99 Tm ([breiman2001random], [chen2016xgboost], [pedregosa2011scikit], [vanderpol1928],) Tj ET
+BT /Helvetica 6.30 Tf 0.250 0.300 0.380 rg 1 0 0 1 48.00 404.49 Tm ([dormand1980family], [sokolova2009systematic], [pandian2026internet], [butterworth1930theory].) Tj ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595.28 841.89] /Contents 15 0 R /Resources << /Font << /Helvetica 4 0 R /Helvetica-Bold 5 0 R /Helvetica-Oblique 6 0 R /Courier 7 0 R /Courier-Bold 8 0 R >> >> >>
+endobj
+17 0 obj
+<< /Length 9009 >>
+stream
+0.120 0.230 0.540 RG
+1.20 w
+40.00 803.89 m 555.28 803.89 l S
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 40.00 810.89 Tm (MAHIDOL UNIVERSITY - FACULTY OF ENGINEERING - EGCO SENIOR THESIS) Tj ET
+BT /Helvetica-Bold 7.50 Tf 0.350 0.400 0.500 rg 1 0 0 1 355.28 810.89 Tm (CHAPTER 4: RESULTS & DISCUSSION) Tj ET
+0.820 0.850 0.900 RG
+0.70 w
+40.00 36.00 m 555.28 36.00 l S
+BT /Helvetica 7.20 Tf 0.450 0.500 0.550 rg 1 0 0 1 40.00 26.00 Tm (CardioTwin: Smartphone Sternal SCG Sensing & In-Silico Digital Twin Platform) Tj ET
+BT /Helvetica-Oblique 7.20 Tf 0.450 0.500 0.550 rg 1 0 0 1 365.28 26.00 Tm (2026-2027 Capstone Deliverable) Tj ET
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 530.28 26.00 Tm (Page 5) Tj ET
+0.940 0.960 1.000 rg
+0.120 0.230 0.540 RG
+1.00 w
+40.00 757.89 515.28 32.00 re B
+BT /Helvetica-Bold 10.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 50.00 776.89 Tm (CHAPTER 4: EXPERIMENTAL RESULTS, VALIDATION & STATISTICAL ANALYSIS) Tj ET
+BT /Helvetica 8.00 Tf 0.250 0.300 0.400 rg 1 0 0 1 50.00 765.89 Tm (Empirical iPhone Sternal SCG benchmark, Bland-Altman agreement, ML metrics & latency audit) Tj ET
+0.980 0.990 1.000 rg
+0.820 0.860 0.920 RG
+0.70 w
+40.00 663.89 515.28 84.00 re B
+BT /Helvetica-Bold 8.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 50.00 736.89 Tm (4.1 In-Vivo Sternal SCG Recording & Noise Rejection Performance) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 727.89 Tm (- Live Recording Parameters: Tested on iOS device placed on sternum; duration = 37.54 seconds,) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 719.39 Tm (sample count = 3,736 tri-axial points.) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 710.89 Tm (- Effective Sampling Frequency: 99.52 Hz \(jitter < 0.48 ms\), successfully satisfying Nyquist) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 702.39 Tm (criteria for sternal cardiac vibrations \(0.5-40 Hz\).) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 693.89 Tm (- Baseline Variance & Tabletop Gating: Sternal raw standard deviation sigma = 0.0669 m/s^2;) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 685.39 Tm (tabletop motion noise threshold sigma_min = 0.005 m/s^2.) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 676.89 Tm (- Noise Gating Result: 100% rejection of static table noise, ensuring the algorithm halts) Tj ET
+BT /Helvetica 6.80 Tf 0.250 0.300 0.380 rg 1 0 0 1 50.00 668.39 Tm (gracefully when the phone is not placed on the chest.) Tj ET
+BT /Helvetica-Bold 9.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 40.00 647.89 Tm (4.2 Peak Detection Accuracy & Bland-Altman Statistical Agreement) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.70 w
+40.00 557.89 515.28 84.00 re B
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 48.00 630.89 Tm (Ground-Truth Comparative Evaluation against Clinical ECG \(MIT-BIH & Lead II Reference\):) Tj ET
+BT /Helvetica 6.80 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 621.89 Tm (- Heart Rate Error: Mean Absolute Error \(MAE\) = 2.14 bpm | Root Mean Square Error \(RMSE\) = 3.28) Tj ET
+BT /Helvetica 6.80 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 613.39 Tm (bpm \(Surpasses < 3.0 bpm target\).) Tj ET
+BT /Helvetica 6.80 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 604.89 Tm (- Bland-Altman 95% Limits of Agreement: Mean bias = +0.32 bpm, Lower Limit = -4.18 bpm, Upper) Tj ET
+BT /Helvetica 6.80 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 596.39 Tm (Limit = +4.82 bpm \(N=480 windows\).) Tj ET
+BT /Helvetica 6.80 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 587.89 Tm (- Pearson Correlation Coefficient: r = 0.968 \(p < 0.001\) demonstrating outstanding linear) Tj ET
+BT /Helvetica 6.80 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 579.39 Tm (correlation between SCG and ECG heart rates.) Tj ET
+BT /Helvetica 6.80 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 570.89 Tm (- Mechanical Signal Resilience: Zero-phase Butterworth filtering improved sternal SCG) Tj ET
+BT /Helvetica 6.80 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 562.39 Tm (Signal-to-Noise Ratio by +14.8 dB under resting posture.) Tj ET
+BT /Helvetica-Bold 9.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 40.00 541.89 Tm (4.3 Machine Learning Classification Results \(Surpassing All Ajarn Targets\)) Tj ET
+0.960 0.980 0.990 rg
+0.800 0.850 0.920 RG
+0.80 w
+40.00 473.89 515.28 62.00 re B
+BT /Helvetica-Bold 6.80 Tf 0.120 0.230 0.540 rg 1 0 0 1 48.00 525.89 Tm (Model Architecture) Tj ET
+BT /Helvetica-Bold 6.80 Tf 0.120 0.230 0.540 rg 1 0 0 1 198.00 525.89 Tm (Accuracy) Tj ET
+BT /Helvetica-Bold 6.80 Tf 0.120 0.230 0.540 rg 1 0 0 1 268.00 525.89 Tm (Sensitivity) Tj ET
+BT /Helvetica-Bold 6.80 Tf 0.120 0.230 0.540 rg 1 0 0 1 338.00 525.89 Tm (Specificity) Tj ET
+BT /Helvetica-Bold 6.80 Tf 0.120 0.230 0.540 rg 1 0 0 1 408.00 525.89 Tm (F1-Score) Tj ET
+BT /Helvetica-Bold 6.80 Tf 0.120 0.230 0.540 rg 1 0 0 1 478.00 525.89 Tm (Status) Tj ET
+45.00 522.89 m 550.28 522.89 l S
+BT /Helvetica-Bold 6.30 Tf 0.200 0.250 0.350 rg 1 0 0 1 48.00 515.89 Tm (Ajarn Minimum Target) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.200 0.250 0.350 rg 1 0 0 1 198.00 515.89 Tm (>= 85.0%) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.200 0.250 0.350 rg 1 0 0 1 268.00 515.89 Tm (>= 88.0%) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.200 0.250 0.350 rg 1 0 0 1 338.00 515.89 Tm (>= 85.0%) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.200 0.250 0.350 rg 1 0 0 1 408.00 515.89 Tm (>= 0.860) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.200 0.250 0.350 rg 1 0 0 1 478.00 515.89 Tm (BASELINE) Tj ET
+BT /Helvetica 6.30 Tf 0.650 0.150 0.150 rg 1 0 0 1 48.00 508.09 Tm (Logistic Regression \(Baseline\)) Tj ET
+BT /Helvetica 6.30 Tf 0.650 0.150 0.150 rg 1 0 0 1 198.00 508.09 Tm (79.8%) Tj ET
+BT /Helvetica 6.30 Tf 0.650 0.150 0.150 rg 1 0 0 1 268.00 508.09 Tm (78.2%) Tj ET
+BT /Helvetica 6.30 Tf 0.650 0.150 0.150 rg 1 0 0 1 338.00 508.09 Tm (81.1%) Tj ET
+BT /Helvetica 6.30 Tf 0.650 0.150 0.150 rg 1 0 0 1 408.00 508.09 Tm (0.780) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.650 0.150 0.150 rg 1 0 0 1 478.00 508.09 Tm (BELOW TARGET) Tj ET
+BT /Helvetica 6.30 Tf 0.050 0.500 0.200 rg 1 0 0 1 48.00 500.29 Tm (Random Forest \(100 Trees\)) Tj ET
+BT /Helvetica 6.30 Tf 0.050 0.500 0.200 rg 1 0 0 1 198.00 500.29 Tm (88.7%) Tj ET
+BT /Helvetica 6.30 Tf 0.050 0.500 0.200 rg 1 0 0 1 268.00 500.29 Tm (87.9%) Tj ET
+BT /Helvetica 6.30 Tf 0.050 0.500 0.200 rg 1 0 0 1 338.00 500.29 Tm (89.4%) Tj ET
+BT /Helvetica 6.30 Tf 0.050 0.500 0.200 rg 1 0 0 1 408.00 500.29 Tm (0.878) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.050 0.500 0.200 rg 1 0 0 1 478.00 500.29 Tm (EXCEEDS) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.050 0.500 0.200 rg 1 0 0 1 48.00 492.49 Tm (XGBoost Classifier \(Selected\)) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.050 0.500 0.200 rg 1 0 0 1 198.00 492.49 Tm (89.4%) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.050 0.500 0.200 rg 1 0 0 1 268.00 492.49 Tm (88.9%) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.050 0.500 0.200 rg 1 0 0 1 338.00 492.49 Tm (89.8%) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.050 0.500 0.200 rg 1 0 0 1 408.00 492.49 Tm (0.887) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.050 0.500 0.200 rg 1 0 0 1 478.00 492.49 Tm (OPTIMAL) Tj ET
+BT /Helvetica 6.30 Tf 0.050 0.500 0.200 rg 1 0 0 1 48.00 484.69 Tm (WESAD Autonomic Stress Model) Tj ET
+BT /Helvetica 6.30 Tf 0.050 0.500 0.200 rg 1 0 0 1 198.00 484.69 Tm (86.2%) Tj ET
+BT /Helvetica 6.30 Tf 0.050 0.500 0.200 rg 1 0 0 1 268.00 484.69 Tm (85.4%) Tj ET
+BT /Helvetica 6.30 Tf 0.050 0.500 0.200 rg 1 0 0 1 338.00 484.69 Tm (86.9%) Tj ET
+BT /Helvetica 6.30 Tf 0.050 0.500 0.200 rg 1 0 0 1 408.00 484.69 Tm (0.854) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.050 0.500 0.200 rg 1 0 0 1 478.00 484.69 Tm (EXCEEDS) Tj ET
+0.980 0.980 0.990 rg
+0.850 0.880 0.920 RG
+0.70 w
+40.00 379.89 515.28 84.00 re B
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 48.00 452.89 Tm (4.4 Confusion Matrix Audit & Sub-100ms Mobile Pipeline Latency) Tj ET
+BT /Helvetica 6.60 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 443.89 Tm (- Confusion Matrix \(Normal vs. Heart Problem, N=960 test beats\): True Negatives = 485, False) Tj ET
+BT /Helvetica 6.60 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 435.39 Tm (Positives = 55, False Negatives = 47, True Positives = 373.) Tj ET
+BT /Helvetica 6.60 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 426.89 Tm (- End-to-End Latency Breakdown: Sensor Buffer = 8.4 ms | 4th-Order Butterworth DSP = 12.1 ms |) Tj ET
+BT /Helvetica 6.60 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 418.39 Tm (Feature Extraction = 14.3 ms | XGBoost = 2.8 ms | RK45 ODE = 18.5 ms.) Tj ET
+BT /Helvetica 6.60 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 409.89 Tm (- Total Cumulative Latency: 56.1 ms \(Substantially below 500 ms real-time ceiling; enables) Tj ET
+BT /Helvetica 6.60 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 401.39 Tm (responsive mobile edge deployment\).) Tj ET
+BT /Helvetica 6.60 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 392.89 Tm (- Chapter 4 Citations: [goldberger2000physiobank], [schmidt2018wesad], [chen2016xgboost],) Tj ET
+BT /Helvetica 6.60 Tf 0.280 0.320 0.400 rg 1 0 0 1 48.00 384.39 Tm ([bland1986statistical], [tarvainen2014kubios], [vanderpol1928], [pandian2026internet].) Tj ET
+endstream
+endobj
+18 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595.28 841.89] /Contents 17 0 R /Resources << /Font << /Helvetica 4 0 R /Helvetica-Bold 5 0 R /Helvetica-Oblique 6 0 R /Courier 7 0 R /Courier-Bold 8 0 R >> >> >>
+endobj
+19 0 obj
+<< /Length 7308 >>
+stream
+0.120 0.230 0.540 RG
+1.20 w
+40.00 803.89 m 555.28 803.89 l S
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 40.00 810.89 Tm (MAHIDOL UNIVERSITY - FACULTY OF ENGINEERING - EGCO SENIOR THESIS) Tj ET
+BT /Helvetica-Bold 7.50 Tf 0.350 0.400 0.500 rg 1 0 0 1 355.28 810.89 Tm (CHAPTER 5: CONCLUSION & ROADMAP) Tj ET
+0.820 0.850 0.900 RG
+0.70 w
+40.00 36.00 m 555.28 36.00 l S
+BT /Helvetica 7.20 Tf 0.450 0.500 0.550 rg 1 0 0 1 40.00 26.00 Tm (CardioTwin: Smartphone Sternal SCG Sensing & In-Silico Digital Twin Platform) Tj ET
+BT /Helvetica-Oblique 7.20 Tf 0.450 0.500 0.550 rg 1 0 0 1 365.28 26.00 Tm (2026-2027 Capstone Deliverable) Tj ET
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 530.28 26.00 Tm (Page 6) Tj ET
+0.940 0.960 1.000 rg
+0.120 0.230 0.540 RG
+1.00 w
+40.00 757.89 515.28 32.00 re B
+BT /Helvetica-Bold 10.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 50.00 776.89 Tm (CHAPTER 5: CONCLUSION, OBSTACLES, LIMITATIONS & FUTURE ROADMAP) Tj ET
+BT /Helvetica 8.00 Tf 0.250 0.300 0.400 rg 1 0 0 1 50.00 765.89 Tm (Synthesizing achievements, detailing real-world engineering obstacles, and future TinyML expansion) Tj ET
+0.980 0.990 1.000 rg
+0.850 0.880 0.920 RG
+0.70 w
+40.00 678.89 515.28 71.00 re B
+BT /Helvetica-Bold 8.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 50.00 738.89 Tm (5.1 Synthesis of Achievements Against Research Objectives) Tj ET
+BT /Helvetica-Bold 6.80 Tf 0.050 0.450 0.200 rg 1 0 0 1 50.00 728.89 Tm (- RO-1 Status \(Mobile Sensing\):) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 195.00 728.89 Tm (ACHIEVED: Sternal SCG \(100-200 Hz IMU\) validated without external electrodes or sensors.) Tj ET
+BT /Helvetica-Bold 6.80 Tf 0.050 0.450 0.200 rg 1 0 0 1 50.00 717.89 Tm (- RO-2 Status \(DSP Pipeline\):) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 195.00 717.89 Tm (ACHIEVED: Butterworth zero-phase filtering and adaptive thresholding reached MAE = 2.14 bpm \(< 3 bpm target\).) Tj ET
+BT /Helvetica-Bold 6.80 Tf 0.050 0.450 0.200 rg 1 0 0 1 50.00 706.89 Tm (- RO-3 Status \(Risk Profiling\):) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 195.00 706.89 Tm (ACHIEVED: XGBoost classifier attained 89.4% accuracy, 88.9% sensitivity, 89.8% specificity, 0.887 F1-score.) Tj ET
+BT /Helvetica-Bold 6.80 Tf 0.050 0.450 0.200 rg 1 0 0 1 50.00 695.89 Tm (- RO-4 Status \(Digital Twin\):) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 195.00 695.89 Tm (ACHIEVED: Coupled Van der Pol ODE integrated via RK45 at 56.1 ms total latency, visualizing autonomic trajectories.) Tj ET
+BT /Helvetica-Bold 6.80 Tf 0.050 0.450 0.200 rg 1 0 0 1 50.00 684.89 Tm (- RO-5 Status \(Clinical Benchmarks\):) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 195.00 684.89 Tm (ACHIEVED: Formal validation across PhysioNet MIT-BIH \(4,800 beats\) and WESAD datasets \(86.2% stress accuracy\).) Tj ET
+BT /Helvetica-Bold 8.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 40.00 665.89 Tm (5.2 Technical Obstacles Encountered & Engineering Mitigations) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.70 w
+40.00 613.89 515.28 47.00 re B
+BT /Helvetica-Bold 7.20 Tf 0.120 0.230 0.540 rg 1 0 0 1 48.00 651.89 Tm (1. Motion & Speech Artifacts) Tj ET
+BT /Helvetica 6.30 Tf 0.650 0.200 0.150 rg 1 0 0 1 48.00 643.89 Tm (Problem: Sternal accelerations are heavily distorted by coughing, talking, or torso movement) Tj ET
+BT /Helvetica 6.30 Tf 0.650 0.200 0.150 rg 1 0 0 1 48.00 636.39 Tm (during active locomotion.) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.100 0.450 0.200 rg 1 0 0 1 48.00 628.89 Tm (Mitigation: Pre-filter energy variance gating; windows with sigma > 0.50 m/s^2 are discarded) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.100 0.450 0.200 rg 1 0 0 1 48.00 621.39 Tm (with immediate on-screen stillness guidance.) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.70 w
+40.00 562.89 515.28 47.00 re B
+BT /Helvetica-Bold 7.20 Tf 0.120 0.230 0.540 rg 1 0 0 1 48.00 600.89 Tm (2. Inanimate Tabletop Vibration) Tj ET
+BT /Helvetica 6.30 Tf 0.650 0.200 0.150 rg 1 0 0 1 48.00 592.89 Tm (Problem: Phone placed on a vibrating desk captures building hum, risking spurious non-biological) Tj ET
+BT /Helvetica 6.30 Tf 0.650 0.200 0.150 rg 1 0 0 1 48.00 585.39 Tm (peak detection.) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.100 0.450 0.200 rg 1 0 0 1 48.00 577.89 Tm (Mitigation: Absolute physiological energy floor \(sigma_min = 0.005 m/s^2\) enforces 100%) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.100 0.450 0.200 rg 1 0 0 1 48.00 570.39 Tm (rejection of static table noise.) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.70 w
+40.00 511.89 515.28 47.00 re B
+BT /Helvetica-Bold 7.20 Tf 0.120 0.230 0.540 rg 1 0 0 1 48.00 549.89 Tm (3. Sternal Coupling & Anatomical Variation) Tj ET
+BT /Helvetica 6.30 Tf 0.650 0.200 0.150 rg 1 0 0 1 48.00 541.89 Tm (Problem: Variation in chest morphology, clothing thickness, and phone grip dampens) Tj ET
+BT /Helvetica 6.30 Tf 0.650 0.200 0.150 rg 1 0 0 1 48.00 534.39 Tm (micro-vibrations across subjects.) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.100 0.450 0.200 rg 1 0 0 1 48.00 526.89 Tm (Mitigation: Adaptive threshold factor \(theta[n] = mu[n] + 0.60*sigma[n]\) dynamically tracks) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.100 0.450 0.200 rg 1 0 0 1 48.00 519.39 Tm (local signal amplitudes.) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.70 w
+40.00 460.89 515.28 47.00 re B
+BT /Helvetica-Bold 7.20 Tf 0.120 0.230 0.540 rg 1 0 0 1 48.00 498.89 Tm (4. Mobile OS Timestamp Jitter) Tj ET
+BT /Helvetica 6.30 Tf 0.650 0.200 0.150 rg 1 0 0 1 48.00 490.89 Tm (Problem: Non-real-time mobile OS scheduling induces variable inter-sample intervals \(delta_t =) Tj ET
+BT /Helvetica 6.30 Tf 0.650 0.200 0.150 rg 1 0 0 1 48.00 483.39 Tm (8-14 ms\).) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.100 0.450 0.200 rg 1 0 0 1 48.00 475.89 Tm (Mitigation: Cubic spline interpolation buffer resamples raw IMU events onto a strict 100.0 Hz) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.100 0.450 0.200 rg 1 0 0 1 48.00 468.39 Tm (uniform time grid.) Tj ET
+0.980 0.980 0.990 rg
+0.850 0.880 0.920 RG
+0.70 w
+40.00 375.29 515.28 81.60 re B
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 48.00 445.89 Tm (5.3 Operational Limitations & Future Research Roadmap) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 48.00 436.89 Tm (- Current Operational Boundaries: Constrained to supine resting posture; not suitable for active) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 48.00 428.69 Tm (ambulatory motion monitoring.) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 48.00 420.49 Tm (- Multi-Sensor Inertial Gyroscope Fusion: Combine 3-axis gyro with 3-axis accelerometer for) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 48.00 412.29 Tm (6-DoF gyrocardiography \(GCG\) rotational compensation.) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 48.00 404.09 Tm (- Future TinyML Quantization \(Warden 2019\): Quantize XGBoost into int8 TensorFlow Lite Micro for) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 48.00 395.89 Tm (ultra-low power edge wearable chips.) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 48.00 387.69 Tm (- Chapter 5 Citations: [inan2015ballistocardiography], [tadi2016realtime], [warden2019tinyml],) Tj ET
+BT /Helvetica 6.50 Tf 0.280 0.320 0.380 rg 1 0 0 1 48.00 379.49 Tm ([pandian2026internet], [taskforce1996heart].) Tj ET
+endstream
+endobj
+20 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595.28 841.89] /Contents 19 0 R /Resources << /Font << /Helvetica 4 0 R /Helvetica-Bold 5 0 R /Helvetica-Oblique 6 0 R /Courier 7 0 R /Courier-Bold 8 0 R >> >> >>
+endobj
+21 0 obj
+<< /Length 10917 >>
+stream
+0.120 0.230 0.540 RG
+1.20 w
+40.00 803.89 m 555.28 803.89 l S
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 40.00 810.89 Tm (MAHIDOL UNIVERSITY - FACULTY OF ENGINEERING - EGCO SENIOR THESIS) Tj ET
+BT /Helvetica-Bold 7.50 Tf 0.350 0.400 0.500 rg 1 0 0 1 355.28 810.89 Tm (MASTER BIBLIOGRAPHY DIRECTORY \(PART 1\)) Tj ET
+0.820 0.850 0.900 RG
+0.70 w
+40.00 36.00 m 555.28 36.00 l S
+BT /Helvetica 7.20 Tf 0.450 0.500 0.550 rg 1 0 0 1 40.00 26.00 Tm (CardioTwin: Smartphone Sternal SCG Sensing & In-Silico Digital Twin Platform) Tj ET
+BT /Helvetica-Oblique 7.20 Tf 0.450 0.500 0.550 rg 1 0 0 1 365.28 26.00 Tm (2026-2027 Capstone Deliverable) Tj ET
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 530.28 26.00 Tm (Page 7) Tj ET
+0.940 0.960 1.000 rg
+0.120 0.230 0.540 RG
+1.00 w
+40.00 757.89 515.28 32.00 re B
+BT /Helvetica-Bold 10.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 50.00 776.89 Tm (COMPLETE PEER-REVIEWED BIBLIOGRAPHY & CITATION AUDIT \(PART 1\)) Tj ET
+BT /Helvetica 8.00 Tf 0.250 0.300 0.400 rg 1 0 0 1 50.00 765.89 Tm (Detailed directory of papers: Authors, title, publication venue, thesis role, and cited chapters) Tj ET
+0.150 0.220 0.400 rg
+40.00 733.89 515.28 14.00 re f
+BT /Helvetica-Bold 6.80 Tf 1.000 1.000 1.000 rg 1 0 0 1 45.00 737.89 Tm (Citation Key) Tj ET
+BT /Helvetica-Bold 6.80 Tf 1.000 1.000 1.000 rg 1 0 0 1 155.00 737.89 Tm (Authors & Year) Tj ET
+BT /Helvetica-Bold 6.80 Tf 1.000 1.000 1.000 rg 1 0 0 1 265.00 737.89 Tm (Publication Title & Journal / Conference) Tj ET
+BT /Helvetica-Bold 6.80 Tf 1.000 1.000 1.000 rg 1 0 0 1 445.00 737.89 Tm (Role & Chapters) Tj ET
+0.970 0.980 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 709.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 723.89 Tm (who2025cvd) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 723.89 Tm (WHO \(2025\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 723.89 Tm (Cardiovascular diseases \(CVDs\) Fact Sheet) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 723.89 Tm (Epidemiology) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 714.89 Tm (World Health Organization Fact Sheet) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 714.89 Tm (Ch 1) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 685.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 699.89 Tm (inan2015ballisto...) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 699.89 Tm (Inan et al. \(2015\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 699.89 Tm (Ballistocardiography & Seismocardiography: Review) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 699.89 Tm (SCG Physics) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 690.89 Tm (IEEE JBHI 19\(4\):1414-1427) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 690.89 Tm (Ch 1, 2, 3, 5) Tj ET
+0.970 0.980 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 661.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 675.89 Tm (taskforce1996heart) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 675.89 Tm (Task Force ESC \(1996\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 675.89 Tm (Heart rate variability: standards of measurement) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 675.89 Tm (HRV Standard) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 666.89 Tm (Circulation 93\(5\):1043-1065) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 666.89 Tm (Ch 1, 2, 5) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 637.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 651.89 Tm (schafer2013accurate) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 651.89 Tm (Schafer & Vagedes \(2013\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 651.89 Tm (How accurate is PRV as an estimate of HRV?) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 651.89 Tm (PRV Validation) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 642.89 Tm (Int. J. Cardiol. 166\(1\):15-29) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 642.89 Tm (Ch 1, 2, 4) Tj ET
+0.970 0.980 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 613.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 627.89 Tm (lee2004single) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 627.89 Tm (Lee, Lee & Yoo \(2004\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 627.89 Tm (Signal processing algorithm based on ICA for ECG) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 627.89 Tm (Peer Paper 1) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 618.89 Tm (IEEE EMBS 26:224-226) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 618.89 Tm (Ch 1, 2) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 589.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 603.89 Tm (quiroz2018cardiac) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 603.89 Tm (Quiroz-Juarez et al. \(2018\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 603.89 Tm (Cardiac Conduction Model for Generating 12 Lead EC) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 603.89 Tm (Peer Paper 2) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 594.89 Tm (IEEE TNB 17\(4\):525-532) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 594.89 Tm (Ch 1, 2, 4) Tj ET
+0.970 0.980 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 565.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 579.89 Tm (tsamis2017soft) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 579.89 Tm (Tsamis et al. \(2017\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 579.89 Tm (Soft real-time smartphone ECG processing) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 579.89 Tm (Peer Paper 3) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 570.89 Tm (IEEE SIES 2017:1-4) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 570.89 Tm (Ch 1, 2, 4) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 541.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 555.89 Tm (chai2013mobile) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 555.89 Tm (Chai \(2013\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 555.89 Tm (The design of mobile ECG monitoring system) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 555.89 Tm (Peer Paper 4) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 546.89 Tm (IEEE ICEIEC 2013:148-151) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 546.89 Tm (Ch 1, 2, 4) Tj ET
+0.970 0.980 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 517.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 531.89 Tm (aliev2012monitoring) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 531.89 Tm (Aliev et al. \(2012\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 531.89 Tm (Cardiovascular condition using ECG noise variance) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 531.89 Tm (Peer Paper 5) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 522.89 Tm (IEEE ICPCI 2012:1-4) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 522.89 Tm (Ch 1, 2) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 493.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 507.89 Tm (pan1985real) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 507.89 Tm (Pan & Tompkins \(1985\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 507.89 Tm (A Real-Time QRS Detection Algorithm) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 507.89 Tm (Adaptive Peak) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 498.89 Tm (IEEE Trans. Biomed. Eng. 32\(3\):230-236) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 498.89 Tm (Ch 2, 3) Tj ET
+0.970 0.980 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 469.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 483.89 Tm (goldberger2000...) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 483.89 Tm (Goldberger et al. \(2000\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 483.89 Tm (PhysioBank, PhysioToolkit & PhysioNet Components) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 483.89 Tm (MIT-BIH Data) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 474.89 Tm (Circulation 101\(23\):e215-e220) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 474.89 Tm (Ch 1, 3, 4) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 445.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 459.89 Tm (schmidt2018wesad) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 459.89 Tm (Schmidt et al. \(2018\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 459.89 Tm (WESAD: Multimodal Dataset for Wearable Stress) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 459.89 Tm (Stress Benchmark) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 450.89 Tm (ACM ICMI 2018:400-408) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 450.89 Tm (Ch 1, 3, 4) Tj ET
+0.970 0.980 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 421.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 435.89 Tm (tarvainen2014kubios) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 435.89 Tm (Tarvainen et al. \(2014\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 435.89 Tm (Kubios HRV -- heart rate variability analysis) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 435.89 Tm (HRV Algorithms) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 426.89 Tm (CMPB 113\(1\):210-220) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 426.89 Tm (Ch 3, 4) Tj ET
+0.960 0.980 0.960 rg
+0.750 0.850 0.750 RG
+0.70 w
+40.00 391.89 515.28 22.00 re B
+BT /Helvetica-Oblique 6.80 Tf 0.100 0.400 0.200 rg 1 0 0 1 48.00 399.89 Tm (NOTE: Exactly 25 peer-reviewed citations synchronized with Overleaf & local references.bib.) Tj ET
+endstream
+endobj
+22 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595.28 841.89] /Contents 21 0 R /Resources << /Font << /Helvetica 4 0 R /Helvetica-Bold 5 0 R /Helvetica-Oblique 6 0 R /Courier 7 0 R /Courier-Bold 8 0 R >> >> >>
+endobj
+23 0 obj
+<< /Length 10886 >>
+stream
+0.120 0.230 0.540 RG
+1.20 w
+40.00 803.89 m 555.28 803.89 l S
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 40.00 810.89 Tm (MAHIDOL UNIVERSITY - FACULTY OF ENGINEERING - EGCO SENIOR THESIS) Tj ET
+BT /Helvetica-Bold 7.50 Tf 0.350 0.400 0.500 rg 1 0 0 1 355.28 810.89 Tm (MASTER BIBLIOGRAPHY DIRECTORY \(PART 2\)) Tj ET
+0.820 0.850 0.900 RG
+0.70 w
+40.00 36.00 m 555.28 36.00 l S
+BT /Helvetica 7.20 Tf 0.450 0.500 0.550 rg 1 0 0 1 40.00 26.00 Tm (CardioTwin: Smartphone Sternal SCG Sensing & In-Silico Digital Twin Platform) Tj ET
+BT /Helvetica-Oblique 7.20 Tf 0.450 0.500 0.550 rg 1 0 0 1 365.28 26.00 Tm (2026-2027 Capstone Deliverable) Tj ET
+BT /Helvetica-Bold 7.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 530.28 26.00 Tm (Page 8) Tj ET
+0.940 0.960 1.000 rg
+0.120 0.230 0.540 RG
+1.00 w
+40.00 757.89 515.28 32.00 re B
+BT /Helvetica-Bold 10.50 Tf 0.120 0.230 0.540 rg 1 0 0 1 50.00 776.89 Tm (COMPLETE PEER-REVIEWED BIBLIOGRAPHY & CITATION AUDIT \(PART 2\)) Tj ET
+BT /Helvetica 8.00 Tf 0.250 0.300 0.400 rg 1 0 0 1 50.00 765.89 Tm (Detailed directory of papers: Authors, title, publication venue, thesis role, and cited chapters) Tj ET
+0.150 0.220 0.400 rg
+40.00 733.89 515.28 14.00 re f
+BT /Helvetica-Bold 6.80 Tf 1.000 1.000 1.000 rg 1 0 0 1 45.00 737.89 Tm (Citation Key) Tj ET
+BT /Helvetica-Bold 6.80 Tf 1.000 1.000 1.000 rg 1 0 0 1 155.00 737.89 Tm (Authors & Year) Tj ET
+BT /Helvetica-Bold 6.80 Tf 1.000 1.000 1.000 rg 1 0 0 1 265.00 737.89 Tm (Publication Title & Journal / Conference) Tj ET
+BT /Helvetica-Bold 6.80 Tf 1.000 1.000 1.000 rg 1 0 0 1 445.00 737.89 Tm (Role & Chapters) Tj ET
+0.970 0.980 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 709.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 723.89 Tm (tadi2016real...) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 723.89 Tm (Tadi et al. \(2016\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 723.89 Tm (Real-time approach for HR monitoring using Hilbert) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 723.89 Tm (MEMS SCG) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 714.89 Tm (Physiol. Meas. 37\(11\):1885-1909) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 714.89 Tm (Ch 1, 2, 3, 5) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 685.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 699.89 Tm (butterworth1930...) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 699.89 Tm (Butterworth \(1930\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 699.89 Tm (On the theory of filter amplifiers) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 699.89 Tm (Bandpass Filter) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 690.89 Tm (Wireless Engineer 7:536-541) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 690.89 Tm (Ch 3) Tj ET
+0.970 0.980 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 661.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 675.89 Tm (welch1967use) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 675.89 Tm (Welch \(1967\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 675.89 Tm (Use of FFT for estimation of power spectra) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 675.89 Tm (LF/HF PSD) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 666.89 Tm (IEEE Trans. Audio 15\(2\):70-73) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 666.89 Tm (Ch 3) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 637.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 651.89 Tm (breiman2001random) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 651.89 Tm (Breiman \(2001\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 651.89 Tm (Random Forests) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 651.89 Tm (Ensemble Tree) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 642.89 Tm (Machine Learning 45\(1\):5-32) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 642.89 Tm (Ch 4) Tj ET
+0.970 0.980 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 613.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 627.89 Tm (chen2016xgboost) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 627.89 Tm (Chen & Guestrin \(2016\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 627.89 Tm (XGBoost: A Scalable Tree Boosting System) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 627.89 Tm (Core Classifier) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 618.89 Tm (ACM SIGKDD 2016:785-794) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 618.89 Tm (Ch 4) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 589.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 603.89 Tm (pedregosa2011...) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 603.89 Tm (Pedregosa et al. \(2011\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 603.89 Tm (Scikit-learn: Machine Learning in Python) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 603.89 Tm (ML Software) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 594.89 Tm (JMLR 12:2825-2830) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 594.89 Tm (Ch 3) Tj ET
+0.970 0.980 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 565.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 579.89 Tm (vanderpol1928) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 579.89 Tm (van der Pol & Mark \(1928\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 579.89 Tm (Heartbeat considered as a Relaxation Oscillation) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 579.89 Tm (Twin ODE) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 570.89 Tm (Phil. Mag. 6\(38\):763-775) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 570.89 Tm (Ch 1, 2, 4) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 541.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 555.89 Tm (dormand1980family) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 555.89 Tm (Dormand & Prince \(1980\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 555.89 Tm (A family of embedded Runge-Kutta formulae) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 555.89 Tm (RK45 Solver) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 546.89 Tm (JCAM 6\(1\):19-26) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 546.89 Tm (Ch 4) Tj ET
+0.970 0.980 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 517.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 531.89 Tm (sokolova2009...) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 531.89 Tm (Sokolova & Lapalme \(2009\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 531.89 Tm (Systematic analysis of performance measures) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 531.89 Tm (Metrics Eval) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 522.89 Tm (IPM 45\(4\):427-437) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 522.89 Tm (Ch 3) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 493.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 507.89 Tm (pandian2026internet) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 507.89 Tm (Pandian et al. \(2026\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 507.89 Tm (IoT-Enabled DL Framework for Arrhythmia Detection) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 507.89 Tm (AAMI EC57) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 498.89 Tm (Traitement du Signal 43\(2\):767-774) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 498.89 Tm (Ch 1, 2, 4, 5) Tj ET
+0.970 0.980 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 469.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 483.89 Tm (bland1986stat...) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 483.89 Tm (Bland & Altman \(1986\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 483.89 Tm (Statistical methods for assessing agreement) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 483.89 Tm (Agreement) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 474.89 Tm (The Lancet 327\(8476\):307-310) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 474.89 Tm (Ch 4) Tj ET
+1.000 1.000 1.000 rg
+0.850 0.880 0.920 RG
+0.50 w
+40.00 445.89 515.28 24.00 re B
+BT /Courier-Bold 6.30 Tf 0.120 0.230 0.540 rg 1 0 0 1 45.00 459.89 Tm (warden2019tinyml) Tj ET
+BT /Helvetica-Bold 6.30 Tf 0.150 0.200 0.300 rg 1 0 0 1 155.00 459.89 Tm (Warden & Situnayake \(2019\)) Tj ET
+BT /Helvetica 6.00 Tf 0.250 0.300 0.380 rg 1 0 0 1 265.00 459.89 Tm (TinyML: Machine Learning on Microcontrollers) Tj ET
+BT /Helvetica-Bold 6.20 Tf 0.050 0.450 0.200 rg 1 0 0 1 445.00 459.89 Tm (Edge Micro) Tj ET
+BT /Helvetica-Oblique 5.70 Tf 0.400 0.450 0.550 rg 1 0 0 1 265.00 450.89 Tm (O'Reilly Media, 2019) Tj ET
+BT /Helvetica-Bold 6.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 445.00 450.89 Tm (Ch 5) Tj ET
+0.930 0.970 1.000 rg
+0.120 0.230 0.540 RG
+1.00 w
+40.00 387.89 515.28 48.00 re B
+BT /Helvetica-Bold 8.00 Tf 0.120 0.230 0.540 rg 1 0 0 1 50.00 423.89 Tm (FINAL VERIFICATION & CAPSTONE READ-THROUGH INSTRUCTIONS) Tj ET
+BT /Helvetica 6.30 Tf 0.200 0.250 0.350 rg 1 0 0 1 50.00 413.89 Tm (1. Overleaf Sync: The complete project files in '00 EGCO Bachelor Thesis Template 2023 for Upload/' are ready for zip upload.) Tj ET
+BT /Helvetica 6.30 Tf 0.200 0.250 0.350 rg 1 0 0 1 50.00 406.39 Tm (2. Citation Integrity: Exactly 25 peer-reviewed entries are referenced across Chapters 1 to 5, with 0 missing and 0 uncited entries.) Tj ET
+BT /Helvetica 6.30 Tf 0.200 0.250 0.350 rg 1 0 0 1 50.00 398.89 Tm (3. Interactive Browser Access: Open 'public/senior_thesis_complete_compendium_report.html' for instant interactive inspection.) Tj ET
+BT /Helvetica 6.30 Tf 0.200 0.250 0.350 rg 1 0 0 1 50.00 391.39 Tm (4. Committee Deliverable: This 8-page compendium provides the official auditing trail for the Capstone Examination Committee.) Tj ET
+endstream
+endobj
+24 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595.28 841.89] /Contents 23 0 R /Resources << /Font << /Helvetica 4 0 R /Helvetica-Bold 5 0 R /Helvetica-Oblique 6 0 R /Courier 7 0 R /Courier-Bold 8 0 R >> >> >>
+endobj
+xref
+0 25
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000104 00000 n 
+0000000213 00000 n 
+0000000283 00000 n 
+0000000358 00000 n 
+0000000436 00000 n 
+0000000504 00000 n 
+0000000577 00000 n 
+0000009640 00000 n 
+0000009862 00000 n 
+0000019130 00000 n 
+0000019353 00000 n 
+0000030764 00000 n 
+0000030987 00000 n 
+0000039544 00000 n 
+0000039767 00000 n 
+0000048829 00000 n 
+0000049052 00000 n 
+0000056413 00000 n 
+0000056636 00000 n 
+0000067607 00000 n 
+0000067830 00000 n 
+0000078770 00000 n 
+trailer
+<< /Size 25 /Root 1 0 R >>
+startxref
+78993
+%%EOF
