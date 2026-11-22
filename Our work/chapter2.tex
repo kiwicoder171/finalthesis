@@ -117,7 +117,7 @@ This chapter provides a comprehensive review of prior research and existing engi
 
 \textbf{What We Can Steal (Adopt):}
 \begin{enumerate}
-    \item \textit{Absolute Physiological Energy Gating:} We directly adopt their noise variance principle in our Stage 2 DSP pipeline by implementing an absolute energy gate ($0.005\text{ m/s}^2 \le \sigma_{raw} \le 0.50\text{ m/s}^2$) that immediately rejects stationary surface vibrations or excessive subject movement.
+    \item \textit{Absolute Physiological Energy Gating:} We directly adopt their noise variance principle in our Tier 2 (Stage 1) DSP pipeline by implementing an absolute energy gate ($0.005\text{ m/s}^2 \le \sigma_{raw} \le 0.50\text{ m/s}^2$) that immediately rejects stationary surface vibrations or excessive subject movement.
     \item \textit{Deterministic Signal Quality Index (SQI):} We use quantitative SNR estimation ($\ge 12\text{ dB}$) and variance boundaries as the deterministic gating trigger that confirms clinical validity before passing SCG intervals to machine learning classification.
 \end{enumerate}
 
