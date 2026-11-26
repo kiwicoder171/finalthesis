@@ -1,6 +1,6 @@
 \chapter{LITERATURE REVIEW}
 
-This chapter provides a comprehensive review of prior research and existing engineering works in non-invasive mobile cardiovascular monitoring, digital signal processing, arrhythmia classification, and dynamical cardiac rhythm modeling. To address the fundamental objectives of our thesis, five directly related studies from the literature are critically analyzed. For each work, this review details: (1) the proposed methodology, (2) the datasets used, (3) the performance metrics evaluated, (4) the primary experimental findings, (5) the specific techniques that can be adopted (stolen) for our project, and (6) the fundamental differences and engineering advantages that distinguish our proposed mobile cardiac platform. Finally, a comparative synthesis table summarizes the state of the art relative to our work.
+This chapter provides a comprehensive review of prior research and existing engineering works in non-invasive mobile cardiovascular monitoring, digital signal processing, arrhythmia classification, dynamical cardiac rhythm modeling, and public consumer smartwatch validation. To address the fundamental objectives of our thesis, five directly related studies from the literature are critically analyzed, followed by a quantitative benchmark comparison against published public smartwatch PPG studies. For each core study, this review details: (1) the proposed methodology, (2) the datasets used, (3) the performance metrics evaluated, (4) the primary experimental findings, (5) the specific techniques that can be adopted (stolen) for our project, and (6) the fundamental differences and engineering advantages that distinguish our proposed mobile cardiac platform. Finally, a comparative synthesis table summarizes the state of the art relative to our work.
 
 \section{Ballistocardiography and Seismocardiography: A Review of Recent Advances \cite{inan2015ballistocardiography}}
 
@@ -23,7 +23,7 @@ This chapter provides a comprehensive review of prior research and existing engi
     \item \textit{Cardiac Mechanical Passband ($0.5\text{--}40\text{ Hz}$):} We adopt their recommended SCG frequency corridor via a zero-phase 4th-order Butterworth bandpass filter paired with a lightweight $200\text{ ms}$ moving-RMS energy envelope for unipolar AO peak extraction.
 \end{enumerate}
 
-\textbf{How We Are Different:} Most studies reviewed by Inan et al. relied on dedicated lab-grade wired accelerometers or custom chest patches taped to the sternum, paired with offline MATLAB post-processing. In contrast, our project uses an unmodified consumer smartphone's internal MEMS accelerometer (\$0 extra hardware), executes real-time zero-phase DSP with physiological energy gating and stillness guidance in $<500\text{ ms}$, and extends SCG monitoring to explainable binary arrhythmia classification.
+\textbf{How We Are Different:} Most studies reviewed by Inan et al. relied on dedicated lab-grade wired accelerometers or custom chest patches taped to the sternum, paired with offline MATLAB post-processing. In contrast, our project uses an unmodified consumer smartphone's internal MEMS accelerometer (\$0 extra hardware), executes real-time zero-phase DSP with physiological energy gating and guided usability prompts in $< 500\text{ ms}$, and extends SCG monitoring to Two-Stage Hybrid Screening across the Rhythm-Disorder Cluster.
 
 \newpage
 \section{Cardiac Conduction Model for Generating 12-Lead Signals With Realistic Heart Rate Dynamics \cite{quiroz2018cardiac}}
@@ -39,11 +39,11 @@ This chapter provides a comprehensive review of prior research and existing engi
     \item Spectral fidelity: power spectral density match across VLF, LF ($0.04\text{--}0.15\text{ Hz}$), and HF ($0.15\text{--}0.40\text{ Hz}$) frequency bands.
 \end{itemize}
 
-\textbf{Key Findings:} The model demonstrated that coupling nonlinear Van der Pol limit-cycle pacemakers with FitzHugh--Nagumo excitable media can accurately reproduce Einthoven's triangle lead geometries, realistic QT intervals, and complex pathological morphologies and arrhythmic rhythm perturbations. The perceptron algorithm achieved low MAE convergence within a finite number of iterations ($<50$ epochs).
+\textbf{Key Findings:} The model demonstrated that coupling nonlinear Van der Pol limit-cycle pacemakers with FitzHugh--Nagumo excitable media can accurately reproduce Einthoven's triangle lead geometries, realistic QT intervals, and complex pathological morphologies and arrhythmic rhythm perturbations. The perceptron algorithm achieved low MAE convergence within a finite number of iterations ($< 50$ epochs).
 
 \textbf{What We Can Steal (Adopt):}
 \begin{enumerate}
-    \item \textit{Coupled Van der Pol Arrhythmia Formulation:} We adopt their coupled Van der Pol ODE structure (solved via Runge--Kutta RK45) to generate reproducible synthetic arrhythmic rhythm sequences with controlled ectopic perturbations and irregular beat intervals.
+    \item \textit{Coupled Van der Pol Arrhythmia Formulation:} We adopt their coupled Van der Pol ODE structure (solved via Runge--Kutta RK45) to generate reproducible synthetic arrhythmic rhythm sequences with controlled ectopic perturbations, irregular AFib-like intervals, and rate shifts.
     \item \textit{PRV-Consistent Parameterization:} We map physiological heart rate and variability parameters into the oscillator's intrinsic frequency $\omega_0$ and damping $\mu$ so generated synthetic waveforms preserve realistic cardiac time scales.
 \end{enumerate}
 
@@ -70,7 +70,7 @@ This chapter provides a comprehensive review of prior research and existing engi
 \textbf{What We Can Steal (Adopt):}
 \begin{enumerate}
     \item \textit{Pre-allocated Ring Buffers:} We adopt their recommendation of using fixed-length circular window buffers ($30\text{--}60\text{ s}$) in our mobile data acquisition layer, eliminating dynamic heap allocations that introduce timestamp jitter.
-    \item \textit{Latency Benchmarking Protocol:} We adopt their execution latency metric, setting a strict $<500\text{ ms}$ total processing budget from raw buffer completion to full PRV feature extraction.
+    \item \textit{Latency and Footprint Budgeting:} We adopt their execution efficiency protocol, setting a strict $< 500\text{ ms}$ total processing latency budget and $< 2\text{ MB}$ edge model footprint from raw buffer completion to full PRV extraction and rhythm screening.
 \end{enumerate}
 
 \textbf{How We Are Different:} Tsamis et al. required an external peripheral ECG hardware sensor communicating over Bluetooth, creating physical hardware dependencies. In our project, all signal acquisition is entirely self-contained within the smartphone, capturing sternal SCG vibrations via internal MEMS accelerometers, eliminating external sensor hardware completely.
@@ -89,7 +89,7 @@ This chapter provides a comprehensive review of prior research and existing engi
     \item Bland--Altman $95\%$ limits of agreement for interval estimation.
 \end{itemize}
 
-\textbf{Key Findings:} Tadi et al. demonstrated that an unmodified smartphone resting flat on the sternum can extract beat-to-beat heart rate with high clinical agreement against reference ECG ($>98\%$ beat detection accuracy in stationary supine subjects). However, computing the full-window Hilbert transform introduces FFT/edge-ringing overhead on constrained mobile buffers, and the pipeline focused solely on healthy heart-rate estimation without automated physiological energy gating or arrhythmia classification.
+\textbf{Key Findings:} Tadi et al. demonstrated that an unmodified smartphone resting flat on the sternum can extract beat-to-beat heart rate with high clinical agreement against reference ECG ($> 98\%$ beat detection accuracy in stationary supine subjects). However, computing the full-window Hilbert transform introduces FFT/edge-ringing overhead on constrained mobile buffers, and the pipeline focused solely on healthy heart-rate estimation without automated physiological energy gating, usability evaluation, or rhythm-disorder classification.
 
 \textbf{What We Can Steal (Adopt):}
 \begin{enumerate}
@@ -97,7 +97,7 @@ This chapter provides a comprehensive review of prior research and existing engi
     \item \textit{Physiological Outlier Clamping:} We pair peak detection with explicit physiological interval bounds ($333\text{ ms} \le \text{PPI} \le 1500\text{ ms}$, corresponding to $40\text{--}180\text{ bpm}$) to prevent artifact spikes from corrupting PRV features.
 \end{enumerate}
 
-\textbf{How We Are Different:} Whereas Tadi et al. relied on the Hilbert transform envelope and stopped at healthy heart-rate estimation, our Chapter~3 pipeline replaces the Hilbert transform with a lightweight \textbf{$200\text{ ms}$ moving-RMS energy envelope} (zero FFT overhead, $<500\text{ ms}$ total edge latency), adds an active physiological energy gate with real-time stillness guidance, and extends the pipeline to explainable binary arrhythmia classification (Normal vs. Arrhythmia) plus controlled Van der Pol synthetic SCG validation.
+\textbf{How We Are Different:} Whereas Tadi et al. relied on the Hilbert transform envelope and stopped at healthy heart-rate estimation, our Chapter~3 pipeline replaces the Hilbert transform with a lightweight \textbf{$200\text{ ms}$ moving-RMS energy envelope} (zero FFT overhead, $< 500\text{ ms}$ total edge latency), adds an active physiological energy gate with measurable guided usability ($\text{SUS} \ge 75$, setup $< 60\text{ s}$), and extends the pipeline to Two-Stage Hybrid Screening across the Rhythm-Disorder Cluster plus controlled Van der Pol synthetic SCG validation.
 
 \newpage
 \section{Monitoring of Cardiovascular Condition via Mobile Phones Using Noise Variance \cite{aliev2012monitoring}}
@@ -118,15 +118,38 @@ This chapter provides a comprehensive review of prior research and existing engi
 \textbf{What We Can Steal (Adopt):}
 \begin{enumerate}
     \item \textit{Absolute Physiological Energy Gating:} We directly adopt their noise variance principle in our Tier 2 (Stage 1) DSP pipeline by implementing an absolute energy gate ($0.005\text{ m/s}^2 \le \sigma_{raw} \le 0.50\text{ m/s}^2$) that immediately rejects stationary surface vibrations or excessive subject movement.
-    \item \textit{Deterministic Signal Quality Index (SQI):} We use quantitative SNR estimation ($\ge 12\text{ dB}$) and variance boundaries as the deterministic gating trigger that confirms clinical validity before passing SCG intervals to machine learning classification.
+    \item \textit{Deterministic Signal Quality Index (SQI):} We use quantitative SNR estimation ($\ge 12\text{ dB}$) and variance boundaries as the deterministic gating trigger that confirms clinical validity before passing SCG intervals to hybrid rhythm screening.
 \end{enumerate}
 
 \textbf{How We Are Different:} Aliev et al. used noise variance purely as a passive offline metric on external multi-lead ECG recordings. In contrast, our platform uses signal quality gating as an active edge controller directly on consumer smartphone hardware: when raw sternal SCG fails physiological variance bounds or exhibits low SNR, the system immediately rejects corrupted segments and provides real-time posture and stillness prompts to guarantee artifact-free feature extraction.
 
 \newpage
+\section{Public Smartwatch PPG Benchmarks Versus Smartphone Sternal SCG}
+
+To objectively evaluate the engineering trade-offs of using an unmodified smartphone rather than a dedicated consumer smartwatch, Table~\ref{tab:smartwatch_benchmark} synthesizes published validation benchmarks from large-scale public smartwatch studies alongside our proposed Smartphone Sternal SCG platform.
+
+\begin{table}[!ht]
+\footnotesize
+\sloppy
+\centering
+\caption{Quantitative Comparison of Published Public Smartwatch PPG Benchmarks Versus Proposed Smartphone Sternal SCG}
+\label{tab:smartwatch_benchmark}
+\begin{tabular}{|p{2.5cm}|p{2.0cm}|p{1.4cm}|p{2.3cm}|p{2.4cm}|p{2.4cm}|}
+\hline
+\textbf{Device / Study} & \textbf{Modality \& Sensing Site} & \textbf{Extra Cost} & \textbf{Resting HR Accuracy (vs. ECG)} & \textbf{Arrhythmia / AFib Screening Metric} & \textbf{Key Physical Trade-off} \\ \hline
+\textbf{Apple Watch} \cite{bent2020investigating, nelson2019accuracy, perez2019large} & Wrist optical PPG (+ optional 1-lead ECG) & \$249--\$399+ & $\text{MAE} \approx 2.0\text{--}4.4\text{ bpm}$ (rest); $1.8\text{--}5.9\text{ bpm}$ (24h) & Apple Heart Study ($n=419{,}297$): $\text{PPV} = 84\%$ for AFib on ECG patch & Continuous 24/7 wear; wrist PPG affected by skin tone, perfusion \& PTT jitter \\ \hline
+\textbf{Fitbit} \cite{bent2020investigating, nelson2019accuracy, lubitz2022detection} & Wrist optical PPG & \$150--\$299+ & $\text{MAE} \approx 2.9\text{--}5.9\text{ bpm}$ (rest); $3.5\text{--}9.3\text{ bpm}$ (24h) & Fitbit Heart Study ($n=455{,}699$): $\text{PPV} = 98.2\%$ during concurrent ECG patch & Continuous passive tracking; lower resting optical precision under motion/dark skin \\ \hline
+\textbf{Garmin} \cite{bent2020investigating} & Wrist optical PPG & \$200--\$500+ & $\text{MAE} \approx 3.4\text{--}6.5\text{ bpm}$ (rest) & Primarily fitness HR / abnormal HR threshold alerts & Optimized for sports/endurance; higher resting HR MAE than chest sensors \\ \hline
+\textbf{Smartphone Sternal SCG (Proposed)} & \textbf{Lower-sternum MEMS SCG ($Z$-axis, supine)} & \textbf{\$0} (existing phone) & \textbf{Target: $\text{MAE} < 3.0\text{ bpm}$, $\text{RMSE} < 4.5\text{ bpm}$} & \textbf{Target: $\text{Sens} \ge 88\%$, $\text{Spec} \ge 85\%$, $F_1 \ge 0.86$ (Rhythm Cluster)} & \textbf{Central mechanical recoil (zero optical/PTT bias); resting supine use only} \\ \hline
+\end{tabular}
+\end{table}
+
+Two critical engineering insights emerge from Table~\ref{tab:smartwatch_benchmark}. First, at rest, consumer wrist-worn PPG smartwatches exhibit resting heart-rate MAE between $2.0$ and $6.5\text{ bpm}$ \cite{bent2020investigating, nelson2019accuracy} while requiring \$150--\$500+ in dedicated hardware and remaining susceptible to optical skin-pigmentation attenuation and peripheral vascular Pulse Transit Time (PTT) jitter. By measuring central ventricular ejection recoil directly at the lower sternum, smartphone sternal SCG targets resting $\text{MAE} < 3.0\text{ bpm}$ at \textbf{\$0 incremental hardware cost} with zero optical distortion. Second, large-scale wearable trials such as the Apple Heart Study \cite{perez2019large} and Fitbit Heart Study \cite{lubitz2022detection} demonstrate that smartwatches excel at passive 24/7 ambulatory surveillance during daily movement. Consequently, rather than positioning smartphone sternal SCG as a replacement for continuous fitness wearables, our thesis also identifies an optional \textbf{Complementary Dual-Mode Pathway}: a smartwatch can flag ambulatory irregular-pulse episodes in daily life, while smartphone sternal SCG provides an accessible, zero-cost central mechanical confirmation check at rest.
+
+\newpage
 \section{Comparative Synthesis of Related Works}
 
-Table~\ref{tab:literature_comparison} provides a comprehensive comparative matrix synthesizing the five reviewed works alongside our proposed senior thesis platform.
+Table~\ref{tab:literature_comparison} provides a comprehensive comparative matrix synthesizing the five reviewed core works alongside our proposed senior thesis platform.
 
 \begin{table}[!ht]
 \footnotesize
@@ -142,10 +165,10 @@ Table~\ref{tab:literature_comparison} provides a comprehensive comparative matri
 \textbf{Tsamis et al. (2017) \cite{tsamis2017soft}} & Wearable ECG (BLE stream) & Integer bandpass, Pan--Tompkins & Peak detection \& HR extraction & None & Latency (ms), CPU (\%), Memory (MB) \\ \hline
 \textbf{Tadi et al. (2016) \cite{tadi2016realtime}} & Smartphone sternal MEMS SCG & Bandpass + Hilbert envelope (no energy gate) & Beat-to-beat HR monitoring only & None & Sensitivity (\%), $+$P (\%), HR MAE/RMSE \\ \hline
 \textbf{Aliev et al. (2012) \cite{aliev2012monitoring}} & Mobile phone ECG & Noise variance ($\sigma^2$) gating & Cardiac status reliability index & None & False positive alarm rate (\%), SNR (dB) \\ \hline
-\textbf{Our Proposed Platform} & \textbf{Sternal MEMS SCG (Zero external hardware, internal accelerometer)} & \textbf{Zero-phase Butterworth (0.5--40 Hz), 200 ms Moving-RMS, Energy Gate \& Stillness UI} & \textbf{Explainable Binary ML: Normal [$N$] vs. Arrhythmia [$S, V, F, Q$]} & \textbf{Controlled Van der Pol SCG Arrhythmia Simulator (RK45)} & \textbf{Accuracy, Sensitivity, Specificity, F1, MAE ($<3$ bpm), Latency ($<500$ ms)} \\ \hline
+\textbf{Our Proposed Platform} & \textbf{Sternal MEMS SCG (\$0 extra hardware; vs. public smartwatch PPG)} & \textbf{Zero-phase Butterworth (0.5--40 Hz), 200 ms Moving-RMS, Energy Gate \& Guided UI} & \textbf{Two-Stage Hybrid Screening: Rhythm-Disorder Cluster (Ectopic, AFib, Rate)} & \textbf{Controlled Van der Pol SCG Arrhythmia Simulator (RK45)} & \textbf{Acc/Sens/Spec/F1, MAE ($<3$ bpm), Latency ($<500$ ms), SUS ($\ge 75$)} \\ \hline
 \end{tabular}
 \end{table}
 
-As summarized in Table~\ref{tab:literature_comparison}, prior works have addressed individual aspects of cardiac monitoring---such as chest-mounted SCG physiology \cite{inan2015ballistocardiography}, offline dynamical conduction modeling \cite{quiroz2018cardiac}, mobile computational efficiency \cite{tsamis2017soft}, smartphone SCG heart-rate tracking \cite{tadi2016realtime}, statistical noise gating \cite{aliev2012monitoring}, or connected IoT telemetry classification frameworks \cite{pandian2026internet}. However, prior approaches either rely on external bio-potential/wearable hardware, use heavier Hilbert envelopes without automated energy gating, or stop at healthy heart-rate estimation without arrhythmia classification.
+As summarized in Table~\ref{tab:literature_comparison}, prior works have addressed individual aspects of cardiac monitoring---such as chest-mounted SCG physiology \cite{inan2015ballistocardiography}, offline dynamical conduction modeling \cite{quiroz2018cardiac}, mobile computational efficiency \cite{tsamis2017soft}, smartphone SCG heart-rate tracking \cite{tadi2016realtime}, statistical noise gating \cite{aliev2012monitoring}, large-scale smartwatch PPG screening \cite{perez2019large, lubitz2022detection}, or connected IoT telemetry classification frameworks \cite{pandian2026internet}. However, prior approaches either rely on external bio-potential/wearable hardware, use heavier Hilbert envelopes without automated energy gating, omit formal usability validation, or stop at healthy heart-rate estimation without patient-stratified rhythm screening.
 
-Our proposed project integrates these strengths into a unified, zero-hardware pipeline: it captures sternal SCG directly via the smartphone's internal MEMS accelerometer \cite{inan2015ballistocardiography, tadi2016realtime}, replaces the Hilbert transform with a lightweight $200\text{ ms}$ moving-RMS envelope reinforced by physiological energy gating and stillness guidance \cite{aliev2012monitoring}, extracts verified clinical PRV metrics \cite{taskforce1996heart}, performs explainable binary arrhythmia classification (Normal [$N$] vs. Abnormal [$S, V, F, Q$]) \cite{pandian2026internet}, and employs a controlled Van der Pol oscillator simulator \cite{vanderpol1928, quiroz2018cardiac} to generate synthetic arrhythmic SCG test signals when real patient SCG data is unavailable.
+Our proposed project integrates these strengths into a unified, zero-hardware pipeline: it captures sternal SCG directly via the smartphone's internal MEMS accelerometer \cite{inan2015ballistocardiography, tadi2016realtime}, replaces the Hilbert transform with a lightweight $200\text{ ms}$ moving-RMS envelope reinforced by physiological energy gating and guided usability prompts \cite{aliev2012monitoring, brooke1996sus}, extracts verified clinical PRV metrics \cite{taskforce1996heart}, executes Two-Stage Hybrid Screening across the Rhythm-Disorder Cluster under strict patient-stratified benchmarks \cite{dechazal2004automatic, pandian2026internet}, benchmarks quantitatively against published public smartwatch PPG data \cite{bent2020investigating, nelson2019accuracy}, and employs a controlled Van der Pol oscillator simulator \cite{vanderpol1928, quiroz2018cardiac} to generate synthetic arrhythmic SCG test signals when real patient SCG data is unavailable.

@@ -1,15 +1,15 @@
 \chapter{METHODOLOGY}
 
-This chapter details the methodology, staged experimental workflow, mathematical foundations, and evaluation protocols of the proposed smartphone-based sternal seismocardiography (SCG) platform. In alignment with clinical feasibility and model explainability, the scope of this work is focused strictly on \textbf{one cardiac abnormality: Cardiac Arrhythmia} (distinguishing \textit{Normal Sinus Rhythm} from \textit{Arrhythmic Rhythms} characterized by irregular beat-to-beat timing and ectopic activity). The system acquires non-invasive sternal mechanical vibrations directly via a consumer smartphone's internal MEMS accelerometer, performs deterministic digital signal conditioning and systolic peak extraction, validates inter-subject physiological differentiation, and applies explainable supervised machine learning models alongside controlled arrhythmia simulation. To ensure reproducibility and transparency, this chapter is organized into five core sections: System Design, Data, Methods, Hyperparameter Configurations, and Performance Evaluation.
+This chapter details the methodology, staged experimental workflow, mathematical foundations, and evaluation protocols of the proposed smartphone-based sternal seismocardiography (SCG) platform. In alignment with clinical feasibility, strict scope discipline, and model explainability, this work focuses exclusively on a single physiological sensing domain---resting beat-to-beat Peak-to-Peak Interval (PPI) and Pulse Rate Variability (PRV) timing---scoped to a \textbf{Rhythm-Disorder Cluster under Cardiac Arrhythmia}: (1) \textbf{Ectopic Beats} (Premature Ventricular Contractions [PVC, AAMI $V$] and Premature Atrial/Supraventricular Contractions [PAC, AAMI $S$]), (2) \textbf{Irregular Rhythm / Atrial Fibrillation (AFib)}, and (3) \textbf{Rate Disorders} (resting Sinus Bradycardia $< 60\text{ bpm}$ and Sinus Tachycardia $> 100\text{ bpm}$). The system acquires non-invasive sternal mechanical vibrations directly via a consumer smartphone's internal MEMS accelerometer, performs deterministic digital signal conditioning and systolic AO peak extraction, validates inter-subject physiological differentiation, and applies \textbf{Two-Stage Hybrid Screening} alongside controlled arrhythmia simulation. To ensure reproducibility and transparency, this chapter is organized into five core sections: System Design, Data, Methods, Hyperparameter Configurations, and Performance Evaluation.
 
 \section{System Design}
 
 \subsection{Architectural Overview and Staged Workflow}
 To ensure that every stage of the pipeline is empirically achievable, verifiable, and physiologically explainable, the platform is structured around a decoupled four-tier architecture executed across a progressive three-stage validation workflow:
 \begin{enumerate}
-	\item \textbf{Stage 1 --- Heartbeat Acquisition and Detection:} Capture resting sternal SCG vibrations using a smartphone MEMS accelerometer, reject corrupted motion or stationary-surface buffers via physiological energy and SNR gates, and accurately extract aortic opening (AO) systolic peaks and instantaneous heart rate.
-	\item \textbf{Stage 2 --- Inter-Subject Differentiation (2-Person and Public Data Comparison):} Verify that the extracted beat-to-beat Peak-to-Peak Interval (PPI) tachograms and Pulse Rate Variability (PRV) features reliably capture genuine individual physiology rather than sensor noise by comparing recordings across distinct subjects (e.g., Subject A vs. Subject B) and benchmarking against public clinical data.
-	\item \textbf{Stage 3 --- Single-Abnormality Arrhythmia Screening:} Evaluate whether the explainable PRV and beat-interval irregularity features can accurately distinguish \textit{Normal Sinus Rhythm} from \textit{Cardiac Arrhythmia} using public clinical ground-truth records and controlled synthetic arrhythmic SCG simulations.
+	\item \textbf{Stage 1 --- Heartbeat Acquisition, Quality Gating, and Usability:} Capture resting lower-sternal SCG vibrations using a smartphone MEMS accelerometer, reject corrupted motion or stationary-surface buffers via physiological energy and SNR gates ($100\%$ rejection), guide the user to rapid valid placement ($< 60\text{ s}$ setup, $\text{SUS} \ge 75$), and accurately extract aortic opening (AO) systolic peaks and instantaneous heart rate ($\text{MAE} < 3.0\text{ bpm}$, latency $< 500\text{ ms}$).
+	\item \textbf{Stage 2 --- Inter-Subject Differentiation (2-Person and Public Data Comparison):} Verify that the extracted PPI tachograms and PRV features reliably capture genuine individual physiology rather than sensor noise by comparing recordings across distinct healthy subjects (Subject A vs. Subject B) and benchmarking against patient-stratified public clinical records.
+	\item \textbf{Stage 3 --- Two-Stage Hybrid Rhythm-Disorder Screening:} Evaluate whether deterministic HR rules and explainable PRV/time-frequency features can accurately screen the Rhythm-Disorder Cluster (Normal Sinus Rhythm, Ectopic Beats [PVC/PAC], Irregular Rhythm/AFib, and Bradycardia/Tachycardia) across patient-stratified multi-database clinical benchmarks and controlled synthetic arrhythmic SCG simulations.
 \end{enumerate}
 
 Figure~\ref{fig:system_architecture} illustrates the four-tier system architecture supporting this workflow:
@@ -19,41 +19,43 @@ Figure~\ref{fig:system_architecture} illustrates the four-tier system architectu
 	\fbox{\parbox{0.92\textwidth}{
 			\centering
 			\vspace{4pt}
-			\textbf{TIER 1: Sternal SCG Acquisition Layer (Stage 1)}\par\vspace{3pt}
-			{[Smartphone MEMS Accelerometer ($\pm 2g$, 100--200 Hz, Lower Sternum $Z$-Axis)] $\longrightarrow$ [Posture \& Stillness Guidance]}\par\vspace{5pt}
+			\textbf{TIER 1: Sternal SCG Acquisition \& Guided Usability Layer (Stage 1)}\par\vspace{3pt}
+			{[Smartphone MEMS Accelerometer ($\pm 2g$, 100--200 Hz, Lower Sternum $Z$-Axis)] $\longrightarrow$ [Posture ($\pm 10^\circ$) \& Stillness UI]}\par\vspace{5pt}
 			$\Downarrow$\par\vspace{5pt}
 			\textbf{TIER 2: Signal Conditioning \& Quality Gating Layer (Stage 1)}\par\vspace{3pt}
 			{[Zero-Phase Butterworth Filter (0.5--40 Hz)] $\longrightarrow$ [Energy Gate: $0.005 \le \sigma_{raw} \le 0.50$ m/s$^2$] $\longrightarrow$ [SNR $\ge 12$ dB]}\par\vspace{5pt}
 			$\Downarrow$\par\vspace{5pt}
 			\textbf{TIER 3: Peak Detection \& Explainable Feature Extraction Layer (Stage 1--2)}\par\vspace{3pt}
-			{[Moving-RMS Envelope] $\longrightarrow$ [Adaptive AO Peak Detection] $\longrightarrow$ [PPI Tachogram \& Explainable PRV Features]}\par\vspace{5pt}
+			{[200 ms Moving-RMS Envelope] $\longrightarrow$ [Adaptive AO Peak Detection] $\longrightarrow$ [PPI Tachogram \& PRV Features]}\par\vspace{5pt}
 			$\Downarrow$\par\vspace{5pt}
-			\textbf{TIER 4: Single-Abnormality Arrhythmia Screening \& Simulation Layer (Stage 3)}\par\vspace{3pt}
-			{[Explainable Binary ML: Normal vs. Arrhythmia] $\longleftrightarrow$ [Controlled Arrhythmia Simulation (MIT-BIH + Van der Pol)]}\par\vspace{4pt}
+			\textbf{TIER 4: Two-Stage Hybrid Rhythm-Disorder Screening \& Simulation Layer (Stage 3)}\par\vspace{3pt}
+			{[Stage 3A: Rate Rules ($<60$ / $>100$ bpm)] $+$ [Stage 3B: Edge ML (LR/RF/GBDT) vs. CNN-BiLSTM-Attn] $\longleftrightarrow$ [Van der Pol SCG Sim]}\par\vspace{4pt}
 	}}
-	\caption{Four-Tier System Architectural Block Diagram Focused on Single-Abnormality Arrhythmia Screening}
+	\caption{Four-Tier System Architectural Block Diagram for Two-Stage Hybrid Rhythm-Disorder Screening}
 	\label{fig:system_architecture}
 \end{figure}
 
 The four functional layers operate as follows:
 \begin{enumerate}
-	\item \textbf{Tier 1 --- Sternal SCG Acquisition Layer:} Captures raw cardiac mechanical micro-vibrations directly on consumer smartphones without external peripheral hardware. Vibrations are recorded along the dorso-ventral ($Z$-axis) by the phone's internal 3-axis MEMS accelerometer ($\pm 2g$, $100\text{--}200\text{ Hz}$) placed flat on the lower third of the sternum during resting supine postures.
+	\item \textbf{Tier 1 --- Sternal SCG Acquisition and Guided Usability Layer:} Captures raw cardiac mechanical micro-vibrations directly on consumer smartphones without external peripheral hardware. Vibrations are recorded along the dorso-ventral ($Z$-axis) by the phone's internal 3-axis MEMS accelerometer ($\pm 2g$, $100\text{--}200\text{ Hz}$) placed flat on the lower third of the sternum during resting supine postures, assisted by real-time orientation and stillness guidance.
 	\item \textbf{Tier 2 --- Signal Conditioning and Quality Gating Layer:} Removes DC gravity offset, low-frequency respiratory drift, and high-frequency muscular tremor via 4th-order zero-phase Butterworth bandpass filtering ($0.5\text{--}40.0\text{ Hz}$). Enforces an absolute physiological energy gate ($0.005\text{ m/s}^2 \le \sigma_{raw} \le 0.50\text{ m/s}^2$) and Signal-to-Noise Ratio check ($\text{SNR} \ge 12\text{ dB}$) so corrupted recordings are rejected immediately.
-	\item \textbf{Tier 3 --- Peak Detection and Explainable Feature Extraction Layer:} Identifies aortic opening (AO) systolic peaks using a moving-RMS energy envelope and adaptive sliding threshold. Constructs peak-to-peak interval (PPI) tachograms, applies physiological bounds ($333\text{--}1500\text{ ms}$), and extracts transparent, clinically interpretable time-domain and frequency-domain PRV features.
-	\item \textbf{Tier 4 --- Arrhythmia Screening and Controlled Simulation Layer:} Feeds the explainable PRV feature vector into supervised binary classifiers to distinguish \textit{Normal Sinus Rhythm} from \textit{Cardiac Arrhythmia}. Where clinical arrhythmic smartphone SCG data is unavailable due to patient-access constraints, a controlled simulation module synthesizes arrhythmic beat sequences using public MIT-BIH interval timing and coupled Van der Pol oscillator dynamics to verify end-to-end screening behavior.
+	\item \textbf{Tier 3 --- Peak Detection and Explainable Feature Extraction Layer:} Identifies aortic opening (AO) systolic peaks using a $200\text{ ms}$ moving-RMS energy envelope and adaptive sliding threshold. Constructs PPI tachograms, applies physiological bounds ($333\text{--}1500\text{ ms}$), and extracts transparent, clinically interpretable time-domain and frequency-domain PRV features.
+	\item \textbf{Tier 4 --- Two-Stage Hybrid Screening and Controlled Simulation Layer:} Executes deterministic HR thresholding (Stage 3A) for Rate Disorders alongside explainable supervised edge classifiers (\texttt{LR}, \texttt{RF}, \texttt{GBDT/XGBoost}) benchmarked against a \texttt{Hybrid 1D-CNN + BiLSTM + Bahdanau Attention} comparator (Stage 3B) to screen Ectopic Beats and Irregular/AFib rhythms. Where clinical arrhythmic smartphone SCG data is unavailable due to patient-access constraints, a controlled simulation module synthesizes arrhythmic beat sequences using public clinical interval timing and coupled Van der Pol oscillator dynamics to verify end-to-end screening behavior.
 \end{enumerate}
 
-\subsection{Engineering Rationale: Smartphone Sternal SCG versus Smartwatches}
-Unlike wrist-worn smartwatches that rely on peripheral optical photoplethysmography (PPG)---which requires purchasing dedicated wearable hardware, suffers from skin-pigmentation and peripheral perfusion bias, and introduces vascular Pulse Transit Time (PTT) jitter---smartphone sternal SCG operates at zero incremental hardware cost and directly measures central \textbf{cardiac mechanical vibrations} (ventricular recoil and aortic valve opening) over the chest wall \cite{inan2015ballistocardiography}. While smartwatches remain better suited for continuous 24/7 ambulatory tracking during exercise, smartphone sternal SCG provides a superior, accessible modality for on-demand resting screening and direct mechanical rhythm assessment without peripheral optical distortion.
+\subsection{Engineering Rationale: Smartphone Sternal SCG Versus Smartwatches and Optional Partnership}
+Unlike wrist-worn smartwatches that rely on peripheral optical photoplethysmography (PPG)---which requires purchasing dedicated \$150--\$400+ wearable hardware, exhibits resting HR MAE of $2.0\text{--}6.5\text{ bpm}$ across commercial devices \cite{bent2020investigating, nelson2019accuracy}, suffers from skin-pigmentation and peripheral perfusion bias, and introduces vascular Pulse Transit Time (PTT) jitter---smartphone sternal SCG operates at \textbf{\$0 incremental hardware cost} and directly measures central \textbf{cardiac mechanical vibrations} (ventricular recoil and aortic valve opening) over the chest wall \cite{inan2015ballistocardiography}.
+
+At the same time, large-scale clinical studies such as the Apple Heart Study \cite{perez2019large} and Fitbit Heart Study \cite{lubitz2022detection} confirm that smartwatches remain better suited for continuous 24/7 ambulatory monitoring during movement. Therefore, our platform establishes two complementary value propositions: (1) as a standalone zero-hardware resting screening tool that matches or exceeds resting smartwatch HR accuracy without optical distortion, and (2) as an optional \textbf{Complementary Dual-Mode Pathway} (future integration) in which a smartwatch triggers ambulatory irregular-pulse alerts while smartphone sternal SCG delivers zero-cost central mechanical confirmation at rest.
 
 \subsection{Operational Decision Flowchart}
 The runtime execution follows an automated, deterministic decision loop:
 \begin{enumerate}
-	\item \textbf{Measurement Initialization:} The subject lies supine, places the smartphone flat on the lower sternum, and initiates a 30 to 60-second recording window.
+	\item \textbf{Measurement Initialization:} The subject lies supine, places the smartphone flat on the lower sternum, and initiates a 30 to 60-second recording window (target setup time $< 60\text{ s}$).
 	\item \textbf{Posture and Placement Verification:} Static gravity orientation is checked along the $Z$-axis ($|a_z| \approx 9.8\text{ m/s}^2$, tilt within $\pm 10^\circ$). If posture misalignment or movement occurs, on-screen guidance prompts the user to lie flat and remain still.
 	\item \textbf{Energy and SNR Quality Gate:} The system evaluates $\sigma_{raw}$ and post-filter SNR. If $0.005 \le \sigma_{raw} \le 0.50\text{ m/s}^2$ and $\text{SNR} \ge 12\text{ dB}$, the buffer advances to peak detection; otherwise it is rejected with immediate placement feedback.
-	\item \textbf{Systolic Peak and PRV Extraction:} AO systolic peaks are detected, non-physiological intervals outside $333\text{--}1500\text{ ms}$ are clamped, and explainable PRV and interval-irregularity features are calculated.
-	\item \textbf{Binary Arrhythmia Screening Output:} The trained explainable classifier outputs a binary screening decision (\textit{Normal Sinus Rhythm} vs. \textit{Arrhythmia}) together with the underlying PRV metrics (Mean HR, SDNN, RMSSD, pNN50, LF/HF) so the result can be directly inspected and explained.
+	\item \textbf{Systolic Peak and PRV Extraction:} AO systolic peaks are detected, non-physiological intervals outside $333\text{--}1500\text{ ms}$ are clamped, and explainable PRV and interval-irregularity features are calculated within $< 500\text{ ms}$.
+	\item \textbf{Two-Stage Hybrid Screening Output:} Stage 3A checks resting Mean HR against deterministic clinical rate thresholds ($< 60\text{ bpm}$ Bradycardia; $> 100\text{ bpm}$ Tachycardia), while Stage 3B runs the trained explainable edge classifier to output the rhythm class (\textit{Normal Sinus Rhythm}, \textit{Ectopic [PVC/PAC]}, or \textit{Irregular / AFib-like Rhythm}) plus an aggregated \textit{Binary Abnormal Screening Flag} alongside inspectable PRV metrics.
 \end{enumerate}
 
 \subsection{Algorithmic Pseudocode}
@@ -81,7 +83,7 @@ Algorithm~\ref{alg:scg_dsp} summarizes the complete mathematical sequence for st
 		\quad \quad $E[n] = \sqrt{\frac{1}{K}\sum_{m=-K/2}^{K/2} \tilde{a}_z[n+m]^2}$\\
 		\textbf{4. Adaptive Systolic Peak Detection:} \\
 		\quad Compute moving local mean $\mu_E[n]$ and moving standard deviation $\sigma_E[n]$ over $2\text{ s}$ window.\\
-		\quad Define adaptive threshold: $\theta[n] = \mu_E[n] + \alpha \cdot \sigma_E[n]$ (with $\alpha = 0.6$).\\
+		\quad Define adaptive threshold: $\theta[n] = \mu_E[n] + \alpha \cdot \sigma_E[n]$ (with $\alpha = 0.60$).\\
 		\quad Identify candidate indices $p_k$ where $E[p_k] > \theta[p_k]$ and $E[p_k] > E[p_k \pm 1]$.\\
 		\quad Enforce physiological refractory period: $|p_k - p_{k-1}|/f_s \ge \delta_{ref} = 0.35\text{ s}$ ($\le 171\text{ bpm}$).\\
 		\textbf{5. Tachogram Construction and Physiological Clamping:} \\
@@ -103,7 +105,7 @@ Algorithm~\ref{alg:scg_dsp} summarizes the complete mathematical sequence for st
 
 \section{Data}
 
-To keep the project achievable within an undergraduate engineering timeline while maintaining clinical rigor and full explainability, data acquisition is organized into three transparent, accessible sources aligned with our three-stage workflow.
+To keep the project achievable within an undergraduate engineering timeline while guaranteeing zero patient leakage and rigorous multi-database validation, data acquisition and benchmarking are organized into three complementary tiers aligned with our three-stage workflow.
 
 \subsection{Optimal Anatomical Placement and Hardware Interfacing}
 Primary cardiac mechanical data is acquired using a standard smartphone's built-in 3-axis MEMS accelerometer sampled at $100\text{--}200\text{ Hz}$ via native sensor interfaces (\texttt{CoreMotion} on iOS, \texttt{SensorManager} on Android, or Web \texttt{DeviceMotion} telemetry). Selecting the optimal chest placement is critical for maximizing SCG signal-to-noise ratio \cite{inan2015ballistocardiography, tadi2016realtime}:
@@ -115,18 +117,22 @@ Primary cardiac mechanical data is acquired using a standard smartphone's built-
 \subsection{Acquisition Windows, Posture Gating, and Stillness Protocol}
 Each acquisition session captures a contiguous $30\text{ to }60\text{-second}$ window. A $60\text{-second}$ window provides sufficient beat count (typically $55\text{--}90$ beats) and frequency resolution ($\Delta f \approx 0.016\text{ Hz}$) to separate LF ($0.04\text{--}0.15\text{ Hz}$) and HF ($0.15\text{--}0.40\text{ Hz}$) bands without fatiguing the user. Static gravity orientation is monitored to ensure the device remains within $\pm 10^\circ$ of the vertical $Z$-axis. Whenever signal energy violates physiological bounds ($\sigma_{raw} < 0.005\text{ m/s}^2$ indicating a stationary inanimate surface, or $\sigma_{raw} > 0.50\text{ m/s}^2$ indicating active subject movement) or $\text{SNR} < 12\text{ dB}$, processing halts and the interface prompts the user to remain still and verify flat lower-sternal contact.
 
-\subsection{Three-Tier Data Strategy: Achievable and Explainable}
-Because collecting real smartphone SCG recordings from clinical arrhythmia patients requires hospital ethics approval and clinical recruitment beyond undergraduate scope, our methodology combines three complementary, readily achievable data tiers:
+\subsection{Three-Tier Data Strategy and Patient-Stratified Benchmark Rerun Plan}
+Because collecting real smartphone SCG recordings from clinical arrhythmia patients requires hospital ethics approval and clinical recruitment beyond undergraduate scope, our methodology combines three complementary, verifiable data tiers:
 \begin{enumerate}
-	\item \textbf{Tier A --- Empirical Smartphone Sternal SCG Recordings (Stage 1 \& Stage 2):} Resting supine sternal SCG recordings collected from healthy volunteer subjects (e.g., team members) using consumer smartphones. These recordings validate real-world heartbeat acquisition, optimal placement SNR, physiological energy gating (tabletop vs. motion vs. chest), and \textbf{2-person physiological differentiation} (demonstrating measurable, repeatable differences in baseline HR and PRV profiles between Subject A and Subject B).
-	\item \textbf{Tier B --- Public Clinical Arrhythmia Benchmark Data (Stage 2 \& Stage 3):} The publicly accessible \textbf{PhysioNet MIT-BIH Arrhythmia Database \cite{goldberger2000physiobank}}, comprising 48 half-hour two-channel ambulatory ECG recordings from 47 subjects annotated beat-by-beat by expert cardiologists. This dataset provides accessible, gold-standard beat-to-beat interval timing and clinical labels for training and evaluating our binary arrhythmia classifier (\textit{Normal Sinus Rhythm} vs. \textit{Arrhythmia}, covering ectopic premature beats [PVCs/PACs] and rhythm irregularities) as well as multi-subject inter-patient comparisons.
-	\item \textbf{Tier C --- Controlled Synthetic Arrhythmic SCG Simulation (Stage 3 Bridge):} To bridge real smartphone SCG waveforms with clinical arrhythmia rhythms when pathological smartphone SCG data is scarce, we synthesize realistic arrhythmic SCG signals by placing empirical healthy sternal AO beat templates (extracted from Tier A) onto clinical arrhythmic beat-interval sequences (from Tier B MIT-BIH records) and nonlinear Van der Pol dynamical perturbations \cite{vanderpol1928, quiroz2018cardiac}, with controlled additive sensor noise. This allows end-to-end verification that our smartphone DSP and ML pipeline detects arrhythmic timing anomalies under realistic MEMS noise conditions.
+	\item \textbf{Tier A --- Empirical Smartphone Sternal SCG Recordings (Stage 1 \& Stage 2):} Resting supine lower-sternal SCG traces collected from healthy volunteer subjects using consumer iPhones (including our empirical Phyphox tri-axial MEMS corpus sampled at $\approx 100\text{ Hz}$ and multi-subject volunteer trials). These recordings validate real-world heartbeat acquisition, optimal placement SNR, physiological energy gating (tabletop vs. motion vs. chest), guided usability metrics, and \textbf{2-person physiological differentiation} (demonstrating measurable, repeatable differences in baseline HR and PRV profiles between Subject A and Subject B).
+	\item \textbf{Tier B --- Patient-Stratified Multi-Database Clinical Benchmarks (Stage 2 \& Stage 3):} To rigorously train and rerun our Rhythm-Disorder Cluster benchmarks with zero patient overlap, we utilize five publicly accessible, cardiologist-annotated clinical ECG corpora streamed via WFDB:
+	\begin{itemize}
+		\item \textit{Primary Training \& Inter-Patient Test Split:} The \textbf{PhysioNet MIT-BIH Arrhythmia Database \cite{goldberger2000physiobank}} (48 half-hour 2-lead records at $360\text{ Hz}$ from 47 subjects), partitioned strictly per de Chazal et al. \cite{dechazal2004automatic} into \textbf{DS1 (Train)} and \textbf{DS2 (Test)} with pacemaker records (\texttt{102, 104, 107, 217}) excluded per ANSI/AAMI EC57.
+		\item \textit{Cross-Database Generalization Test Suite:} Four independent multi-center clinical databases---the \textbf{St. Petersburg INCART 12-Lead Arrhythmia Database} (75 records, $257\text{ Hz}$), \textbf{PTB-XL} (21,837 clinical 12-lead records, $100/500\text{ Hz}$), \textbf{CPSC 2018} (6,877 records, $500\text{ Hz}$), and \textbf{Chapman-Shaoxing} (10,646 records, $500\text{ Hz}$)---resampled to a common reference grid to evaluate cross-patient and cross-institution generalization when rerunning the Rhythm-Disorder Cluster benchmark.
+	\end{itemize}
+	\item \textbf{Tier C --- Controlled Synthetic Arrhythmic SCG Simulation (Stage 3 Bridge):} To bridge real smartphone SCG waveforms with clinical rhythm timing when pathological smartphone SCG data is scarce, we synthesize realistic arrhythmic SCG signals by placing empirical healthy sternal AO beat templates (extracted from Tier A) onto clinical arrhythmic beat-interval sequences (from Tier B) and nonlinear Van der Pol dynamical perturbations \cite{vanderpol1928, quiroz2018cardiac}, with calibrated additive MEMS sensor noise. This allows end-to-end verification that our smartphone DSP and hybrid screening pipeline detects ectopic, irregular/AFib, and rate anomalies under realistic MEMS noise conditions.
 \end{enumerate}
 
 \section{Methods}
 
 \subsection{Digital Signal Conditioning}
-Raw smartphone accelerometer signals contain DC gravity offset ($\approx 9.8\text{ m/s}^2$), low-frequency respiratory baseline wander ($0.1\text{--}0.5\text{ Hz}$), and high-frequency muscular noise ($>50\text{ Hz}$). To isolate cardiac mechanical vibrations without introducing phase shift that distorts AO peak timestamps, a 4th-order zero-phase Butterworth bandpass filter \cite{butterworth1930theory} is applied via forward-backward filtering (\texttt{scipy.signal.filtfilt}):
+Raw smartphone accelerometer signals contain DC gravity offset ($\approx 9.8\text{ m/s}^2$), low-frequency respiratory baseline wander ($0.1\text{--}0.5\text{ Hz}$), and high-frequency muscular noise ($> 50\text{ Hz}$). To isolate cardiac mechanical vibrations without introducing phase shift that distorts AO peak timestamps, a 4th-order zero-phase Butterworth bandpass filter \cite{butterworth1930theory} is applied via forward-backward filtering (\texttt{scipy.signal.filtfilt}):
 \begin{equation}
 	|H(j\omega)|^2 = \frac{1}{1 + \left(\frac{\omega^2 - \omega_l \omega_h}{\omega(\omega_h - \omega_l)}\right)^{2N}}
 \end{equation}
@@ -150,9 +156,9 @@ where $\delta_{ref} = 0.35\text{ s}$ enforces a physiological refractory ceiling
 \subsection{Explainable Pulse Rate Variability (PRV) Feature Extraction}
 From detected systolic timestamps, beat-to-beat intervals $\text{PPI}_k = (p_{k+1} - p_k)/f_s \times 1000\text{ ms}$ are computed and clamped to $[333, 1500]\text{ ms}$. Every extracted feature is deliberately chosen to be clinically standard and directly explainable \cite{taskforce1996heart, tarvainen2014kubios, schafer2013accurate}:
 \begin{itemize}
-	\item \textbf{Mean Heart Rate (Mean HR):} $\text{HR} = 60000 / \overline{\text{PPI}}\text{ (bpm)}$ --- identifies baseline rate abnormalities (bradycardia/tachycardia).
-	\item \textbf{SDNN:} Standard deviation of all valid PPI intervals --- quantifies overall rhythm dispersion; markedly elevated during irregular arrhythmic episodes.
-	\item \textbf{RMSSD:} Root mean square of successive interval differences --- highly sensitive to sudden beat-to-beat timing jumps caused by premature ectopic beats (PVCs/PACs) or atrial irregularity:
+	\item \textbf{Mean Heart Rate (Mean HR):} $\text{HR} = 60000 / \overline{\text{PPI}}\text{ (bpm)}$ --- directly governs Stage 3A Rate Disorder screening (Bradycardia $< 60\text{ bpm}$, Tachycardia $> 100\text{ bpm}$).
+	\item \textbf{SDNN:} Standard deviation of all valid PPI intervals --- quantifies overall rhythm dispersion; markedly elevated during irregular AFib-like episodes.
+	\item \textbf{RMSSD:} Root mean square of successive interval differences --- highly sensitive to sudden beat-to-beat timing jumps caused by premature ectopic beats (PVCs/PACs) or sustained atrial irregularity:
 	\begin{equation}
 		\text{RMSSD} = \sqrt{\frac{1}{M-1}\sum_{k=1}^{M-1} (\text{PPI}_{k+1} - \text{PPI}_k)^2}
 	\end{equation}
@@ -161,26 +167,41 @@ From detected systolic timestamps, beat-to-beat intervals $\text{PPI}_k = (p_{k+
 \end{itemize}
 
 \subsection{Stage 2: Inter-Subject Differentiation Method}
-Before attempting pathological classification, we verify feature discriminability across healthy individuals. Given multi-window PRV vectors from at least two distinct subjects (both from public PhysioNet records and empirical smartphone SCG sessions), we compare per-subject feature distributions ($\text{Mean HR}, \text{SDNN}, \text{RMSSD}, \text{pNN50}, \text{LF/HF}$) using descriptive statistics and non-overlapping confidence intervals / separability metrics. Demonstrating reliable separation between two individuals confirms that the sensing and DSP pipeline preserves true physiological signal variance rather than collapsing into generic sensor noise.
+Before attempting pathological classification, we verify feature discriminability across healthy individuals. Given multi-window PRV vectors from at least two distinct subjects (both from patient-stratified PhysioNet records and empirical smartphone SCG sessions), we compare per-subject feature distributions ($\text{Mean HR}, \text{SDNN}, \text{RMSSD}, \text{pNN50}, \text{LF/HF}$) using descriptive statistics and non-overlapping confidence intervals / separability metrics. Demonstrating reliable separation between two individuals confirms that the sensing and DSP pipeline preserves true physiological signal variance rather than collapsing into generic sensor noise.
 
-\subsection{Stage 3: Explainable Binary Arrhythmia Classification}
-Focusing exclusively on \textbf{one abnormality (Cardiac Arrhythmia)}, the explainable feature vector $\mathbf{x} = [\text{HR}, \text{SDNN}, \text{RMSSD}, \text{pNN50}, \text{LF}, \text{HF}, \text{LF/HF}]$ is classified using four interpretable supervised models in \texttt{scikit-learn} \cite{pedregosa2011scikit}: Logistic Regression (LR), Decision Tree (DT), Random Forest (RF) \cite{breiman2001random}, and Extreme Gradient Boosting (XGBoost) \cite{chen2016xgboost}. Following AAMI arrhythmia categorization \cite{pandian2026internet}, clinical beats are mapped into a focused binary screening task:
-\begin{itemize}
-	\item \textbf{Class 0 --- Normal Sinus Rhythm (N):} Regular sinus rhythm windows with stable beat-to-beat intervals.
-	\item \textbf{Class 1 --- Cardiac Arrhythmia (Abnormal):} Windows exhibiting arrhythmic rhythm disturbances (supraventricular ectopic [S], ventricular ectopic [V], fusion [F], or irregular dysrhythmic intervals).
-\end{itemize}
-Tree-based and linear classifiers are deliberately selected over opaque deep neural networks so that every prediction can be audited via feature importance rankings and physiological decision thresholds (e.g., abrupt spikes in RMSSD and pNN50 driven by premature ectopic intervals).
+\subsection{Stage 3: Two-Stage Hybrid Rhythm-Disorder Screening}
+To keep screening clinically transparent while covering all three sub-conditions observable in resting beat-to-beat timing, Stage 3 executes a \textbf{Two-Stage Hybrid Screening} architecture:
+\begin{enumerate}
+	\item \textbf{Stage 3A --- Deterministic Clinical Rate Rules (Rate Disorders):} Resting Mean HR is evaluated directly against established adult clinical thresholds without opaque model weights:
+	\begin{itemize}
+		\item \textbf{Sinus Bradycardia:} $\text{Mean HR} < 60\text{ bpm}$.
+		\item \textbf{Normal Resting Rate:} $60\text{ bpm} \le \text{Mean HR} \le 100\text{ bpm}$.
+		\item \textbf{Sinus Tachycardia:} $\text{Mean HR} > 100\text{ bpm}$.
+	\end{itemize}
+	\item \textbf{Stage 3B --- Explainable Edge ML and Clinical Deep Benchmark (Rhythm Arrhythmias):} Beat-interval and PRV irregularity features ($\mathbf{x} = [\text{HR}, \text{SDNN}, \text{RMSSD}, \text{pNN50}, \text{LF}, \text{HF}, \text{LF/HF}]$ supplemented by local inter-beat dynamics $[\text{RR}_{\text{pre}}, \text{RR}_{\text{post}}, \Delta\text{RR}, \text{RR}_{\text{ratio}}]$ and Daubechies \texttt{db4} time-frequency features during clinical ECG benchmark reruns) classify rhythm windows into:
+	\begin{itemize}
+		\item \textbf{Class 0 --- Normal Sinus Rhythm ($N$):} Regular sinus windows with stable beat-to-beat timing.
+		\item \textbf{Class 1 --- Ectopic Beats (PVC / PAC):} Premature ventricular ($V$) or supraventricular ($S$) contractions exhibiting abrupt compensatory timing shifts.
+		\item \textbf{Class 2 --- Irregular Rhythm / AFib:} Sustained beat-to-beat irregularity characterized by persistently elevated $\text{RMSSD}$, $\text{SDNN}$, and $\text{pNN50}$.
+	\end{itemize}
+	In addition to the 3-class rhythm output, Classes 1 and 2 (together with any Stage 3A rate violation) aggregate into a unified \textbf{Binary Abnormal Screening Flag} (\textit{Normal} vs. \textit{Abnormal}) for primary screening sensitivity evaluation.
+	\item \textbf{Model Lineup (Edge Primary vs. Deep Clinical Comparator):}
+	\begin{itemize}
+		\item \textit{Primary On-Device Edge Classifiers ($< 2\text{ MB}$):} Logistic Regression (\texttt{LR}), Random Forest (\texttt{RF}) \cite{breiman2001random}, and Cost-Sensitive Gradient Boosted Decision Trees / \texttt{XGBoost} (\texttt{GBDT/XGBoost}) \cite{chen2016xgboost, pedregosa2011scikit}. These models are selected for on-device deployment because they require zero GPU runtime, execute in $< 2\text{ ms}$ per beat/window, and permit direct feature-importance explainability audits.
+		\item \textit{Clinical Spatio-Temporal Benchmark Comparator:} A compact \textbf{Hybrid 1D-CNN + 2-Layer BiLSTM + Bahdanau Temporal Attention} network ($\approx 274\text{k}$ parameters, $\approx 1.09\text{ MB}$) evaluated on identical patient-stratified clinical splits to serve as the deep-learning reference upper bound for subtle ectopic ($S$/$V$) and cross-database generalization.
+	\end{itemize}
+\end{enumerate}
 
 \subsection{Controlled Arrhythmia Simulation via Coupled Van der Pol Dynamics}
 To evaluate how rhythm perturbations propagate through the pipeline and to generate controlled synthetic arrhythmic test sequences when real pathological SCG recordings are unavailable, the extracted rhythm parameters drive a coupled nonlinear Van der Pol oscillator model \cite{vanderpol1928, quiroz2018cardiac}:
 \begin{equation}
 	\frac{d^2 x}{dt^2} - \mu (1 - x^2)\frac{dx}{dt} + \omega_0^2 x + c_{12}(x - y) = F_{\text{pert}}(t)
 \end{equation}
-where $x(t)$ models pacemaker oscillation, $\omega_0 = 2\pi(\text{Mean HR}/60)$ is intrinsic angular frequency, $\mu$ is nonlinear damping, $c_{12}$ is inter-nodal coupling, and $F_{\text{pert}}(t)$ introduces controlled rhythm perturbations. Numerical integration via Runge--Kutta RK45 \cite{dormand1980family} generates controllable regular and irregular beat-timing sequences that can be convolved with empirical sternal SCG beat templates to stress-test the end-to-end arrhythmia detector.
+where $x(t)$ models pacemaker oscillation, $\omega_0 = 2\pi(\text{Mean HR}/60)$ is intrinsic angular frequency, $\mu$ is nonlinear damping, $c_{12}$ is inter-nodal coupling, and $F_{\text{pert}}(t)$ introduces controlled ectopic, irregular/AFib, or rate-shift perturbations. Numerical integration via Runge--Kutta RK45 \cite{dormand1980family} generates controllable regular and irregular beat-timing sequences convolved with empirical sternal SCG beat templates to stress-test the end-to-end hybrid detector.
 
 \section{Hyperparameter Configurations}
 
-Table~\ref{tab:hyperparameters} summarizes all algorithmic, filter, and quality-gating hyperparameters across the pipeline alongside their engineering rationales.
+Table~\ref{tab:hyperparameters} summarizes all algorithmic, filter, quality-gating, and screening hyperparameters across the pipeline alongside their engineering rationales.
 
 \begin{table}[!htbp]
 	\footnotesize
@@ -191,7 +212,7 @@ Table~\ref{tab:hyperparameters} summarizes all algorithmic, filter, and quality-
 	\begin{tabular}{|p{2.8cm}|p{1.9cm}|p{2.0cm}|p{5.5cm}|}
 		\hline
 		\textbf{Parameter} & \textbf{Symbol} & \textbf{Value} & \textbf{Engineering Rationale} \\ \hline
-		Accelerometer Sampling Rate & $f_s$ & $100\text{--}200\text{ Hz}$ & Nyquist oversampling for cardiac band ($<40\text{ Hz}$); low IMU battery drain \\ \hline
+		Accelerometer Sampling Rate & $f_s$ & $100\text{--}200\text{ Hz}$ & Nyquist oversampling for cardiac band ($< 40\text{ Hz}$); low IMU battery drain \\ \hline
 		Bandpass Lower Cutoff & $f_l$ & $0.5\text{ Hz}$ & Attenuates respiration ($0.1\text{--}0.4\text{ Hz}$) and static gravity baseline tilt \\ \hline
 		Bandpass Upper Cutoff & $f_h$ & $40.0\text{ Hz}$ & Isolates aortic valve micro-vibrations; suppresses muscular tremor noise \\ \hline
 		Filter Order & $N$ & $4$ & Sharp $24\text{ dB/octave}$ roll-off without numerical instability \\ \hline
@@ -199,21 +220,19 @@ Table~\ref{tab:hyperparameters} summarizes all algorithmic, filter, and quality-
 		Adaptive Threshold Factor & $\alpha$ & $0.60$ & Balances systolic AO sensitivity against false noise triggers \\ \hline
 		Refractory Period & $\delta_{ref}$ & $0.35\text{ s}$ & Prevents double-counting AO peaks; sets upper HR ceiling to $171\text{ bpm}$ \\ \hline
 		PPI Valid Bounds & $[\text{PPI}_{min}, \text{PPI}_{max}]$ & $[333, 1500]\text{ ms}$ & Restricts intervals to physiological cardiac range ($40\text{--}180\text{ bpm}$) \\ \hline
+		Rate Disorder Bounds & $[\text{HR}_{low}, \text{HR}_{high}]$ & $[60, 100]\text{ bpm}$ & Clinical Stage 3A thresholds for resting Bradycardia ($<60$) and Tachycardia ($>100$) \\ \hline
 		Tachogram Resampling Rate & $f_{resamp}$ & $4.0\text{ Hz}$ & Uniform grid for Welch spectral FFT without aliasing LF/HF bands \\ \hline
-		LF Frequency Band & $[\text{LF}_1, \text{LF}_2]$ & $0.04\text{--}0.15\text{ Hz}$ & Baroreceptor reflex and sympathetic Mayer wave band \\ \hline
-		HF Frequency Band & $[\text{HF}_1, \text{HF}_2]$ & $0.15\text{--}0.40\text{ Hz}$ & Vagal parasympathetic respiratory sinus arrhythmia band \\ \hline
-		Physiological Energy Floor & $\sigma_{min}$ & $0.005\text{ m/s}^2$ & Rejects phone resting on stationary inanimate surface \\ \hline
-		Physiological Energy Ceiling & $\sigma_{max}$ & $0.50\text{ m/s}^2$ & Rejects active subject motion or talking artifacts \\ \hline
+		LF / HF Frequency Bands & $[\text{LF}, \text{HF}]$ & $0.04\text{--}0.15$ / $0.15\text{--}0.40\text{ Hz}$ & Sympathetic Mayer wave (LF) and vagal respiratory sinus arrhythmia (HF) bands \\ \hline
+		Physiological Energy Gate & $[\sigma_{min}, \sigma_{max}]$ & $[0.005, 0.50]\text{ m/s}^2$ & Rejects stationary inanimate surfaces ($<0.005$) and active motion ($>0.50$) \\ \hline
 		SNR Acceptance Threshold & $\text{SNR}_{min}$ & $12.0\text{ dB}$ & Minimum signal quality required to accept SCG buffer for screening \\ \hline
 	\end{tabular}
 \end{table}
 
 \section{Performance Evaluation}
 
-To rigorously evaluate what the mobile phone detects and ensure clinical credibility \cite{sokolova2009systematic}, evaluation is structured across three layers corresponding to smartphone acquisition, inter-subject comparison, and binary arrhythmia screening.
+To directly answer the three core defense questions---\textit{Is the system accurate, efficient, and user-friendly?}---and validate clinical credibility \cite{sokolova2009systematic}, evaluation is structured across four measurable pillars that map 1:1 to the Objectives in Chapter~1.
 
-\subsection{Mobile Phone Acquisition Evaluation Protocol}
-To quantitatively verify findings captured directly from a consumer smartphone, three validation tests are executed:
+\subsection{Pillar 1: Accuracy Evaluation (Acquisition, Inter-Subject, and Hybrid Screening)}
 \begin{enumerate}
 	\item \textbf{Simultaneous Reference Heart Rate Agreement (Stage 1):} While recording resting supine sternal SCG on the smartphone, a simultaneous reference device (clinical ECG, chest-strap HR monitor, or fingertip pulse oximeter) records ground-truth heart rate across $M$ evaluation windows. Numerical precision is evaluated via Mean Absolute Error ($\text{MAE}$), Root Mean Squared Error ($\text{RMSE}$), and Bland--Altman limits of agreement \cite{bland1986statistical}:
 	\begin{equation}
@@ -222,37 +241,39 @@ To quantitatively verify findings captured directly from a consumer smartphone, 
 	\begin{equation}
 		\text{RMSE} = \sqrt{\frac{1}{M}\sum_{k=1}^M (\text{HR}_{\text{est},k} - \text{HR}_{\text{ref},k})^2} \quad (\text{Target: } \text{RMSE} < 4.5\text{ bpm})
 	\end{equation}
-	\item \textbf{Quality Gate and Placement Verification:} Bench tests evaluate $100\%$ rejection of stationary tabletop and active motion artifacts, alongside SNR comparison across chest positions to confirm that the lower sternum (supine) achieves the highest usable signal quality.
-	\item \textbf{Inter-Subject Comparison (Stage 2):} Pairwise comparison of extracted PRV distributions between at least two distinct subjects verifies consistent individual physiological separability.
-\end{enumerate}
-
-\subsection{Arrhythmia Classification Evaluation Metrics (Stage 3)}
-For the binary supervised classifiers distinguishing \textit{Normal Sinus Rhythm} (Negative) from \textit{Cardiac Arrhythmia} (Positive) on PhysioNet MIT-BIH and simulated arrhythmic SCG benchmarks, performance is quantified from True Positives ($\text{TP}$), True Negatives ($\text{TN}$), False Positives ($\text{FP}$), and False Negatives ($\text{FN}$):
-\begin{enumerate}
-	\item \textbf{Accuracy ($\text{Acc}$):}
+	\item \textbf{Quality Gate, Placement, and Inter-Subject Comparison (Stage 1--2):} Bench tests verify $100\%$ rejection of stationary tabletop and active motion artifacts, confirm highest SNR at the lower sternum (supine), and verify repeatable PRV separability between at least two distinct healthy subjects.
+	\item \textbf{Rhythm-Disorder Screening Metrics (Stage 3):} Evaluated on patient-stratified clinical benchmarks (MIT-BIH DS1/DS2 \cite{dechazal2004automatic} + INCART, PTB-XL, CPSC 2018, Chapman-Shaoxing) and controlled synthetic arrhythmic SCG sequences using True Positives ($\text{TP}$), True Negatives ($\text{TN}$), False Positives ($\text{FP}$), and False Negatives ($\text{FN}$):
 	\begin{equation}
 		\text{Acc} = \frac{\text{TP} + \text{TN}}{\text{TP} + \text{TN} + \text{FP} + \text{FN}} \quad (\text{Target: } \ge 85\%)
 	\end{equation}
-	\item \textbf{Sensitivity / Recall ($\text{Sens}$):}
 	\begin{equation}
-		\text{Sens} = \frac{\text{TP}}{\text{TP} + \text{FN}} \quad (\text{Target: } \ge 88\%)
+		\text{Sens} = \frac{\text{TP}}{\text{TP} + \text{FN}} \quad (\text{Target: } \ge 88\%), \qquad \text{Spec} = \frac{\text{TN}}{\text{TN} + \text{FP}} \quad (\text{Target: } \ge 85\%)
 	\end{equation}
-	\textit{Clinical significance:} High sensitivity is the top priority in arrhythmia screening to minimize False Negatives ($\text{FN}$) so abnormal rhythms are not missed.
-	\item \textbf{Specificity ($\text{Spec}$):}
-	\begin{equation}
-		\text{Spec} = \frac{\text{TN}}{\text{TN} + \text{FP}} \quad (\text{Target: } \ge 85\%)
-	\end{equation}
-	\textit{Clinical significance:} High specificity minimizes False Positives ($\text{FP}$), preventing unnecessary user anxiety.
-	\item \textbf{Precision ($\text{Prec}$) and F1-Score ($F_1$):}
 	\begin{equation}
 		\text{Prec} = \frac{\text{TP}}{\text{TP} + \text{FP}}, \qquad F_1 = 2 \times \frac{\text{Prec} \times \text{Sens}}{\text{Prec} + \text{Sens}} \quad (\text{Target: } F_1 \ge 0.86)
 	\end{equation}
+	High sensitivity ($\ge 88\%$) is prioritized to minimize missed arrhythmic events ($\text{FN}$), while high specificity ($\ge 85\%$) limits false alarms ($\text{FP}$). Per-class breakdowns are reported across Normal, Ectopic (PVC/PAC), Irregular/AFib, and Rate Disorders.
 \end{enumerate}
 
-\subsection{Cross-Validation and Leakage Prevention Strategy}
-To ensure results generalize to unseen individuals rather than memorizing a single subject's heartbeat signature:
+\subsection{Pillar 2: Computational Efficiency Evaluation}
+Following mobile soft real-time benchmarking standards \cite{tsamis2017soft}, computational efficiency is quantified directly on target hardware across three metrics:
 \begin{itemize}
-	\item \textbf{Patient-Stratified Splitting ($80\%/20\%$):} All beats and windows from any given subject are assigned exclusively to either the training set or the holdout test set, eliminating inter-patient data leakage.
-	\item \textbf{Stratified 5-Fold Cross-Validation:} Proportional distributions of Normal and Arrhythmic windows are preserved across all folds, reporting mean $\pm$ standard deviation for Accuracy, Sensitivity, Specificity, Precision, and F1-score alongside full confusion matrices.
-	\item \textbf{Explainability Audit:} Feature importance scores from Random Forest and XGBoost (and coefficients from Logistic Regression) are inspected to confirm that arrhythmia decisions are driven by physiologically valid beat-irregularity indicators (such as $\text{RMSSD}$, $\text{SDNN}$, and $\text{pNN50}$).
+	\item \textbf{End-to-End Processing Latency:} Total wall-clock time from $60\text{ s}$ circular buffer completion through zero-phase filtering, $200\text{ ms}$ moving-RMS peak detection, PRV extraction, and hybrid screening inference (\textbf{Target: $< 500\text{ ms}$}).
+	\item \textbf{Serialized Edge Model Footprint:} Disk and RAM size of the primary on-device classifier (\texttt{LR}, \texttt{RF}, or \texttt{GBDT/XGBoost}) (\textbf{Target: $< 2\text{ MB}$}, zero GPU requirement).
+	\item \textbf{Envelope Computational Overhead:} Verification that replacing the FFT-based Hilbert envelope with a time-domain $200\text{ ms}$ moving-RMS window eliminates FFT/ringing overhead while sustaining $\text{MAE} < 3.0\text{ bpm}$.
+\end{itemize}
+
+\subsection{Pillar 3: User-Friendliness (Usability) Evaluation Protocol}
+To objectively measure user-friendliness rather than relying on qualitative claims, volunteer participants perform unassisted guided lower-sternal measurements evaluated on three quantitative usability metrics:
+\begin{itemize}
+	\item \textbf{Guided Setup Time:} Elapsed time from opening the mobile application to achieving a locked, posture-valid ($\pm 10^\circ$, $\text{SNR} \ge 12\text{ dB}$) recording state (\textbf{Target: $< 60\text{ s}$}).
+	\item \textbf{First-Attempt Valid-Capture Rate:} Percentage of guided trials passing the physiological energy gate and SNR check on the initial attempt without researcher intervention (\textbf{Target: $\ge 90\%$}).
+	\item \textbf{System Usability Scale (SUS):} Standardized 10-item post-session usability questionnaire scored from $0$ to $100$ \cite{brooke1996sus} (\textbf{Target: $\text{SUS} \ge 75$}, corresponding to ``Good'' to ``Excellent'' adjective ratings).
+\end{itemize}
+
+\subsection{Pillar 4: Cross-Device Smartwatch Benchmark and Leakage Prevention Strategy}
+\begin{itemize}
+	\item \textbf{Public Smartwatch PPG Benchmark Comparison:} Empirical smartphone sternal SCG HR MAE/RMSE and Rhythm-Disorder screening metrics are compared directly against published resting smartwatch PPG benchmarks (Apple Watch, Fitbit, Garmin \cite{bent2020investigating, nelson2019accuracy, perez2019large, lubitz2022detection}) across accuracy, incremental hardware cost (\$0 vs. \$150--\$500+), and central mechanical versus peripheral optical trade-offs.
+	\item \textbf{Strict Patient-Stratified Splitting and Cross-Validation:} All beats and windows from any given patient are assigned exclusively to either training (\texttt{DS1}) or holdout testing (\texttt{DS2} and cross-database sets) per de Chazal et al. \cite{dechazal2004automatic}, eliminating inter-patient leakage. Stratified 5-fold cross-validation reports mean $\pm$ standard deviation for Accuracy, Sensitivity, Specificity, Precision, and F1-score alongside full confusion matrices.
+	\item \textbf{Explainability Audit:} Feature importance scores from Random Forest and GBDT/XGBoost (and coefficients from Logistic Regression) are inspected to confirm that rhythm decisions are driven by physiologically valid beat-irregularity indicators (e.g., $\text{RMSSD}$, $\text{SDNN}$, $\text{pNN50}$, and local RR ratios).
 \end{itemize}

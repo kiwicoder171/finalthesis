@@ -1,0 +1,493 @@
+{
+  "protocol": "Rhythm-Disorder Cluster Two-Stage Hybrid Screening (Progress Report No. 6)",
+  "best_edge_model": "Logistic Regression (Edge)",
+  "models": {
+    "Logistic Regression (Edge)": {
+      "model_size_kb": 1.61,
+      "model_size_under_2mb": true,
+      "inference_ms_per_window": 0.0004,
+      "ds1_group5fold_cv": {
+        "accuracy_mean": 0.9662,
+        "sensitivity_mean": 0.9332,
+        "specificity_mean": 0.978,
+        "f1_mean": 0.9497
+      },
+      "per_database": {
+        "MIT-BIH DS2 (Test)": {
+          "n_windows": 344,
+          "binary_screening": {
+            "accuracy": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "f1": 1.0,
+            "tp": 248,
+            "tn": 96,
+            "fp": 0,
+            "fn": 0
+          },
+          "rhythm_3class_macro_f1": 0.6637
+        },
+        "INCART (12-Lead)": {
+          "n_windows": 137,
+          "binary_screening": {
+            "accuracy": 0.9927,
+            "sensitivity": 0.9896,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "f1": 0.9948,
+            "tp": 95,
+            "tn": 41,
+            "fp": 0,
+            "fn": 1
+          },
+          "rhythm_3class_macro_f1": 0.6443
+        },
+        "PTB-XL (12-Lead)": {
+          "n_windows": 3,
+          "binary_screening": {
+            "accuracy": 0.6667,
+            "sensitivity": 0.6667,
+            "specificity": 0.0,
+            "precision": 1.0,
+            "f1": 0.8,
+            "tp": 2,
+            "tn": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "rhythm_3class_macro_f1": 0.1667
+        },
+        "CPSC 2018 (12-Lead)": {
+          "n_windows": 16,
+          "binary_screening": {
+            "accuracy": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 0.0,
+            "precision": 1.0,
+            "f1": 1.0,
+            "tp": 16,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "rhythm_3class_macro_f1": 0.2222
+        },
+        "Chapman-Shaoxing (12-Lead)": {
+          "n_windows": 7,
+          "binary_screening": {
+            "accuracy": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 0.0,
+            "precision": 1.0,
+            "f1": 1.0,
+            "tp": 7,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "rhythm_3class_macro_f1": 0.4615
+        }
+      },
+      "cross_db_mean_binary_f1": 0.9487,
+      "cross_db_mean_binary_acc": 0.9148
+    },
+    "Random Forest (Edge)": {
+      "model_size_kb": 452.63,
+      "model_size_under_2mb": true,
+      "inference_ms_per_window": 0.0083,
+      "ds1_group5fold_cv": {
+        "accuracy_mean": 0.9721,
+        "sensitivity_mean": 0.9555,
+        "specificity_mean": 0.9655,
+        "f1_mean": 0.9608
+      },
+      "per_database": {
+        "MIT-BIH DS2 (Test)": {
+          "n_windows": 344,
+          "binary_screening": {
+            "accuracy": 0.9884,
+            "sensitivity": 1.0,
+            "specificity": 0.9583,
+            "precision": 0.9841,
+            "f1": 0.992,
+            "tp": 248,
+            "tn": 92,
+            "fp": 4,
+            "fn": 0
+          },
+          "rhythm_3class_macro_f1": 0.6515
+        },
+        "INCART (12-Lead)": {
+          "n_windows": 137,
+          "binary_screening": {
+            "accuracy": 0.9927,
+            "sensitivity": 0.9896,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "f1": 0.9948,
+            "tp": 95,
+            "tn": 41,
+            "fp": 0,
+            "fn": 1
+          },
+          "rhythm_3class_macro_f1": 0.6027
+        },
+        "PTB-XL (12-Lead)": {
+          "n_windows": 3,
+          "binary_screening": {
+            "accuracy": 0.6667,
+            "sensitivity": 0.6667,
+            "specificity": 0.0,
+            "precision": 1.0,
+            "f1": 0.8,
+            "tp": 2,
+            "tn": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "rhythm_3class_macro_f1": 0.4
+        },
+        "CPSC 2018 (12-Lead)": {
+          "n_windows": 16,
+          "binary_screening": {
+            "accuracy": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 0.0,
+            "precision": 1.0,
+            "f1": 1.0,
+            "tp": 16,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "rhythm_3class_macro_f1": 0.2222
+        },
+        "Chapman-Shaoxing (12-Lead)": {
+          "n_windows": 7,
+          "binary_screening": {
+            "accuracy": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 0.0,
+            "precision": 1.0,
+            "f1": 1.0,
+            "tp": 7,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "rhythm_3class_macro_f1": 0.2778
+        }
+      },
+      "cross_db_mean_binary_f1": 0.9487,
+      "cross_db_mean_binary_acc": 0.9148
+    },
+    "GBDT / HistGBM (Edge)": {
+      "model_size_kb": 431.79,
+      "model_size_under_2mb": true,
+      "inference_ms_per_window": 0.0458,
+      "ds1_group5fold_cv": {
+        "accuracy_mean": 0.9721,
+        "sensitivity_mean": 0.9555,
+        "specificity_mean": 0.9655,
+        "f1_mean": 0.9608
+      },
+      "per_database": {
+        "MIT-BIH DS2 (Test)": {
+          "n_windows": 344,
+          "binary_screening": {
+            "accuracy": 0.9971,
+            "sensitivity": 0.996,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "f1": 0.998,
+            "tp": 247,
+            "tn": 96,
+            "fp": 0,
+            "fn": 1
+          },
+          "rhythm_3class_macro_f1": 0.6725
+        },
+        "INCART (12-Lead)": {
+          "n_windows": 137,
+          "binary_screening": {
+            "accuracy": 0.9927,
+            "sensitivity": 0.9896,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "f1": 0.9948,
+            "tp": 95,
+            "tn": 41,
+            "fp": 0,
+            "fn": 1
+          },
+          "rhythm_3class_macro_f1": 0.6135
+        },
+        "PTB-XL (12-Lead)": {
+          "n_windows": 3,
+          "binary_screening": {
+            "accuracy": 0.6667,
+            "sensitivity": 0.6667,
+            "specificity": 0.0,
+            "precision": 1.0,
+            "f1": 0.8,
+            "tp": 2,
+            "tn": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "rhythm_3class_macro_f1": 0.4
+        },
+        "CPSC 2018 (12-Lead)": {
+          "n_windows": 16,
+          "binary_screening": {
+            "accuracy": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 0.0,
+            "precision": 1.0,
+            "f1": 1.0,
+            "tp": 16,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "rhythm_3class_macro_f1": 0.2222
+        },
+        "Chapman-Shaoxing (12-Lead)": {
+          "n_windows": 7,
+          "binary_screening": {
+            "accuracy": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 0.0,
+            "precision": 1.0,
+            "f1": 1.0,
+            "tp": 7,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "rhythm_3class_macro_f1": 0.2778
+        }
+      },
+      "cross_db_mean_binary_f1": 0.9487,
+      "cross_db_mean_binary_acc": 0.9148
+    },
+    "Hybrid CNN-BiLSTM-Attn (Clinical Benchmark)": {
+      "model_size_kb": 1086.82,
+      "model_size_under_2mb": true,
+      "inference_ms_per_window": 2.8803,
+      "per_database": {
+        "MIT-BIH DS2 (Test)": {
+          "n_windows": 344,
+          "binary_screening": {
+            "accuracy": 0.9709,
+            "sensitivity": 1.0,
+            "specificity": 0.8958,
+            "precision": 0.9612,
+            "f1": 0.9802,
+            "tp": 248,
+            "tn": 86,
+            "fp": 10,
+            "fn": 0
+          },
+          "rhythm_3class_macro_f1": 0.5947
+        },
+        "INCART (12-Lead)": {
+          "n_windows": 137,
+          "binary_screening": {
+            "accuracy": 0.7664,
+            "sensitivity": 1.0,
+            "specificity": 0.2195,
+            "precision": 0.75,
+            "f1": 0.8571,
+            "tp": 96,
+            "tn": 9,
+            "fp": 32,
+            "fn": 0
+          },
+          "rhythm_3class_macro_f1": 0.6409
+        },
+        "PTB-XL (12-Lead)": {
+          "n_windows": 3,
+          "binary_screening": {
+            "accuracy": 0.6667,
+            "sensitivity": 0.6667,
+            "specificity": 0.0,
+            "precision": 1.0,
+            "f1": 0.8,
+            "tp": 2,
+            "tn": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "rhythm_3class_macro_f1": 0.4
+        },
+        "CPSC 2018 (12-Lead)": {
+          "n_windows": 16,
+          "binary_screening": {
+            "accuracy": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 0.0,
+            "precision": 1.0,
+            "f1": 1.0,
+            "tp": 16,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "rhythm_3class_macro_f1": 1.0
+        },
+        "Chapman-Shaoxing (12-Lead)": {
+          "n_windows": 7,
+          "binary_screening": {
+            "accuracy": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 0.0,
+            "precision": 1.0,
+            "f1": 1.0,
+            "tp": 7,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "rhythm_3class_macro_f1": 1.0
+        }
+      },
+      "cross_db_mean_binary_f1": 0.9143,
+      "cross_db_mean_binary_acc": 0.8583
+    }
+  },
+  "rf_feature_importances": [
+    [
+      "Max_Delta_PPI_ms",
+      0.1745
+    ],
+    [
+      "RMSSD_ms",
+      0.1515
+    ],
+    [
+      "Min_RR_Ratio",
+      0.1409
+    ],
+    [
+      "Mean_HR_bpm",
+      0.1322
+    ],
+    [
+      "Mean_PPI_ms",
+      0.1136
+    ],
+    [
+      "Premature_Beat_Frac",
+      0.0732
+    ],
+    [
+      "pNN50_pct",
+      0.0489
+    ],
+    [
+      "CV_PPI",
+      0.0456
+    ],
+    [
+      "IQR_PPI_ms",
+      0.0447
+    ],
+    [
+      "Max_RR_Ratio",
+      0.0382
+    ],
+    [
+      "SDNN_ms",
+      0.0366
+    ]
+  ],
+  "empirical_phyphox_scg": {
+    "file": "data/raw_phyphox_test/Raw Data.csv",
+    "duration_sec": 37.54,
+    "sampling_rate_hz": 99.52,
+    "sigma_raw_ms2": 0.0669,
+    "energy_gate_pass": true,
+    "detected_beats": 51,
+    "is_usable": true,
+    "mean_hr_bpm": 90.07,
+    "sdnn_ms": 223.21,
+    "rmssd_ms": 231.53,
+    "pnn50_pct": 65.31,
+    "stage3a_rate": "Normal Rate (60-100 bpm)",
+    "stage3b_rhythm": "Irregular Rhythm / AFib",
+    "binary_screening_flag": "Abnormal",
+    "end_to_end_latency_ms": 9.85,
+    "latency_target_pass": true,
+    "quality_gate_tabletop_rejection": "10/10 (100%)",
+    "quality_gate_motion_rejection": "10/10 (100%)"
+  },
+  "synthetic_scg_bridge": [
+    {
+      "scenario": "Normal Sinus Rhythm (72 bpm)",
+      "true_hr_bpm": 72.0,
+      "est_hr_bpm": 71.86,
+      "hr_abs_err_bpm": 0.14,
+      "rmssd_ms": 54.3,
+      "stage3a_rate": "Normal Rate (60-100 bpm)",
+      "stage3b_rhythm": "Normal Sinus Rhythm",
+      "expected_abnormal": false,
+      "predicted_abnormal": false,
+      "correct": true,
+      "latency_ms": 15.65
+    },
+    {
+      "scenario": "Sinus Bradycardia (48 bpm)",
+      "true_hr_bpm": 48.0,
+      "est_hr_bpm": 47.98,
+      "hr_abs_err_bpm": 0.02,
+      "rmssd_ms": 45.42,
+      "stage3a_rate": "Sinus Bradycardia (<60 bpm)",
+      "stage3b_rhythm": "Normal Sinus Rhythm",
+      "expected_abnormal": true,
+      "predicted_abnormal": true,
+      "correct": true,
+      "latency_ms": 12.45
+    },
+    {
+      "scenario": "Sinus Tachycardia (122 bpm)",
+      "true_hr_bpm": 122.0,
+      "est_hr_bpm": 121.59,
+      "hr_abs_err_bpm": 0.41,
+      "rmssd_ms": 37.12,
+      "stage3a_rate": "Sinus Tachycardia (>100 bpm)",
+      "stage3b_rhythm": "Ectopic Beats (PVC/PAC)",
+      "expected_abnormal": true,
+      "predicted_abnormal": true,
+      "correct": true,
+      "latency_ms": 21.29
+    },
+    {
+      "scenario": "Ectopic Beats (PVC/PAC bursts)",
+      "true_hr_bpm": 75.0,
+      "est_hr_bpm": 75.43,
+      "hr_abs_err_bpm": 0.43,
+      "rmssd_ms": 266.35,
+      "stage3a_rate": "Normal Rate (60-100 bpm)",
+      "stage3b_rhythm": "Ectopic Beats (PVC/PAC)",
+      "expected_abnormal": true,
+      "predicted_abnormal": true,
+      "correct": true,
+      "latency_ms": 16.8
+    },
+    {
+      "scenario": "Irregular Rhythm / AFib-like",
+      "true_hr_bpm": 84.0,
+      "est_hr_bpm": 84.62,
+      "hr_abs_err_bpm": 0.62,
+      "rmssd_ms": 186.7,
+      "stage3a_rate": "Normal Rate (60-100 bpm)",
+      "stage3b_rhythm": "Irregular Rhythm / AFib",
+      "expected_abnormal": true,
+      "predicted_abnormal": true,
+      "correct": true,
+      "latency_ms": 11.06
+    }
+  ]
+}
